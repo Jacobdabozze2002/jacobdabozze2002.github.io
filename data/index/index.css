@@ -4,11 +4,6 @@ body
   color: white;
 }
 
-canvas
-{
-  position: absolute;
-}
-
 .selection-container
 {
   width: 500px;
