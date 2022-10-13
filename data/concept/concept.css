@@ -2,5 +2,41 @@ body
 {
   background-color: black;
   color: white;
+
+  padding-left: 5%;
+  padding-right: 5%;
 }
+
+div
+{
+  margin-bottom: 10px;
+  padding: 25px;
+  border: thin solid white;
+}
+
+details
+{
+  margin-bottom: 3px;
+}
+
+summary
+{
+  margin-bottom: 3px;
+}
+
+ul
+{
+  list-style-type: circle;
+}
+
+a
+{
+  text-decoration: none;
+}
+
+a:link, a:visited
+{
+  color: white;
+}
+
 

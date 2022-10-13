@@ -1,2 +1,136 @@
-<h1 style="text-align: center">Konzept</h1>
+<h1 style="text-align: center">Unser Konzept</h1>
+
+<div>
+  <h2>Inhaltsverzeichnis</h2>
+
+  <ul>
+    <details>
+      <summary>
+        <a href="#opening">Einführung zum Thema</a>  <!--hier h3 oder h4 hinbekommen?-->
+      </summary>
+      <ul>
+        <li><a href="">Einleitung</a></li>
+        <li><a href="">Naive Suche</a></li>
+        <li><a href="">Boyer-Moore</a></li>
+        <li><a href="">Knuth-Morris-Pratt</a></li>
+        <li><a href="">Suffix-Baum</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>
+        <a href="#did_concept">Didaktisches Konzept</a>
+      </summary>
+      <ul>
+        <li><a href="">Element 1</a></li>
+        <li><a href="">Element 2</a></li>
+        <li><a href="">Element 3</a></li>
+        <li><a href="">Element 4</a></li>
+        <li><a href="">Element 5</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>
+        <a href="#vis_concept">Visuelles Konzept</a>
+      </summary>
+      <ul>
+        <li><a href="">Element 1</a></li>
+        <li><a href="">Element 2</a></li>
+        <li><a href="">Element 3</a></li>
+        <li><a href="">Element 4</a></li>
+        <li><a href="">Element 5</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>
+        <a href="#references">Verweise</a>
+      </summary>
+      <ul>
+        <li><a href="">Element 1</a></li>
+        <li><a href="">Element 2</a></li>
+        <li><a href="">Element 3</a></li>
+        <li><a href="">Element 4</a></li>
+        <li><a href="">Element 5</a></li>
+      </ul>
+    </details>
+  </ul>
+</div>
+
+
+<div id="opening">
+  <h2>Einführung zum Thema</h2>
+
+  <ul>
+    <li><h3>Einleitung</h3></li>
+    <p>
+      Nach Veröffentlichung des ersten serienmäßig produzierbaren Mikroprozessors in den 1970er Jahren und der damit folgenden Entwicklung hin zum modernen Computer, musste sich die noch junge Wissenschaft der Informatik mit einem neuartigen Problem auseinandersetzen.
+      Einhergehend mit der digitalen Speicherung von Daten benötigte man nun Verfahren zur Suche und Analyse von Zeichenketten in digitalen Texten.
+      Schnell erarbeitete man eine Vielzahl naiver Ansätze, welche allerdings den steigenden Geschwindigkeitsanforderungen nicht gerecht kamen und deshalb durch effizientere Lösungen ersetzt wurden.
+      Heute zählen unter anderem die Algorithmen von Boyer-Moore, Knuth-Morris-Pratt und der sogenannte Suffix-Baum zu den schnellsten Verfahren zur Musterfindung in Texten und sind aus dem Alltag nicht mehr wegzudenken.
+    </p>
+
+    <li><h3>Naive Suche</h3></li>
+    <p>
+      Die naive Suche beschreibt einen intuitiven, wenn auch ineffizienten Algorithmus zur Findung von Zeichenketten in Texten, welcher heutzutage aufgrund seiner Geschwindigkeit keine wirkliche Anwendung mehr hat.
+      Initial wird die Suchmaske (M) an Position 0 des Textes (T) angelegt und folgend von links nach rechts jedes Zeichen von M mit dem dazugehörigen Zeichen aus T verglichen.
+      Tritt eine Nichtübereinstimmung (Mismatch) auf, wird M um ein Zeichen nach rechts in T verschoben und wieder ab dem ersten Zeichen von M verglichen.
+      Dieser Ansatz bedarf keiner Vorbereitungszeit, ist aber aufgrund vieler redundanter Vergleiche mit einer Suchzeit von O((n - m + 1) * m) langsam.
+      Hierbei beschreibt n die Länge von T und m die Länge von M.
+    </p>
+
+    <li><h3>Boyer-Moore</h3></li>
+    <p>
+      Dieser 1977 entwickelte Algorithmus eignet sich besonders im Einsatz mit langen Suchmasken.
+      Insbesondere kann er sublinear sein, da nicht jedes Zeichen von T gelesen werden muss.
+      Im Gegensatz zur naiven Suche werden die Zeichen von M und T nicht von links nach rechts in M, sondern von rechts nach links verglichen, weshalb zunächst mit einer Vorbereitungszeit von O(m) gerechnet werden muss.
+      Kommt es zu einem Mismatch, wird eine Fallunterscheidung durchgeführt und eine von zwei Heuristiken angewendet.
+      Die Bad-Character-Heuristik wird eingesetzt, wenn beim Vergleich des ersten Elements von M und T ein Bad-Character, also ein nicht übereinstimmendes Zeichen, auftritt.
+      In M wird nach dem nächsten Vorkommen dieses Zeichens aus T gesucht und die Maske dann so weit nach rechts verschoben, bis beide Zeichen übereinander liegen.
+      Existiert das Bad-Character aus T nicht in M, dann wird M um seine volle Länge nach rechts verschoben.
+      Die Good-Suffix-Heuristik findet Verwendung, wenn an aktueller Position ein Suffix von M mit dem dazugehörenden Suffix von T gleicher Länge übereinstimmt und danach ein Mismatch auftritt.
+      In diesem Fall wird M so weit verschoben, bis die nächste Wiederholung des Suffixes in M auf dem Suffix in T liegt.
+      Wiederholt sich das Suffix nicht in M, dann wird M um seine volle Länge nach rechts verschoben.
+      Die Suchzeit kann von O(n/m) im Idealfall bis zu O(n*m) im schlechtesten Fall reichen.
+    </p>
+
+    <li><h3>Knuth-Morris-Pratt</h3></li>
+    <p>
+      Der Algorithmus von Knuth, Morris und Pratt “KMP 77” baut auf der naiven Suche auf, ist allerdings deutlich performanter, da M mehr als eins nach rechts verschoben werden kann.
+      Im Gegensatz zum naiven Ansatz und der Lösung von Boyer und Moore besteht der Algorithmus aus zwei Teilen - einer Präfix-Analyse (Preprocessing) und der Suche.
+      Während des Preprocessing analysiert der Algorithmus zunächst M und speichert Informationen über seine Struktur in einem Array.
+      Aufgabe ist es, für jedes Präfix von M die Länge seines breitesten Randes zu bestimmen.
+      Unter einem Rand versteht man ein Wort, welches echtes Präfix und Suffix von M, also in welchem das Präfix gleich dem Suffix, ist.
+      Die Vorbereitungszeit beträgt O(m).
+      Die Suchphase verhält sich zu Beginn gleich der naiven Suche.
+      Kommt es aber zu einem Mismatch, wird die neue Position von M mit der Formel [<aktuelle Position von M  in T> + <Länge des übereinstimmenden Präfixes> - <Wert aus Array an Stelle <Länge des übereinstimmende Präfixes - 1>> ] berechnet.
+      Kommt es zu einem Mismatch an Stelle 0 von M, wird M stets eins nach rechts verschoben.
+      Zu beachten ist, dass nach einer Verschiebung von M mit dem Vergleich direkt an der Position des Mismatch in T fortgefahren wird, wenn die beiden Präfixe von M und T an der Position von M wieder übereinstimmen.
+      Diese Übereinstimmung lässt sich aus dem zuvor generierten Array erkennen.
+      Der KMP Algorithmus funktioniert besonders gut mit kleinen Alphabeten, da die Chance auf wiederverwendbare Präfixe deutlich höher ist.
+      Die Suchzeit beträgt O(n).
+    </p>
+
+    <li><h3>Suffix-Baum</h3></li>
+    <p>
+      Unter Umständen kann die Textsuche mit einem Suffix-Baum noch effizienter gestaltet werden.
+      Dieser wird vor der Suchphase zunächst in O(n) Zeit generiert.
+      In der fertigen Baumstruktur gibt es dann für jedes Wort nur einen einzigen Pfad.
+      Dies macht man sich bei der Suche zunutze, da für M ein bestimmter Pfad von Knoten zu Knoten verfolgt wird und man mit Sicherheit sagen kann, dass ein Wort nicht in T existiert, wenn es keine weitere Verbindung mehr zu einem Knoten mit den benötigten Substring aus M gibt.
+      Dies resultiert in einer geringen Suchzeit von O(m).
+    </p>
+  </ul>
+</div>
+
+<div id="did_concept">
+  <h2>Didaktisches Konzept</h2>
+</div>
+
+<div id="vis_concept">
+  <h2>Visuelles Konzept</h2>
+</div>
+
+<div id="references">
+  <h2>Verweise</h2>
+</div>
+
+
 
