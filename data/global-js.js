@@ -1,6 +1,6 @@
 function openPage(page)
 {
-    window.open(page + ".html","_self")
+    window.open(page + ".html","_top")
 }
 
 
