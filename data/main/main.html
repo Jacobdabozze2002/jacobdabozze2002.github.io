@@ -1,0 +1,43 @@
+<script src="https://threejs.org/build/three.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+    const renderer = new THREE.WebGLRenderer();
+    document.body.appendChild(renderer.domElement);
+
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load("https://i.imgur.com/09uaOym.png");
+
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshStandardMaterial({map: texture});
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    const light = new THREE.AmbientLight(0xffffff);
+    scene.add(light);
+
+    camera.position.z = 1.5;
+
+    function animate() 
+    {
+        renderer.setSize(window.innerWidth *.25, window.innerHeight*.25);
+        requestAnimationFrame(animate);
+
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+
+        renderer.render( scene, camera );
+    };
+
+    animate();
+  </script>
+
+<h1 style="text-align: center">Main Page</h1>
+
+<div class="selection-container">
+  <button onclick="openPage('naiv')">Naive Suche</button>
+  <button onclick="openPage('bm')">Boyer-Moore</button>
+  <button onclick="openPage('kmp')">Knuth-Morris-Pratt</button>
+  <button onclick="openPage('suffix')">Suffix-Baum</button>
+</div>
