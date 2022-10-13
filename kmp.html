@@ -2,10 +2,18 @@
 <html>
   <head>
     <base target="_top">
-    <title>Knuth-Morris-Pratt</title>
+    <title>Startseite</title>
+    <link rel="stylesheet" href="data/global-css.css">
+    <link rel="stylesheet" href="data/kmp/kmp.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      $(function(){
+        $("#kmp").load("data/kmp/kmp.html");
+      });
+    </script>
   </head>
-  <body>
-
+  <body id="kmp">
+    <script src="data/global-js.js"></script>
+    <script src="data/kmp/kmp.js"></script>
   </body>
 </html>
-

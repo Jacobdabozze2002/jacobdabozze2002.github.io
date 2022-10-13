@@ -2,10 +2,18 @@
 <html>
   <head>
     <base target="_top">
-    <title>Naive-Suche</title>
+    <title>Startseite</title>
+    <link rel="stylesheet" href="data/global-css.css">
+    <link rel="stylesheet" href="data/naiv/naiv.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      $(function(){
+        $("#naiv").load("data/naiv/naiv.html");
+      });
+    </script>
   </head>
-  <body>
-
+  <body id="naiv">
+    <script src="data/global-js.js"></script>
+    <script src="data/naiv/naiv.js"></script>
   </body>
 </html>
-
