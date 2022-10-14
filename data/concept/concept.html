@@ -9,11 +9,11 @@
         <a class="h4" href="#opening">Einführung zum Thema</a>  <!--hier h3 oder h4 hinbekommen?-->
       </summary>
       <ul>
-        <li><a href="">Einleitung</a></li>
-        <li><a href="">Naive Suche</a></li>
-        <li><a href="">Boyer-Moore</a></li>
-        <li><a href="">Knuth-Morris-Pratt</a></li>
-        <li><a href="">Suffix-Baum</a></li>
+        <li><a href="#intro">Einleitung</a></li>
+        <li><a href="#naiv">Naive Suche</a></li>
+        <li><a href="#bm">Boyer-Moore</a></li>
+        <li><a href="#kmp">Knuth-Morris-Pratt</a></li>
+        <li><a href="#suffix">Suffix-Baum</a></li>
       </ul>
     </details>
     <details>
@@ -60,7 +60,7 @@
   <h2>Einführung zum Thema</h2>
 
   <ul>
-    <li><h3>Einleitung</h3></li>
+    <li id="intro"><h3>Einleitung</h3></li>
     <p>
       Nach Veröffentlichung des ersten serienmäßig produzierbaren Mikroprozessors in den 1970er Jahren und der damit folgenden Entwicklung hin zum modernen Computer, musste sich die noch junge Wissenschaft der Informatik mit einem neuartigen Problem auseinandersetzen.
       Einhergehend mit der digitalen Speicherung von Daten benötigte man nun Verfahren zur Suche und Analyse von Zeichenketten in digitalen Texten.
@@ -68,7 +68,7 @@
       Heute zählen unter anderem die Algorithmen von Boyer-Moore, Knuth-Morris-Pratt und der sogenannte Suffix-Baum zu den schnellsten Verfahren zur Musterfindung in Texten und sind aus dem Alltag nicht mehr wegzudenken.
     </p>
 
-    <li><h3>Naive Suche</h3></li>
+    <li id="naiv"><h3>Naive Suche</h3></li>
     <p>
       Die naive Suche beschreibt einen intuitiven, wenn auch ineffizienten Algorithmus zur Findung von Zeichenketten in Texten, welcher heutzutage aufgrund seiner Geschwindigkeit keine wirkliche Anwendung mehr hat.
       Initial wird die Suchmaske (M) an Position 0 des Textes (T) angelegt und folgend von links nach rechts jedes Zeichen von M mit dem dazugehörigen Zeichen aus T verglichen.
@@ -77,7 +77,7 @@
       Hierbei beschreibt n die Länge von T und m die Länge von M.
     </p>
 
-    <li><h3>Boyer-Moore</h3></li>
+    <li id="bm"><h3>Boyer-Moore</h3></li>
     <p>
       Dieser 1977 entwickelte Algorithmus eignet sich besonders im Einsatz mit langen Suchmasken.
       Insbesondere kann er sublinear sein, da nicht jedes Zeichen von T gelesen werden muss.
@@ -92,7 +92,7 @@
       Die Suchzeit kann von O(n/m) im Idealfall bis zu O(n*m) im schlechtesten Fall reichen.
     </p>
 
-    <li><h3>Knuth-Morris-Pratt</h3></li>
+    <li id="kmp"><h3>Knuth-Morris-Pratt</h3></li>
     <p>
       Der Algorithmus von Knuth, Morris und Pratt “KMP 77” baut auf der naiven Suche auf, ist allerdings deutlich performanter, da M mehr als eins nach rechts verschoben werden kann.
       Im Gegensatz zum naiven Ansatz und der Lösung von Boyer und Moore besteht der Algorithmus aus zwei Teilen - einer Präfix-Analyse (Preprocessing) und der Suche.
@@ -101,7 +101,7 @@
       Unter einem Rand versteht man ein Wort, welches echtes Präfix und Suffix von M, also in welchem das Präfix gleich dem Suffix, ist.
       Die Vorbereitungszeit beträgt O(m).
       Die Suchphase verhält sich zu Beginn gleich der naiven Suche.
-      Kommt es aber zu einem Mismatch, wird die neue Position von M mit der Formel [<aktuelle Position von M  in T> + <Länge des übereinstimmenden Präfixes> - <Wert aus Array an Stelle <Länge des übereinstimmende Präfixes - 1>> ] berechnet.
+      Kommt es aber zu einem Mismatch, wird die neue Position von M mit der Formel [aktuelle Position von M  in T + Länge des übereinstimmenden Präfixes - Wert aus Array an Stelle Länge des übereinstimmenden Präfixes - 1] berechnet.
       Kommt es zu einem Mismatch an Stelle 0 von M, wird M stets eins nach rechts verschoben.
       Zu beachten ist, dass nach einer Verschiebung von M mit dem Vergleich direkt an der Position des Mismatch in T fortgefahren wird, wenn die beiden Präfixe von M und T an der Position von M wieder übereinstimmen.
       Diese Übereinstimmung lässt sich aus dem zuvor generierten Array erkennen.
@@ -109,7 +109,7 @@
       Die Suchzeit beträgt O(n).
     </p>
 
-    <li><h3>Suffix-Baum</h3></li>
+    <li id="suffix"><h3>Suffix-Baum</h3></li>
     <p>
       Unter Umständen kann die Textsuche mit einem Suffix-Baum noch effizienter gestaltet werden.
       Dieser wird vor der Suchphase zunächst in O(n) Zeit generiert.
