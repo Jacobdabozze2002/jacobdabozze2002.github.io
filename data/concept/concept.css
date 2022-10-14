@@ -17,10 +17,12 @@ div
 
 div.download
 {
+  display: flex;
+  justify-content: center;
   border: none;
 }
 
-img
+img.download
 {
   filter: invert(1);
   vertical-align: middle;
@@ -42,19 +44,9 @@ ul
   list-style-type: disc;
 }
 
-a
-{
-  text-decoration: none;
-}
-
-a.download
-{
-  width: 100px;
-  margin-left: calc(50% - 50px);
-}
-
 a:link, a:visited
 {
+  text-decoration: none;
   color: white;
 }
 
