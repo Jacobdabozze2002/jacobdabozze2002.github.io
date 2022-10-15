@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Moving Box</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"/>
+    <link rel="stylesheet" href="moving-box.css">
+</head>
+<body>
+    <div id="string" class="letter-container">
+    </div>
+
+    <div id="pattern" class="letter-container">
+    </div>
+    <div class="button-container">
+        <p class="button-label">String Index</p>
+        <button id="decrease-str" class="button move-button" onclick="decreaseStr()">-</button>
+        <button id="increase-str" class="button move-button" onclick="increaseStr()">+</button>
+    </div>
+    <div class="button-container">
+        <p class="button-label">Pattern Index</p>
+        <button id="decrease-pat" class="button move-button" onclick="decreasePat()">-</button>
+        <button id="increase-pat" class="button move-button" onclick="increasePat()">+</button>
+    </div>
+    <div class="button-container">
+        <p class="button-label">Pattern Offset</p>
+        <button id="decrease-off" class="button move-button" onclick="decreaseOff()">-</button>
+        <button id="increase-off" class="button move-button" onclick="increaseOff()">+</button>
+    </div>
+    <button id="compare" onclick="compare()">Compare</button>
+    <div id="legend">
+        <p>[A/D] Change String Index</p>
+        <p>[◀/▶] Change Pattern Index</p>
+        <p>[W/S] Change Pattern Offset</p>
+        <p>[Space] Compare</p>
+        <p>Google</p>
+    </div>
+    <script src="moving-box.js"></script>
+</body>
+</html>
