@@ -1,0 +1,39 @@
+body
+{
+    background-size: 0;
+    background-color: black;
+    background-image: repeating-linear-gradient(90deg, black 0%, darkgreen 50%, black 100%);
+    animation: diagonal alternate .01s infinite;
+}
+
+@keyframes diagonal
+{
+    0% {background-position: 0}
+    100% {background-position: 100%;}
+}
+
+canvas
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+#start
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 10rem;
+    border: thick dashed darkred;
+    background-color: inherit;
+    color: red;
+}
+
+#start:hover
+{
+    color: darkred;
+}
