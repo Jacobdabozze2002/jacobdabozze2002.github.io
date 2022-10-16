@@ -105,16 +105,15 @@ function reset() {
 
 function compare(auto_increase=false) {
     if (string[idx_str] === pattern[idx_pat]) {
-        console.log("Match!");
+        createLog("Match!")
         if (auto_increase) {
             increaseStr();
         }
     } else {
-        console.log("No match!");
+        createLog("No Match!")
 
     }
 }
-
 
 updateHighlights();
 
@@ -142,3 +141,34 @@ document.addEventListener("keydown", (event) => {
             compare();
     }
 });
+
+// Start: Console Functionality
+const console = document.getElementById("console");
+
+let b1 = document.createElement("div");
+b1.classList.add("blocker");
+b1.style.top = "0";
+console.appendChild(b1);
+
+let b2 = document.createElement("div");
+b2.classList.add("blocker");
+b2.style.bottom = "0";
+console.appendChild(b2);
+
+function resize()
+{
+    b1.style.width = "calc(" + (console.offsetWidth) + "px - 1em)";
+    b2.style.width = "calc(" + (console.offsetWidth) + "px - 1em)";
+}
+
+function createLog(message)
+{
+    let log = document.createElement("div");
+    log.innerText = new Date().toLocaleTimeString() + " | " + message;
+    console.appendChild(log);
+    console.scrollTop = console.scrollHeight - console.clientHeight;
+}
+
+resize();
+onresize = resize;
+// End: Console Functionality
