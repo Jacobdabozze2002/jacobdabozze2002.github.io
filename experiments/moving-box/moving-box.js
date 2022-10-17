@@ -45,7 +45,6 @@ function movePattern() {
             parseInt(style.paddingRight, 10) * 2 +
             parseInt(style.borderWidth, 10) * 2 +
             parseInt(style.marginRight, 10);
-        console.log(single_offset);
         total_offset += single_offset;
     }
 
@@ -154,7 +153,7 @@ document.addEventListener("keydown", (event) => {
         case "s":
             decreaseOff();
             break;
-        case "Space":
+        case "c":
             compare();
     }
 });
