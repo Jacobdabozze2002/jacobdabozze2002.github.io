@@ -5,7 +5,7 @@ const str_letters = string_container.getElementsByClassName("letter");
 const pat_letters = pattern_container.getElementsByClassName("letter");
 
 let string = "ABCABDAB";
-let pattern = "ABD";
+let pattern = "ABC";
 
 for (let i = 0; i < string.length; i++) {
     const letter = document.createElement("div");
@@ -38,13 +38,18 @@ function updateHighlights() {
 }
 
 function movePattern() {
-    let style = getComputedStyle(str_letters[0]);
-    let single_offset = parseInt(style.width, 10) +
-                        parseInt(style.paddingRight, 10) * 2 +
-                        parseInt(style.borderWidth, 10) * 2 +
-                        parseInt(style.marginRight, 10);
+    let total_offset = 0;
+    for (let i = 0; i < pat_offset; i++) {
+        let style = getComputedStyle(str_letters[i]);
+        let single_offset = parseInt(style.width, 10) +
+            parseInt(style.paddingRight, 10) * 2 +
+            parseInt(style.borderWidth, 10) * 2 +
+            parseInt(style.marginRight, 10);
+        console.log(single_offset);
+        total_offset += single_offset;
+    }
 
-    pattern_container.style.marginLeft = `${pat_offset * single_offset}px`;
+    pattern_container.style.marginLeft = `${total_offset}px`;
 }
 
 function increaseStr() {
@@ -103,6 +108,18 @@ function reset() {
     movePattern();
 }
 
+function resize() {
+    b1.style.width = "calc(" + (console_view.offsetWidth) + "px - 1em)";
+    b2.style.width = "calc(" + (console_view.offsetWidth) + "px - 1em)";
+}
+
+function createLog(message) {
+    let log = document.createElement("div");
+    log.innerText = new Date().toLocaleTimeString() + " | " + message;
+    console_view.appendChild(log);
+    console_view.scrollTop = console_view.scrollHeight - console_view.clientHeight;
+}
+
 function compare(auto_increase=false) {
     if (string[idx_str] === pattern[idx_pat]) {
         createLog("Match!")
@@ -143,31 +160,17 @@ document.addEventListener("keydown", (event) => {
 });
 
 // Start: Console Functionality
-const console = document.getElementById("console");
+const console_view = document.getElementById("console");
 
 let b1 = document.createElement("div");
 b1.classList.add("blocker");
 b1.style.top = "0";
-console.appendChild(b1);
+console_view.appendChild(b1);
 
 let b2 = document.createElement("div");
 b2.classList.add("blocker");
 b2.style.bottom = "0";
-console.appendChild(b2);
-
-function resize()
-{
-    b1.style.width = "calc(" + (console.offsetWidth) + "px - 1em)";
-    b2.style.width = "calc(" + (console.offsetWidth) + "px - 1em)";
-}
-
-function createLog(message)
-{
-    let log = document.createElement("div");
-    log.innerText = new Date().toLocaleTimeString() + " | " + message;
-    console.appendChild(log);
-    console.scrollTop = console.scrollHeight - console.clientHeight;
-}
+console_view.appendChild(b2);
 
 resize();
 onresize = resize;
