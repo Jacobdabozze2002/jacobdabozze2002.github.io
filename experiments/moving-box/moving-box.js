@@ -171,6 +171,11 @@ b2.classList.add("blocker");
 b2.style.bottom = "0";
 console_view.appendChild(b2);
 
+const h_before = console_view.clientHeight;
+console_view.style.height = h_before + "px";
+const h_after = console_view.clientHeight;
+console_view.style.height = (2 * h_before - h_after) + "px";
+
 resize();
 onresize = resize;
 // End: Console Functionality
