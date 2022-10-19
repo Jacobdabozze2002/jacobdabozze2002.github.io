@@ -4,6 +4,18 @@ const pattern_container = document.getElementById("pattern");
 const str_letters = string_container.getElementsByClassName("letter");
 const pat_letters = pattern_container.getElementsByClassName("letter");
 
+const health = new Health(3, "/data/images/rico.PNG", "hp");
+health.onDecreaseHP = () =>
+{
+    createLog("hp -= 1");
+}
+health.onDeath = () =>
+{
+    createLog("hp == 0");
+    reset();
+}
+
+
 let string = "ABCABDAB";
 let pattern = "ABC";
 
@@ -107,27 +119,15 @@ function reset() {
     movePattern();
 }
 
-function resize() {
-    b1.style.width = "calc(" + (console_view.offsetWidth) + "px - 1em)";
-    b2.style.width = "calc(" + (console_view.offsetWidth) + "px - 1em)";
-}
-
-function createLog(message) {
-    let log = document.createElement("div");
-    log.innerText = new Date().toLocaleTimeString() + " | " + message;
-    console_view.appendChild(log);
-    console_view.scrollTop = console_view.scrollHeight - console_view.clientHeight;
-}
-
 function compare(auto_increase=false) {
-    if (string[idx_str] === pattern[idx_pat]) {
+    if (idx_str === idx_pat + pat_offset && string[idx_str] === pattern[idx_pat]) {
         createLog("Match!")
         if (auto_increase) {
             increaseStr();
         }
     } else {
         createLog("No Match!")
-
+        health.decreaseHP();
     }
 }
 
@@ -158,6 +158,7 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+
 // Start: Console Functionality
 const console_view = document.getElementById("console");
 
@@ -175,6 +176,18 @@ const h_before = console_view.clientHeight;
 console_view.style.height = h_before + "px";
 const h_after = console_view.clientHeight;
 console_view.style.height = (2 * h_before - h_after) + "px";
+
+function resize() {
+    b1.style.width = "calc(" + (console_view.offsetWidth) + "px - 1em)";
+    b2.style.width = "calc(" + (console_view.offsetWidth) + "px - 1em)";
+}
+
+function createLog(message) {
+    let log = document.createElement("div");
+    log.innerText = new Date().toLocaleTimeString() + " | " + message;
+    console_view.appendChild(log);
+    console_view.scrollTop = console_view.scrollHeight - console_view.clientHeight;
+}
 
 resize();
 onresize = resize;
