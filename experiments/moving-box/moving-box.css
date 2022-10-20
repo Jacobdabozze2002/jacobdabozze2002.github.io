@@ -92,9 +92,43 @@ button {
     left: 0;
 }
 
-#hp > img
+#hp
+{
+    width: 290px;
+    display: flex;
+    justify-content: space-between;
+    padding: .5em;
+    background: #F6F2D8;
+    border: thick solid #B96D40;
+    border-radius: .5em;
+    margin-bottom: 2em;
+}
+
+#hp > img:not(#avatar)
 {
     height: 4em;
-    margin-right: 1em;
-    margin-bottom: 2em;
+}
+
+#avatar
+{
+    height: 5em;
+    border: thick solid #B96D40;
+    border-radius: 1em;
+}
+
+@keyframes hide
+{
+    0% {opacity: 1}
+    100% {opacity: 0}
+}
+
+@keyframes show
+{
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+@keyframes spin
+{
+    100% {transform: rotate(360deg)}
 }

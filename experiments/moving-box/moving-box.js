@@ -7,23 +7,6 @@ const pat_letters = pattern_container.getElementsByClassName("letter");
 let string = "ABCABDAB";
 let pattern = "ABC";
 
-// Start: Health (+ Events)
-const health = new Health(3, "/data/images/heart.png", "hp");
-health.onDecreaseHP = (hp) =>
-{
-    createLog("HP: " + hp);
-}
-health.onDeath = () =>
-{
-    createLog("DEAD");
-    reset();
-}
-health.onRevival = () =>
-{
-    createLog("REVIVED");
-}
-// End: Health (+ Events)
-
 for (let i = 0; i < string.length; i++) {
     const letter = document.createElement("div");
     letter.classList.add("letter");
@@ -162,6 +145,48 @@ document.addEventListener("keydown", (event) => {
             compare();
     }
 });
+
+// Start: Health (+ Events)
+const health = new Health(3, "/data/images/heart.png", "hp");
+health.onDecreaseHP = (hp, icon) =>
+{
+    createLog("HP: " + hp);
+}
+
+health.onDeath = async () =>
+{
+    $(":button").prop("disabled", true);
+
+    createLog("DEAD");
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    reset();
+    health.restoreHP();
+}
+
+health.onRestoreHP = async () =>
+{
+    createLog("REVIVED");
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    $(":button").prop("disabled", false);
+}
+
+health.getIcons().forEach(icon =>
+{
+    icon.hide = () =>
+    {
+        icon.style.animation = "hide 1s forwards";
+    }
+
+    icon.show = async () =>
+    {
+        icon.style.animation = "show 2s forwards";
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        icon.style.animation = "spin .5s forwards";
+    }
+})
+// End: Health (+ Events)
 
 // Start: Console Functionality
 const console_view = document.getElementById("console");
