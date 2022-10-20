@@ -4,20 +4,25 @@ const pattern_container = document.getElementById("pattern");
 const str_letters = string_container.getElementsByClassName("letter");
 const pat_letters = pattern_container.getElementsByClassName("letter");
 
-const health = new Health(3, "/data/images/rico.PNG", "hp");
-health.onDecreaseHP = () =>
+let string = "ABCABDAB";
+let pattern = "ABC";
+
+// Start: Health (+ Events)
+const health = new Health(3, "/data/images/heart.png", "hp");
+health.onDecreaseHP = (hp) =>
 {
-    createLog("hp -= 1");
+    createLog("HP: " + hp);
 }
 health.onDeath = () =>
 {
-    createLog("hp == 0");
+    createLog("DEAD");
     reset();
 }
-
-
-let string = "ABCABDAB";
-let pattern = "ABC";
+health.onRevival = () =>
+{
+    createLog("REVIVED");
+}
+// End: Health (+ Events)
 
 for (let i = 0; i < string.length; i++) {
     const letter = document.createElement("div");
@@ -158,7 +163,6 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-
 // Start: Console Functionality
 const console_view = document.getElementById("console");
 
@@ -192,3 +196,5 @@ function createLog(message) {
 resize();
 onresize = resize;
 // End: Console Functionality
+
+
