@@ -2,6 +2,7 @@ body {
     margin: 2em;
     font-family: 'Roboto', sans-serif;
     color: #1c1c1c;
+    height: 100%;
 }
 
 .letter-container {
@@ -56,10 +57,16 @@ button {
 
 #compare {
     font-size: 1.4em;
+    margin-bottom: 0.5em;
 }
 
-#infos
-{
+#game {
+    min-height: 100%;
+    padding-bottom: 280px;
+}
+
+#infos {
+    height: 280px;
     font-size: 2.5em;
     display: flex;
     width: 100%;
@@ -75,8 +82,7 @@ button {
     font-size: 0.5em;
 }
 
-#console
-{
+#console {
     flex: 1;
     background: #7A8B99;
     padding: 1em;
@@ -84,16 +90,14 @@ button {
     overflow-y: scroll;
 }
 
-.blocker
-{
+.blocker {
     position: absolute;
-    height: 1.1em;;
+    height: 1.1em;
     background: inherit;
     left: 0;
 }
 
-#hp
-{
+#hp {
     width: 290px;
     display: flex;
     justify-content: space-between;
@@ -104,31 +108,26 @@ button {
     margin-bottom: 2em;
 }
 
-#hp > img:not(#avatar)
-{
+#hp > img:not(#avatar) {
     height: 4em;
 }
 
-#avatar
-{
+#avatar {
     height: 5em;
     border: thick solid #B96D40;
     border-radius: 1em;
 }
 
-@keyframes hide
-{
+@keyframes hide {
     0% {opacity: 1}
     100% {opacity: 0}
 }
 
-@keyframes show
-{
+@keyframes show {
     0% {opacity: 0}
     100% {opacity: 1}
 }
 
-@keyframes spin
-{
+@keyframes spin {
     100% {transform: rotate(360deg)}
 }

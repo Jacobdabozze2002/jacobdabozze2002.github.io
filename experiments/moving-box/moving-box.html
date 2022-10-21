@@ -8,31 +8,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-    <div id="hp">
-        <img id="avatar" src="/data/images/rico.PNG">
-    </div>
+    <div id="game">
+        <div id="hp">
+            <img id="avatar" src="/data/images/rico.PNG" alt="Rico">
+        </div>
 
-    <div id="string" class="letter-container">
-    </div>
+        <div id="string" class="letter-container">
+        </div>
 
-    <div id="pattern" class="letter-container">
+        <div id="pattern" class="letter-container">
+        </div>
+        <div class="button-container">
+            <p class="button-label">String Index</p>
+            <button id="decrease-str" class="button move-button" onclick="decreaseStr()">-</button>
+            <button id="increase-str" class="button move-button" onclick="increaseStr()">+</button>
+        </div>
+        <div class="button-container">
+            <p class="button-label">Pattern Index</p>
+            <button id="decrease-pat" class="button move-button" onclick="decreasePat()">-</button>
+            <button id="increase-pat" class="button move-button" onclick="increasePat()">+</button>
+        </div>
+        <div class="button-container">
+            <p class="button-label">Pattern Offset</p>
+            <button id="decrease-off" class="button move-button" onclick="decreaseOff()">-</button>
+            <button id="increase-off" class="button move-button" onclick="increaseOff()">+</button>
+        </div>
+        <button id="compare" onclick="compare()">Compare</button>
     </div>
-    <div class="button-container">
-        <p class="button-label">String Index</p>
-        <button id="decrease-str" class="button move-button" onclick="decreaseStr()">-</button>
-        <button id="increase-str" class="button move-button" onclick="increaseStr()">+</button>
-    </div>
-    <div class="button-container">
-        <p class="button-label">Pattern Index</p>
-        <button id="decrease-pat" class="button move-button" onclick="decreasePat()">-</button>
-        <button id="increase-pat" class="button move-button" onclick="increasePat()">+</button>
-    </div>
-    <div class="button-container">
-        <p class="button-label">Pattern Offset</p>
-        <button id="decrease-off" class="button move-button" onclick="decreaseOff()">-</button>
-        <button id="increase-off" class="button move-button" onclick="increaseOff()">+</button>
-    </div>
-    <button id="compare" onclick="compare()">Compare</button>
 
     <div id="infos">
         <div id="console"></div>
@@ -42,6 +44,7 @@
             <p>[◀/▶] Change Pattern Index</p>
             <p>[W/S] Change Pattern Offset</p>
             <p>[C] Compare</p>
+            <p>[H] Toggle Infos</p>
         </div>
     </div>
 

@@ -21,6 +21,9 @@ for (let i = 0; i < pattern.length; i++) {
     pattern_container.appendChild(letter);
 }
 
+let infos = document.getElementById("infos");
+let game = document.getElementById("game");
+
 let idx_str = 0;
 let idx_pat = 0;
 let pat_offset = 0;
@@ -119,6 +122,16 @@ function compare(auto_increase=false) {
     }
 }
 
+function toggleInfos() {
+    if (infos.style.display === "none") {
+        infos.style.display = "flex";
+        game.style.paddingBottom = "250px";
+    } else {
+        infos.style.display = "none";
+        game.style.paddingBottom = "0";
+    }
+}
+
 updateHighlights();
 
 document.addEventListener("keydown", (event) => {
@@ -143,6 +156,10 @@ document.addEventListener("keydown", (event) => {
             break;
         case "c":
             compare();
+            break;
+        case "h":
+            toggleInfos();
+            break;
     }
 });
 
