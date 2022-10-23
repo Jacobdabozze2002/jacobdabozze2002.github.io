@@ -23,11 +23,11 @@
         <a class="h4" href="#did_concept">Didaktisches Konzept</a>
       </summary>
       <ul>
-        <li><a href="">Element 1</a></li>
-        <li><a href="">Element 2</a></li>
-        <li><a href="">Element 3</a></li>
-        <li><a href="">Element 4</a></li>
-        <li><a href="">Element 5</a></li>
+        <li><a href="#zg">Zielgruppe</a></li>
+        <li><a href="#lul">Lehr- und Lernziele</a></li>
+        <li><a href="#dik">Didaktik</a></li>
+        <li><a href="#ums">Umsetzung</a></li>
+        <li><a href="#beg">Begründung</a></li>
       </ul>
     </details>
     <details>
@@ -35,11 +35,8 @@
         <a class="h4" href="#vis_concept">Visuelles Konzept</a>
       </summary>
       <ul>
-        <li><a href="">Element 1</a></li>
-        <li><a href="">Element 2</a></li>
-        <li><a href="">Element 3</a></li>
-        <li><a href="">Element 4</a></li>
-        <li><a href="">Element 5</a></li>
+        <li><a href="#de">Designentscheidungen</a></li>
+        <li><a href="#beg2">Begründung</a></li>
       </ul>
     </details>
     <details>
@@ -114,7 +111,11 @@
     <li id="suffix"><h3>Suffix-Baum</h3></li>
     <p>
       Unter Umständen kann die Textsuche mit einem Suffix-Baum noch effizienter gestaltet werden.
-      Dieser wird vor der Suchphase zunächst in O(n) Zeit generiert.
+      Während des Preprocessing wird zunächst der Suchbaum aus allen Suffixen von T generiert.
+      Dabei wird mit dem Suffix maximaler Länge begonnen und sich der Reihenfolge nach bis zum kürzesten Suffix mit Länge 1 vorgearbeitet.
+      Für jedes dieser Suffixe werden nach selbem Prinzip durch Rekursion alle Substrings gebildet.
+      Dabei wird für jeden Substring überprüft, ob es für das erste Zeichen bereits eine entsprechende Kante gibt.
+      Falls nicht, wird diese erstellt. Dieser Prozess nimmt O(n) Zeit in Anspruch.
       In der fertigen Baumstruktur gibt es dann für jedes Wort nur einen einzigen Pfad.
       Dies macht man sich bei der Suche zunutze, da für M ein bestimmter Pfad von Knoten zu Knoten verfolgt wird und man mit Sicherheit sagen kann, dass ein Wort nicht in T existiert, wenn es keine weitere Verbindung mehr zu einem Knoten mit den benötigten Substring aus M gibt.
       Dies resultiert in einer geringen Suchzeit von O(m).
@@ -124,10 +125,107 @@
 
 <div id="did_concept">
   <h2>Didaktisches Konzept</h2>
+
+  <ul>
+    <li id="zg"><h3>Zielgruppe</h3></li>
+    <p>
+      Eine der grundlegenden Fähigkeiten eines Informatikers ist die Entwicklung und Anwendung von Algorithmen zur effizienten Lösung von Problemen im Alltag.
+      Dabei stellt die Zeichenkettensuche in Texten heute eines der bedeutendsten Probleme dar.
+      Für die Arbeit mit Texteditoren, Literaturdatenbanken, Bibliothekssystemen und vielen weiteren Anwendungen, welche eine schnelle Suchfunktion voraussetzen, ist die Lösung dieses Problems erforderlich.
+      Aus diesem Grund sollte insbesondere angehenden Informatikerinnen und Informatikern ein Einblick in dieses Themengebiet gegeben werden.
+    </p>
+
+    <li id="lul"><h3>Lehr- und Lernziele</h3></li>
+    <p>
+      Ziel ist es, ein Verständnis für einige der heute relevantesten Suchalgorithmen wie der naiven Suche, den Boyer-Moore-Algorithmus, den Knuth-Morris-Pratt-Algorithmus und der Suche mit dem Suffix-Baum zu schaffen.
+      Nach der Simulation ist man in der Lage, die genannten Algorithmen zu verstehen und selbstständig anzuwenden.
+    </p>
+
+    <li id="dik"><h3>Didaktik</h3></li>
+    <p>
+      Für dieses Projekt wird die Methode des didaktischen Dreiecks genutzt.
+      Dabei sollten zwei wesentliche Aufgaben erfüllt werden.
+      Die erste Aufgabe besteht darin, den Lehrstoff so zu vermitteln, dass dieser eingehend verstanden wird.
+      Die zweite Aufgabe befasst sich mit der Suche nach Bedingungen und Möglichkeiten, welche dem Lernenden erlauben, sich den vorgegebenen Stoff anzueignen und zu verinnerlichen.
+      Diese zwei Aufgaben haben im Prinzip das gleiche Anliegen - sie möchten eine Beziehung zwischen Schüler und Lernstoff herstellen.
+    </p>
+
+    <li id="ums"><h3>Umsetzung</h3></li>
+    <p>
+      Für diese Aufgabe wurde die visuelle Simulation gewählt, da diese den Informatikern über die subjektive Theoriebildung hinaus, mit Praxisnähe, die Komplexität der Algorithmen verständlicher macht.
+      Im theoretischen Teil der Simulation werden die Algorithmen im Detail erläutert.
+      Diese werden vom Aufbau bis hin zur Anwendung Schritt für Schritt erklärt und auch in Beispielen gezeigt.
+      Im nachfolgenden praktischen Teil können die Texte als vorgegebenes Beispiel mit dynamischen Suchmustern bearbeitet werden.
+      Dabei führt der Benutzer die Schritte des Algorithmus mit Mausklick und Tasteneingabe aus.
+      Hier erläutern Textboxen die nächsten Schritte so lange, bis diese erfüllt werden.
+      Beim Starten der Simulation gibt es für jeden Text eine zufällige Auswahl von fünf Suchmustern, sodass die Simulation mehrmals wiederholt werden kann.
+      Wenn beim Bearbeiten der Beispiele ein Fehler auftritt, wird dies durch ein kurzes Wackeln und rotes Aufleuchten des ausgewählten Symbols angezeigt.
+      In diesem Fall muss der Schritt wiederholt werden, während man eines von drei Leben verliert.
+      Dies soll verhindern, dass die Benutzer durch willkürliches Klicken ans Ziel kommen.
+      Sind alle drei Leben verloren, muss das Beispiel von vorne begonnen werden.
+      Für jeden richtig absolvierten Algorithmus erhält der Benutzer eines von vier Puzzleteilen, welche sich am Ende zu einem mysteriösen Bild zusammensetzen.
+    </p>
+
+    <li id="beg"><h3>Begründung</h3></li>
+    <p>
+      Der Vorteil dieser Methode ist, dass die vorgegebenen Aufgaben selbst bearbeitet werden und somit jeder für sich selbst erkennen kann, ob das Thema verstanden wurde.
+      Dies dient der Motivation, da es spannender ist, experimentell zu arbeiten, statt lange Texte zu lesen.
+      Niemand steht unter Zeitdruck, da Fehler keine schwerwiegenden Konsequenzen mit sich führen und man so oft wie man möchte wiederholen kann.
+    </p>
+  </ul>
 </div>
 
 <div id="vis_concept">
   <h2>Visuelles Konzept</h2>
+
+  <ul>
+    <li id="de"><h3>Designentscheidungen</h3></li>
+    <p>
+      Die generelle visuelle Thematik der geführten Simulation ist ein altertümlicher Schreibtisch, an dem noch mit Tusche und Feder geschrieben wird.
+      Der zu durchsuchende Text ist ein Ausschnitt eines Buches, in dem nach einem Suchmuster, welches auf einem Notizzettel steht, gesucht wird.
+      Da es dunkel ist, braucht der Nutzer eine bewegbare Kerze, um einen Teil des Textes zu sehen.
+      Am oberen Bildschirmrand befindet sich ein Text mit Anweisungen, welcher dem Nutzer sagt, was er als Nächstes zu tun hat.
+      Über jedem Zeichen im Text und Suchmuster wird der entsprechende Index angezeigt.
+      An der aktuell betrachteten Stelle im Text befindet sich ein Pointer in Form eines Pfeils nach unten.
+      Das Suchmuster ist direkt unter der Zeile im Text platziert, die gerade betrachtet wird.
+      Es kann mittels Maus nach links und rechts bewegt werden, so wie der Algorithmus vorgehen würde.
+      Beim Vergleichen der Zeichen kann man mit Tasteneingabe “stimmt überein” oder “stimmt nicht überein” an das System übergeben.
+      Wenn diese Entscheidung richtig ist, geht der Vorgang problemlos weiter.
+      Bei fehlerhafter Eingabe färbt sich der Bildschirm kurz rot und der Pointer bleibt nach einem kurzen Rütteln an seinem Platz.
+      Wenn der Nutzer eine Übereinstimmung mit “stimmt überein” korrekt eingibt, springt der Pointer um eine Stelle weiter und das entsprechende Zeichen wird grün hinterlegt.
+      Sobald man einen Unterschied mit der Eingabe “stimmt nicht überein” richtig erkennt, erscheint kurz der Schriftzug “Mismatch” und das Textfeld zeigt den nächsten Schritt.
+      Diese Vorgehensweise betrifft alle Algorithmen außer den Suffix-Baum-Algorithmus.
+      Beim Suffix-Baum-Algorithmus stellt der Nutzer zuerst den Baum zusammen.
+      Danach kann durch die Ebenen der Baumstruktur mit Tasteneingabe navigiert werden, welches visuell durch eine zeigende Hand dargestellt wird.
+      Am Ende des Baumes findet man den Index der gesuchten Stelle im Text, welche rot umrandet wird.
+      Diese muss im Text schlussendlich gefunden werden.
+      Der Nutzer hat für jede Simulation eine gewisse Anzahl an Lebenspunkten, wobei bei jedem Fehler ein Leben abgezogen wird.
+      Wenn null Leben erreicht werden, muss der jeweilige Algorithmus von neuem gestartet werden.
+      Bei jedem Neustart der Seite wird ein zufälliges Beispiel ausgewählt.
+      Wenn eine Simulation erfolgreich abgeschlossen wurde, erhält der Nutzer ein Puzzleteil.
+      Wenn man alle vier Puzzleteile erhalten hat, setzen sich diese zu einem mysteriösen Bild zusammen.
+    </p>
+
+    <li id="beg2"><h3>Begründung</h3></li>
+    <p>
+      Die generelle visuelle Thematik wurde gewählt, da sie atmosphärisch angenehm ist und zum Thema Zeichenketten gut passt, da es um Zeichen/Schrift geht.
+      Durch das allgemein dunkle Erscheinungsbild der Simulation, gleicht es einem “Dark Mode”, welcher auch beim nächtlichen Lernen angenehm für die Augen ist.
+      Durch die wechselnden Anweisungen muss sich der Nutzer immer nur mit einem Schritt beschäftigen und wird nicht von Anfang an mit der gesamten Komplexität des Algorithmus überfordert und bleibt so motiviert.
+      Die angezeigten Indizes und der “Pointer” dienen der besseren Übersichtlichkeit und sind unumgänglich für den Algorithmus.
+      Das Suchmuster wird direkt unter dem Text platziert, damit die Vergleiche leicht ersichtlich sind und der Nutzer mit seinem Blick nicht immer über den ganzen Bildschirm wandern muss.
+      Mit dem manuellen Verschieben des Suchmusters mit der Maus sollte dieser Schritt besser im Gedächtnis des Nutzers bleiben.
+      Wenn dieser Vorgang automatisch wäre, würde man nicht herausfinden müssen, nach welchem Prinzip die Verschiebung stattfindet.
+      So prüft man, ob der Nutzer diese Vorgänge verstanden hat. Gleiches gilt für die Tasteneingaben.
+      Durch die optischen Hervorhebungen einer fehlerhaften Eingabe, soll dem Nutzer dieser Fehler sofort auffallen und zum Korrigieren anregen.
+      Die grüne Hinterlegung soll ein kleines Erfolgserlebnis hervorrufen und zum Weitermachen motivieren.
+      Das Einblenden des Schriftzuges “Mismatch”, wenn jenes gefunden wird, soll deutlich machen, dass der Nutzer keinen Fehler gemacht hat, sondern lediglich einen Fehler gefunden hat.
+      Bei Rotfärbung hätte es zu Missverständnissen diesbezüglich kommen können.
+      Die Einführung der Lebenspunkte soll den Nutzer daran hindern, willkürliche Eingaben zu machen, bis die richtige entdeckt wird.
+      Dadurch, dass man von Neuem starten muss, soll man mit Verständnis weiter kommen können, als durch stumpfes ausprobieren.
+      Das Belohnungssystem mit den Puzzleteilen dient der Motivation des Nutzers, alle Simulationen der verschiedenen Algorithmen zu durchlaufen.
+      Da man weiß, dass man etwas erhält, aber nicht genau was, wird die Neugier angeregt.
+    </p>
+  </ul>
 </div>
 
 <div id="references">
