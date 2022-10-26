@@ -239,10 +239,5 @@ resize();
 onresize = resize;
 // End: Console Functionality
 
-// Fullscreen Testing => wenn nicht in Vollbildmodus: schwarzer Bildschirm mit Meldung
-onclick = () =>
-{
-    document.documentElement.requestFullscreen();
-}
 
 

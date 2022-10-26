@@ -114,6 +114,7 @@ button {
 
 #avatar {
     height: 5em;
+    width: 4.25em;
     border: thick solid #B96D40;
     border-radius: 1em;
 }
