@@ -217,6 +217,25 @@ class JF_Element
         this.#self.style.background = bg;
         return this;
     }
+
+    alignText = (enableAlignment = true) =>
+    {
+        this.cssText("position", enableAlignment ? "absolute" : "").alignTextToXY("0", "0");
+        return this;
+    }
+
+    moveBy = (x = "0px", y = "0px") =>
+    {
+        this.#self.style.left = `calc(${this.#self.style.left} + ${x})`;
+        this.#self.style.top = `calc(${this.#self.style.top} + ${y})`;
+        return this;
+    }
+
+    moveTextBy = (x = "0px", y = "0px") =>
+    {
+        this.#text.moveBy(x, y);
+        return this;
+    }
 }
 
 class JF_Window extends JF_Element
