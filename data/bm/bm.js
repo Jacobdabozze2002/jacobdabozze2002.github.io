@@ -1,25 +1,36 @@
 const game_window = new JF_Window().
 style(`
     width: 95%;
-    border: thin solid black;
-    background: lightblue;
+    border: medium solid orange;
+    border-radius: .5vw;
+    background: black;
 `);
 
-
-for (let i = 0, max = 20, element; i < max;)
+with (new JF_PatternContainer(game_window))
 {
-    element = new JF_Window(game_window).
     style(`
-        width: calc(100% / ${max});
+        border: medium solid darkorange;
+        border-radius: 1vw;
+`   );
+    childrenStyle(`
         border: thin solid orange;
-        border-radius: 10%;
-        background: black;
+        border-radius: .5vw;
         color: white;
-    `).
-    aspectRatio("2 / 3").
-    alignTo("center-left").moveBy(`calc(100% / ${max} * ${i})`).
-    applyText( ++i + "")
+`   );
+    padding(".75vw");
+
+    sizingByChildren(true, ["3vw", "10vw"]);
+    addChildrenByText("Jacob war hier!");
+
+    forEachChild(child =>
+    {
+        child.self().onmouseenter = () => child.saveContext().background("orangered");
+        child.self().onmouseleave = () => child.restoreContext();
+    });
 }
+
+
+
 
 
 

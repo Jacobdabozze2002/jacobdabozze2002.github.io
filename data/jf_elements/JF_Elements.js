@@ -254,3 +254,153 @@ class JF_Window extends JF_Element
         return this;
     }
 }
+
+class JF_PatternContainer extends JF_Element
+{
+    #children;
+    #style;
+    #padding;
+    #sizingByChildren;
+    #cDim;
+
+    constructor(parent = document.body)
+    {
+        super(parent);
+
+        this.#children = [];
+        this.#style = "";
+        this.#padding = "0px";
+        this.#sizingByChildren = false;
+        this.#cDim = ["0px", "0px"];
+    }
+
+    childrenStyle = (css = "") =>
+    {
+        this.#style = css;
+        this.#children.forEach(child => child.style(css));
+        this.resize();
+        return this;
+    }
+
+    resize = () =>
+    {
+        const amount = this.#children.length;
+        let i = 0;
+
+        if (this.#sizingByChildren)
+        {
+            this.width(`calc(${this.#cDim[0]} * ${amount} + ${this.#padding} * ${amount + 1})`);
+            this.height(`calc(${this.#cDim[1]} + ${this.#padding} * 2)`)
+        }
+
+        this.#children.forEach(child =>
+        {
+            let width = `(100% - ${this.#padding} * ${amount + 1}) / ${amount}`;
+
+            child.style(`
+                width: calc(${width});
+                height: calc(100% - ${this.#padding} * 2);
+            `).
+            alignTo("center-left").
+            moveBy(`
+                calc(${width} * ${i} + ${this.#padding} * ${++i} - .5px)
+            `);
+        });
+
+        return this;
+    }
+
+    addChildren = (amount = 1) =>
+    {
+        for (let i = 0, child; i < amount; ++i)
+        {
+            child = new JF_Element(this).style(this.#style);
+            this.#children.push(child);
+        }
+
+        this.resize();
+        return this;
+    }
+
+    addChildrenByText = (text = "") =>
+    {
+        for (let i = 0, child; i < text.length; ++i)
+        {
+            child = new JF_Element(this).style(this.#style).applyText("" + text.charAt(i));
+            this.#children.push(child);
+        }
+
+        this.resize();
+        return this;
+    }
+
+    padding = (size = "0px") =>
+    {
+        this.#padding = size;
+        this.resize();
+        return this;
+    }
+
+    forEachChild = (func = () => {}) =>
+    {
+        this.#children.forEach(child => func(child));
+        return this;
+    }
+
+    getChildren = () =>
+    {
+        return this.#children;
+    }
+
+    getIndexOf = (child = null) =>
+    {
+        return this.#children.indexOf(child);
+    }
+
+    getChildAt = (index = 0) =>
+    {
+        return this.#children[index];
+    }
+
+    textOverChildren = (text = "") =>
+    {
+        for (let i = 0, char; i < this.#children.length; ++i)
+        {
+            char = text.charAt(i);
+
+            if (char !== "")
+            {
+                this.#children[i].applyText("" + char);
+            }
+        }
+
+        return this;
+    }
+
+    removeChildren = () =>
+    {
+        for (let i = this.#children.length; i > 0; ++i)
+        {
+            this.#children.pop().self().remove();
+        }
+
+        this.resize();
+        return this;
+    }
+
+    removeChildAt = (index = 0) =>
+    {
+        this.#children[index].self().remove();
+        this.#children.splice(index, 1);
+        this.resize();
+        return this;
+    }
+
+    sizingByChildren = (enable = false, dimension = ["0px", "0px"]) =>
+    {
+        this.#sizingByChildren = enable;
+        this.#cDim = dimension;
+        this.resize();
+        return this;
+    }
+}
