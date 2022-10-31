@@ -1,31 +1,6 @@
 body
 {
   background-color: black;
-  color: white;
+  overflow: hidden;
 }
 
-.selection-container
-{
-  width: 500px;
-
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  border: thin solid white;
-}
-
-button
-{
-  width: 50%;
-  height: 35px;
-
-  margin: 10px;
-}
