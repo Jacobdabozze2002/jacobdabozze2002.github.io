@@ -7,8 +7,6 @@ class JF_Element
     constructor(parent = document.body, createChildText = true)
     {
         this.#self = document.createElement("div");
-        this.#self.className = "JF_Element";
-        this.#self.style.width = "100%";
         this.#self.style.position = "absolute";
         this.alignTo();
 
@@ -50,25 +48,25 @@ class JF_Element
         return this;
     }
 
-    alignTo = (position = "center") =>
+    alignTo = (position = "center", offset = "0px") =>
     {
         this.#self.style.left = this.#self.style.right = this.#self.style.top = this.#self.style.left = this.#self.style.transform = "";
 
         switch (position)
         {
             case "top-left":
-                this.#self.style.left = this.#self.style.top = "0";
+                this.#self.style.left = this.#self.style.top = `calc(0px + ${offset})`;
                 break;
             case "top-center":
                 this.#self.style.left = "50%";
-                this.#self.style.top = "0";
+                this.#self.style.top = `calc(0px + ${offset})`;
                 this.#self.style.transform = "translateX(-50%)";
                 break;
             case "top-right":
-                this.#self.style.right = this.#self.style.top = "0";
+                this.#self.style.right = this.#self.style.top = `calc(0px + ${offset})`;
                 break;
             case "center-left":
-                this.#self.style.left = "0";
+                this.#self.style.left = `calc(0px + ${offset})`;
                 this.#self.style.top = "50%";
                 this.#self.style.transform = "translateY(-50%)";
                 break;
@@ -77,20 +75,20 @@ class JF_Element
                 this.#self.style.transform = "translate(-50%, -50%)";
                 break;
             case "center-right":
-                this.#self.style.right = "0";
+                this.#self.style.right = `calc(0px + ${offset})`;
                 this.#self.style.top = "50%";
                 this.#self.style.transform = "translateY(-50%)";
                 break;
             case "bottom-left":
-                this.#self.style.left = this.#self.style.bottom = "0";
+                this.#self.style.left = this.#self.style.bottom = `calc(0px + ${offset})`;
                 break;
             case "bottom-center":
                 this.#self.style.left = "50%";
-                this.#self.style.bottom = "0";
+                this.#self.style.bottom = `calc(0px + ${offset})`;
                 this.#self.style.transform = "translateX(-50%)";
                 break;
             case "bottom-right":
-                this.#self.style.right = this.#self.style.bottom = "0";
+                this.#self.style.right = this.#self.style.bottom = `calc(0px + ${offset})`;
                 break;
         }
 
@@ -236,6 +234,59 @@ class JF_Element
         this.#text.moveBy(x, y);
         return this;
     }
+    
+    attachTo = (parent = null, position = "top-center", offset = "0px") =>
+    {
+        parent.appendChild(this);
+        
+        switch (position) 
+        {
+            case "top-left":
+                this.alignTo("top-left");
+                this.#self.style.transform = `translate(calc(-100% - ${offset}), calc(-100% - ${offset}))`;
+                break;
+            case "top-center":
+                this.alignTo("top-center");
+                this.#self.style.transform = `translate(-50%, calc(-100% - ${offset}))`;
+                break;
+            case "top-right":
+                this.alignTo("top-right");
+                this.#self.style.transform = `translate(calc(100% + ${offset}), calc(-100% - ${offset}))`;
+                break;
+            case "center-left":
+                this.alignTo("center-left");
+                this.#self.style.transform = `translate(calc(-100% - ${offset}), -50%)`;
+                break;
+            case "center-right":
+                this.alignTo("center-right");
+                this.#self.style.transform = `translate(calc(100% + ${offset}), -50%)`;
+                break;
+            case "bottom-left":
+                this.alignTo("bottom-left");
+                this.#self.style.transform = `translate(calc(-100% - ${offset}), calc(100% + ${offset}))`;
+                break;
+            case "bottom-center":
+                this.alignTo("bottom-center");
+                this.#self.style.transform = `translate(-50%, calc(100% + ${offset}))`;
+                break;
+            case "bottom-right":
+                this.alignTo("bottom-right");
+                this.#self.style.transform = `translate(calc(100% + ${offset}), calc(100% + ${offset}))`;
+                break;
+        }
+        
+        return this;
+    }
+}
+
+class JF_Text extends JF_Element
+{
+    constructor(parent = document.body)
+    {
+        super(parent);
+        this.alignText(false);
+        this.width("max-content");
+    }
 }
 
 class JF_Window extends JF_Element
@@ -244,7 +295,6 @@ class JF_Window extends JF_Element
     {
         super(parent);
 
-        this.self().className = "GameWindow";
         this.self().style.aspectRatio = "16 / 9";
     }
 
@@ -290,12 +340,12 @@ class JF_PatternContainer extends JF_Element
         if (this.#sizingByChildren)
         {
             this.width(`calc(${this.#cDim[0]} * ${amount} + ${this.#padding} * ${amount + 1})`);
-            this.height(`calc(${this.#cDim[1]} + ${this.#padding} * 2)`)
+            this.height(`calc(${this.#cDim[1]} + ${this.#padding} * 2)`);
         }
 
         this.#children.forEach(child =>
         {
-            let width = `(100% - ${this.#padding} * ${amount + 1}) / ${amount}`;
+            const width = `(100% - ${this.#padding} * ${amount + 1}) / ${amount}`;
 
             child.style(`
                 width: calc(${width});
@@ -404,3 +454,4 @@ class JF_PatternContainer extends JF_Element
         return this;
     }
 }
+
