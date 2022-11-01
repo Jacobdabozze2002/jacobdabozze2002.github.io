@@ -1,8 +1,18 @@
-// Schriftart
+// DEFs
+const pages =
+[
+    ["naiv", true, "/data/images/level1.PNG"],
+    ["bm", false, "/data/images/level1.PNG"],
+    ["kmp", false, "/data/images/level1.PNG"],
+    ["suffix", false, "/data/images/level1.PNG"],
+    "concept"
+];  // [<page>, <is_unlocked>, <picture>]
+
 const font = `
        color: white;
        font-family: 'Brush Script MT', cursive;
 `;
+
 
 // Hauptfenster - 16 / 9
 const container = new JF_Window().
@@ -13,29 +23,32 @@ style(`
 
 // Buttons
 const levels = new JF_PatternContainer(container);
-levels.childrenStyle(`
-    border: thin solid white;
-    border-radius: 1vw;
-    background: url('/data/images/locked.PNG');
-    background-size: cover;
-    cursor: pointer;
-`).
-sizingByChildren(true, ["15vw", "15vw"]).
-padding("5vw").
+levels.padding("5vw").
 addChildren(4).
-getChildAt(0).style(`
-    background: url('/data/images/level1.PNG');
-    background-size: cover;
-`);
-
-// Texte für Buttons
-for (let i = 0; i < 4; ++i)
+sizingByChildren(true, ["15vw", "15vw"]).
+forEachChild(child =>
 {
+    let i = levels.getIndexOf(child);
+    
+    child.style(`
+        border: thin solid white;
+        border-radius: 1vw;
+        cursor: pointer;
+        background: ${pages[i][1] ? `url(${pages[i][2]})` : "url('/data/images/locked.PNG')"};
+        background-size: cover;
+    `);
+
+    // Texte für Buttons
     new JF_Text().
     styleText(font).textSize("2vw").
-    attachTo(levels.getChildAt(i), "bottom-center", "1vw").
+    attachTo(child, "bottom-center", "1vw").
     applyText("Level " + (i + 1));
-}
+
+    // Buttons Mouse Action
+    child.self().onclick = () => pages[i][1] ? openPage(pages[i][0]) : null;
+    child.self().onmouseenter = () => child.saveContext().border("medium solid white");
+    child.self().onmouseleave = () => child.restoreContext();
+});
 
 // Überschrift
 new JF_Text().
@@ -49,7 +62,7 @@ css("cursor", "pointer").
 styleText(font).textSize("1.25vw").cssText("text-decoration", "underline").
 alignTo("bottom-center", ".75vw").
 applyText("Unser Konzept").
-self().onclick = () => openPage("concept");
+self().onclick = () => openPage(pages[4]);
 
 // Spielempfehlung
 new JF_Text().
@@ -57,12 +70,4 @@ styleText(font).textSize("2vw").
 attachTo(container, "top-center", "7.5vw").
 applyText("öffnen und schließen Sie den Vollbildmodus mit F11");
 
-// Buttons Mouse Action
-const pages = ["naiv", "bm", "kmp", "suffix"];
-for (let i = 0, child; i < 4; ++i)
-{
-    child = levels.getChildAt(i);
-    child.self().onclick = () => openPage(pages[i]);
-    child.self().onmouseenter = () => child.saveContext().border("medium solid white");
-    child.self().onmouseleave = () => child.restoreContext();
-}
+
