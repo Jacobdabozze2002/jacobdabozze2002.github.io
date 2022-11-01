@@ -126,7 +126,6 @@ class JF_Element
         {
             const pair = property.split(":");
             this.#self.style[pair[0].replace(/\s/g, '')] = pair[1];
-            console.log(pair)
         })
 
         return this;

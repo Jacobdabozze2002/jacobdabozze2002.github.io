@@ -1,3 +1,9 @@
+// Schriftart
+const font = `
+       color: white;
+       font-family: 'Brush Script MT', cursive;
+`;
+
 // Hauptfenster - 16 / 9
 const container = new JF_Window().
 style(`
@@ -26,45 +32,28 @@ getChildAt(0).style(`
 for (let i = 0; i < 4; ++i)
 {
     new JF_Text().
-    styleText(`
-        color: white;
-        font-family: 'Brush Script MT', cursive;
-        font-size: 2vw;
-    `).
+    styleText(font).textSize("2vw").
     attachTo(levels.getChildAt(i), "bottom-center", "1vw").
     applyText("Level " + (i + 1));
 }
 
 // Überschrift
 new JF_Text().
-styleText(`
-    color: white;
-    font-family: 'Brush Script MT', cursive;
-    font-size: 5vw;
-`).
+styleText(font).textSize("5vw").
 attachTo(levels, "top-center", "1vw").
 applyText("SUCHALGORITHMEN");
 
 // Link zu Konzept
 new JF_Text(container).
 css("cursor", "pointer").
-styleText(`
-    color: white;
-    font-family: 'Brush Script MT', cursive;
-    font-size: 1.25vw;
-    text-decoration: underline
-`).
+styleText(font).textSize("1.25vw").cssText("text-decoration", "underline").
 alignTo("bottom-center", ".75vw").
 applyText("Unser Konzept").
 self().onclick = () => openPage("concept");
 
 // Spielempfehlung
 new JF_Text().
-styleText(`
-    color: white;
-    font-family: 'Brush Script MT', cursive;
-    font-size: 2vw;
-`).
+styleText(font).textSize("2vw").
 attachTo(container, "top-center", "7.5vw").
 applyText("öffnen und schließen Sie den Vollbildmodus mit F11");
 
