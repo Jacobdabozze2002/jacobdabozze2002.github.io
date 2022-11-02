@@ -63,7 +63,9 @@ class JF_Element
                 this.#self.style.transform = "translateX(-50%)";
                 break;
             case "top-right":
-                this.#self.style.right = this.#self.style.top = `calc(0px + ${offset})`;
+                this.#self.style.left = `calc(100% - ${offset})`;
+                this.#self.style.top = `calc(0px + ${offset})`;
+                this.#self.style.transform = "translateX(-100%)";
                 break;
             case "center-left":
                 this.#self.style.left = `calc(0px + ${offset})`;
@@ -75,20 +77,24 @@ class JF_Element
                 this.#self.style.transform = "translate(-50%, -50%)";
                 break;
             case "center-right":
-                this.#self.style.right = `calc(0px + ${offset})`;
+                this.#self.style.left = `calc(100% - ${offset})`;
                 this.#self.style.top = "50%";
-                this.#self.style.transform = "translateY(-50%)";
+                this.#self.style.transform = "translate(-100%, -50%)";
                 break;
             case "bottom-left":
-                this.#self.style.left = this.#self.style.bottom = `calc(0px + ${offset})`;
+                this.#self.style.left = `calc(0px + ${offset})`;
+                this.#self.style.top = `calc(100% - ${offset})`;
+                this.#self.style.transform = "translateY(-100%)";
                 break;
             case "bottom-center":
                 this.#self.style.left = "50%";
-                this.#self.style.bottom = `calc(0px + ${offset})`;
-                this.#self.style.transform = "translateX(-50%)";
+                this.#self.style.top = `calc(100% - ${offset})`;
+                this.#self.style.transform = "translate(-50%, -100%)";
                 break;
             case "bottom-right":
-                this.#self.style.right = this.#self.style.bottom = `calc(0px + ${offset})`;
+                this.#self.style.left = `calc(100% - ${offset})`;
+                this.#self.style.top = `calc(100% - ${offset})`;
+                this.#self.style.transform = "translate(-100%, -100%)";
                 break;
         }
 
@@ -97,7 +103,7 @@ class JF_Element
 
     alignToXY = (x = "0", y = "0") =>
     {
-        this.#self.style.left = this.#self.style.right = this.#self.style.top = this.#self.style.left = this.#self.style.transform = "";
+        this.#self.style.left = this.#self.style.right = this.#self.style.top = this.#self.style.bottom = this.#self.style.transform = "";
 
         this.#self.style.left = x;
         this.#self.style.top = y;
@@ -250,7 +256,7 @@ class JF_Element
                 break;
             case "top-right":
                 this.alignTo("top-right");
-                this.#self.style.transform = `translate(calc(100% + ${offset}), calc(-100% - ${offset}))`;
+                this.#self.style.transform = `translate(${offset}, calc(-100% - ${offset}))`;
                 break;
             case "center-left":
                 this.alignTo("center-left");
@@ -258,19 +264,19 @@ class JF_Element
                 break;
             case "center-right":
                 this.alignTo("center-right");
-                this.#self.style.transform = `translate(calc(100% + ${offset}), -50%)`;
+                this.#self.style.transform = `translate(${offset}, -50%)`;
                 break;
             case "bottom-left":
                 this.alignTo("bottom-left");
-                this.#self.style.transform = `translate(calc(-100% - ${offset}), calc(100% + ${offset}))`;
+                this.#self.style.transform = `translate(calc(-100% - ${offset}), ${offset})`;
                 break;
             case "bottom-center":
                 this.alignTo("bottom-center");
-                this.#self.style.transform = `translate(-50%, calc(100% + ${offset}))`;
+                this.#self.style.transform = `translate(-50%, ${offset})`;
                 break;
             case "bottom-right":
                 this.alignTo("bottom-right");
-                this.#self.style.transform = `translate(calc(100% + ${offset}), calc(100% + ${offset}))`;
+                this.#self.style.transform = `translate(${offset}, ${offset})`;
                 break;
         }
         

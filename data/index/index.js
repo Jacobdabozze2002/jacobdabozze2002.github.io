@@ -55,5 +55,3 @@ new JF_Text().
 styleText(font).textSize("2vw").
 attachTo(container, "top-center", "7.5vw").
 applyText("öffnen und schließen Sie den Vollbildmodus mit F11");
-
-
