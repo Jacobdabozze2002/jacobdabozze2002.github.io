@@ -167,9 +167,9 @@ class JF_Element
         return this;
     }
 
-    alignTextTo = (position = "center") =>
+    alignTextTo = (position = "center", offset = "0px") =>
     {
-        this.#text.alignTo(position);
+        this.#text.alignTo(position, offset);
         return this;
     }
 
