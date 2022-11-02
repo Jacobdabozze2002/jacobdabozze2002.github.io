@@ -50,7 +50,7 @@ class JF_Element
 
     alignTo = (position = "center", offset = "0px") =>
     {
-        this.#self.style.left = this.#self.style.right = this.#self.style.top = this.#self.style.left = this.#self.style.transform = "";
+        this.#self.style.left = this.#self.style.right = this.#self.style.top = this.#self.style.bottom = this.#self.style.transform = "";
 
         switch (position)
         {
