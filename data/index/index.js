@@ -1,25 +1,11 @@
 // DEFs
-const pages =
-[
-    ["naiv", true, "/data/images/level1.PNG"],
-    ["bm", false, "/data/images/level1.PNG"],
-    ["kmp", false, "/data/images/level1.PNG"],
-    ["suffix", false, "/data/images/level1.PNG"],
-    "concept"
-];  // [<page>, <is_unlocked>, <picture>]
-
-const font = `
-       color: white;
-       font-family: 'Brush Script MT', cursive;
-`;
+const pages = restoreVar("pages");
+const font = restoreVar("font");
 
 
 // Hauptfenster - 16 / 9
 const container = new JF_Window().
-style(`
-    width: 99.5%;
-    border: thin solid white;
-`);
+style(restoreVar("JF_Window_style"));
 
 // Buttons
 const levels = new JF_PatternContainer(container);
