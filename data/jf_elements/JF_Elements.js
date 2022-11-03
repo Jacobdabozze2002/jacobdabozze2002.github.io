@@ -110,7 +110,7 @@ class JF_Element
 
         return this;
     }
-
+    
     self = () =>
     {
         return this.#self;
@@ -278,6 +278,38 @@ class JF_Element
                 this.alignTo("bottom-right");
                 this.#self.style.transform = `translate(${offset}, ${offset})`;
                 break;
+            case "above-left":
+                this.alignTo("top-left");
+                this.#self.style.transform = `translate(0px, calc(-100% - ${offset}))`;
+                break;
+            case "above-right":
+                this.alignTo("top-right");
+                this.#self.style.transform = `translate(-100%, calc(-100% - ${offset}))`;
+                break;
+            case "below-left":
+                this.alignTo("bottom-left");
+                this.#self.style.transform = `translate(0px, ${offset})`;
+                break;
+            case "below-right":
+                this.alignTo("bottom-right");
+                this.#self.style.transform = `translate(-100%, ${offset})`;
+                break;
+            case "left-high":
+                this.alignTo("top-left");
+                this.#self.style.transform = `translate(calc(-100% - ${offset}), 0px)`;
+                break;
+            case "left-low":
+                this.alignTo("bottom-left");
+                this.#self.style.transform = `translate(calc(-100% - ${offset}), -100%)`;
+                break;
+            case "right-high":
+                this.alignTo("top-right");
+                this.#self.style.transform = `translate(${offset}, 0px)`;
+                break;
+            case "right-low":
+                this.alignTo("bottom-right");
+                this.#self.style.transform = `translate(${offset}, -100%)`;
+                break;
         }
         
         return this;
@@ -396,7 +428,7 @@ class JF_PatternContainer extends JF_Element
         return this;
     }
 
-    forEachChild = (func = () => {}) =>
+    forEachChild = (func = child => {}) =>
     {
         this.#children.forEach(child => func(child));
         return this;
@@ -434,7 +466,7 @@ class JF_PatternContainer extends JF_Element
 
     removeChildren = () =>
     {
-        for (let i = this.#children.length; i > 0; ++i)
+        for (let i = this.#children.length; i > 0; --i)
         {
             this.#children.pop().self().remove();
         }
