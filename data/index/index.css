@@ -1,5 +1,32 @@
-body
+.child
 {
-  background-color: black;
-  overflow: hidden;
+  border: thin solid silver;
+  border-radius: 1vw;
+  cursor: pointer;
+}
+
+.child:hover
+{
+  animation: glow 3.5s infinite alternate;
+}
+
+.link
+{
+  cursor: pointer;
+  font-size: 1.25vw;
+  text-decoration: underline;
+}
+
+@keyframes glow
+{
+  0%
+  {
+    border: .1vw solid rgba(150,150,100,0.75);
+    box-shadow: 0 0 10vw .6vw rgba(150,150,100,0.25);
+  }
+  100%
+  {
+    border: .1vw solid rgba(200,200,150,0.75);
+    box-shadow : 0 0 10vw .6vw rgba(200,200,150,0.3);
+  }
 }

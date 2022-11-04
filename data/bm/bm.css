@@ -1,6 +1,22 @@
-body
+.child1
 {
-    overflow: hidden;
-    background: black;
+    border: thin solid white;
+    color: white;
 }
 
+.child1:hover
+{
+    background: coral;
+}
+
+.child2
+{
+    border: thin solid white;
+    color: white;
+    cursor: pointer;
+}
+
+.child2:hover
+{
+    background: purple;
+}

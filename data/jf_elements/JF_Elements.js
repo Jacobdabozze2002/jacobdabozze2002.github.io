@@ -314,6 +314,12 @@ class JF_Element
         
         return this;
     }
+    
+    styleClass = (name = "") =>
+    {
+        this.#self.className = name;
+        return this;
+    }    
 }
 
 class JF_Text extends JF_Element
@@ -346,6 +352,7 @@ class JF_PatternContainer extends JF_Element
 {
     #children;
     #style;
+    #styleClass;
     #padding;
     #sizingByChildren;
     #cDim;
@@ -356,6 +363,7 @@ class JF_PatternContainer extends JF_Element
 
         this.#children = [];
         this.#style = "";
+        this.#styleClass = "";
         this.#padding = "0px";
         this.#sizingByChildren = false;
         this.#cDim = ["0px", "0px"];
@@ -365,6 +373,14 @@ class JF_PatternContainer extends JF_Element
     {
         this.#style = css;
         this.#children.forEach(child => child.style(css));
+        this.resize();
+        return this;
+    }
+    
+    childrenStyleClass = (name = "") =>
+    {      
+        this.#styleClass = name;
+        this.#children.forEach(child => child.styleClass(name));
         this.resize();
         return this;
     }
@@ -401,7 +417,7 @@ class JF_PatternContainer extends JF_Element
     {
         for (let i = 0, child; i < amount; ++i)
         {
-            child = new JF_Element(this).style(this.#style);
+            child = new JF_Element(this).styleClass(this.#styleClass).style(this.#style);
             this.#children.push(child);
         }
 
@@ -413,7 +429,7 @@ class JF_PatternContainer extends JF_Element
     {
         for (let i = 0, child; i < text.length; ++i)
         {
-            child = new JF_Element(this).style(this.#style).applyText("" + text.charAt(i));
+            child = new JF_Element(this).styleClass(this.#styleClass).style(this.#style).applyText("" + text.charAt(i));
             this.#children.push(child);
         }
 
