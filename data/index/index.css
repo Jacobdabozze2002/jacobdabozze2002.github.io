@@ -1,6 +1,6 @@
 .child
 {
-  border: thin solid silver;
+  border: .1vw solid silver;
   border-radius: 1vw;
   cursor: pointer;
 }

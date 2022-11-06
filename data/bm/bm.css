@@ -20,3 +20,10 @@
 {
     background: purple;
 }
+
+.master
+{
+    width: 75%;
+    height: 20%;
+    border: thin solid white;
+}
