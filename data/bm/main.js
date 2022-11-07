@@ -1,13 +1,13 @@
-main = () =>
+bm_main = () =>
 {
-    initHandler(); // handler einrichten
+    bm_initHandler(); // handler einrichten
 
     // wenn fail, dann main oder introduction reloaden
-    // wenn finaler success, dann ending laden
+    // wenn finaler success, dann ending laden und handler removen
 
 }
 
-initHandler = () =>
+bm_initHandler = () =>
 {
     // movement + checks
     let index = 0;
@@ -34,7 +34,7 @@ initHandler = () =>
     }
 }
 
-removeHandler = () =>
+bm_removeHandler = () =>
 {
     onkeydown = () => {};
 }

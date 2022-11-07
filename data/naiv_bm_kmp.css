@@ -1,0 +1,48 @@
+body
+{
+    background-color: black;
+    overflow: hidden;
+}
+
+.standard_font
+{
+    color: white;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 2vw;
+}
+
+.standard_jf_window_style
+{
+    width: 99.5%;
+    border: thin solid white;
+}
+
+
+.child1
+{
+    border: thin solid white;
+    color: white;
+}
+
+.child2
+{
+    border: thin solid white;
+    color: white;
+    cursor: pointer;
+}
+
+.master
+{
+    width: 75%;
+    height: 20%;
+    border: thin solid white;
+    color: white;
+}
+
+.notes
+{
+    width: 25%;
+    height: 20%;
+    border: thin solid white;
+    color: white;
+}

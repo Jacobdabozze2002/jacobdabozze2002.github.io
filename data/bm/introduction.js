@@ -1,5 +1,5 @@
 // masters instructions
-const intro_messages =
+const bm_intro_messages =
 [
     "Story I",
     "Story II",
@@ -12,16 +12,16 @@ const intro_messages =
     "Bist Du bereit?"
 ];
 
-introduction = () =>
+bm_introduction = () =>
 {
     // ersten Text anzeigen
-    master.applyText(intro_messages[0]);
+    master.applyText(bm_intro_messages[0]);
 
     // bei Click nächsten Text anzeigen
     let index = 1;
     master.self().onclick = () =>
     {
-        if (index === intro_messages.length)
+        if (index === bm_intro_messages.length)
         {
             // handler entfernen
             master.self().onclick = () => {};
@@ -30,10 +30,10 @@ introduction = () =>
             master.applyText("");
 
             // main laden
-            main();
+            bm_main();
         }
 
-        master.applyText(intro_messages[index++]);
+        master.applyText(bm_intro_messages[index++]);
     }
 }
 
