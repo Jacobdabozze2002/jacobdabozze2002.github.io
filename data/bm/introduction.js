@@ -12,7 +12,7 @@ const bm_intro_messages =
     "Bist Du bereit?"
 ];
 
-bm_introduction = () =>
+introduction = () =>
 {
     // ersten Text anzeigen
     master.applyText(bm_intro_messages[0]);
@@ -30,7 +30,7 @@ bm_introduction = () =>
             master.applyText("");
 
             // main laden
-            bm_main();
+            main();
         }
 
         master.applyText(bm_intro_messages[index++]);

@@ -1,4 +1,4 @@
-bm_ending = () =>
+ending = () =>
 {
     // DEFs
     const pages = restoreVar("pages");

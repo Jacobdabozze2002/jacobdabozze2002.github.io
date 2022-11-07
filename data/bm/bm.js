@@ -1,3 +1,3 @@
 // introduction laden
-bm_introduction();
+introduction();
 
