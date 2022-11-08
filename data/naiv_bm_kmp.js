@@ -11,7 +11,7 @@ const text = new JF_PatternContainer(container);
 text.childrenStyleClass("child1 standard_font").
 padding(childPadding).
 sizingByChildren(true, childSize).
-addChildrenByText("Mississippi").
+addChildrenByText("Mein Suchtext").
 moveBy("0px", `calc(-${childSize[1]} + 2 * ${childPadding})`);
 
 // M
@@ -19,7 +19,7 @@ const search = new JF_PatternContainer(container);
 search.childrenStyleClass("child2 standard_font").
 padding(childPadding).
 sizingByChildren(true, childSize).
-addChildrenByText("sip").
+addChildrenByText("Muster").
 attachTo(text, "below-left");
 
 // master Text
@@ -33,3 +33,82 @@ styleClass("notes standard_font").
 alignTo("bottom-right").
 applyText("note 1 \nnote 2\nnote 3");
 
+
+/*
+    drag search pattern
+
+    NOTE: if you want to use search.self().onmousedown, onmousemove, onmouseup, then
+    override the jf_functions below in your own file.
+    DO NOT OVERRIDE in this file!
+ */
+jf_search_onmousedown = () => {};
+jf_onmousemove = () => {};
+jf_onmouseup = () => {};
+
+let jf_index = 0;  // current index of search in text
+enableDragging = () =>
+{
+    let drag = false;
+    search.self().onmousedown = e =>
+    {
+        drag = true;
+        oldP = e.clientX;
+        jf_search_onmousedown();
+    }
+
+    let oldP, newP, rectT, rectS;
+    onmousemove = mouse =>
+    {
+        if (drag && text.getChildren().length > search.getChildren().length)
+        {
+            newP = mouse.clientX;
+            search.moveBy(`${Math.round(newP - oldP) / container.self().clientWidth * 100}vw`);
+
+            rectS = search.self().getBoundingClientRect();
+            rectT = text.self().getBoundingClientRect();
+
+            if (rectS.x < rectT.x) search.attachTo(text, "below-left");
+            if (rectS.x > rectT.x + rectT.width - rectS.width) search.attachTo(text, "below-right");
+
+            oldP = newP;
+        }
+        jf_onmousemove();
+    }
+
+    onmouseup = () =>
+    {
+        drag = false;
+
+        if (rectT != null && rectS != null && text.getChildren().length > search.getChildren().length)
+        {
+            const childrenT =  text.getChildren().length;
+            const padding = (rectT.width - childrenT * text.getChildAt(0).self().getBoundingClientRect().width) / (childrenT + 1);
+
+            let min = 9999, distance, bounds;
+            for (let i = 0; i < text.getChildren().length - search.getChildren().length + 1; ++i)
+            {
+                bounds = text.getChildren()[i].self().getBoundingClientRect();
+                // padding * <x> regelt Punkt, ab dem M auf Child von T nach rechts geschoben wird
+                distance = rectS.x - bounds.x + bounds.width / 2 - padding * 1.25; // hier: mehr Platz links
+                distance = distance < 0 ? distance * -1 : distance;
+
+                if (distance < min)
+                {
+                    min = distance;
+                    jf_index = i;
+                }
+            }
+
+            search.attachTo(text, "below-left");
+            search.moveBy(`calc(${jf_index} * (${childSize[0]} + ${childPadding}))`)
+        }
+        jf_onmouseup();
+    }
+}
+
+disableDragging = () =>
+{
+    search.self().onmousedown = () => {};
+    onmouseup = () => {};
+    onmousemove = () => {};
+}

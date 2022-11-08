@@ -9,6 +9,7 @@ const bm_intro_messages =
     "BC-Heuristik II",
     "GS-Heuristik I",
     "GS-Heuristik II",
+    "Steuerung",
     "Bist Du bereit?"
 ];
 
