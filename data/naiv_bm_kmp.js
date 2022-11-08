@@ -89,7 +89,7 @@ enableDragging = () =>
             {
                 bounds = text.getChildren()[i].self().getBoundingClientRect();
                 // padding * <x> regelt Punkt, ab dem M auf Child von T nach rechts geschoben wird
-                distance = rectS.x - bounds.x + bounds.width / 2 - padding * 1.25; // hier: mehr Platz links
+                distance = rectS.x - bounds.x + bounds.width / 2 - padding * 1; // hier: gleicher Platz
                 distance = distance < 0 ? distance * -1 : distance;
 
                 if (distance < min)
