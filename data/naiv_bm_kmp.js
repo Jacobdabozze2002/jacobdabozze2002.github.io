@@ -121,16 +121,15 @@ disableDragging = () =>
     Master says text, click on master to continue
     uses master.self().onclick
 */
+let next = false;
+waitUserInput = async () =>
+{
+    while (next === false) await new Promise(res => setTimeout(res, 50));
+    next = false; // reset var
+}
+
 say = async (messages = [""]) =>
 {
-    let next = false; // this is to be changed on user input
-
-    const waitUserInput = async () =>
-    {
-        while (next === false) await new Promise(res => setTimeout(res, 50));
-        next = false; // reset var
-    }
-
     master.self().onclick = () => next = true;
 
     master.applyText(messages[0]);

@@ -1,7 +1,10 @@
 main = async () =>
 {
     // init
-    enableDragging();
+    const bm_examples =
+    [
+        ["Abrakadabra", "ada", abrakadabra],      // Text, Muster, Index
+    ]
 
     const example = bm_examples[Math.floor(Math.random() * bm_examples.length)];
 
@@ -11,16 +14,31 @@ main = async () =>
     textSelect([example[1].length - 1]);
     searchSelect([example[1].length - 1]);
 
+    // start
+    let success = false;
+    await example[2]();
 
-    // game
-
-
+    // handle success/ failure
 }
 
-const bm_examples =
-[
-    ["Abrakadabra", "ada", 0]       // Text, Muster, Index
-]
+
+abrakadabra = async () =>
+{
+    await say([
+        "Guck mal! Gleich zu Beginn ist ein Mismatch aufgetreten.",
+        "Du kannst jetzt verschieben."
+    ]);
+    master.applyText("Drücke b, damit ich bescheid weiß, wenn Du fertig bist!");
+
+    enableDragging();
+    onkeydown = e => next = e.key === "b";
+    await waitUserInput();
+
+    master.applyText("Gut gemacht!");
+
+    // return
+    return new Promise(res => setTimeout(res, 50));
+}
 
 textSelect = (indizes = []) =>
 {
