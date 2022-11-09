@@ -1,0 +1,9 @@
+.childText:hover
+{
+    border: thin solid orange;
+}
+
+.childSearch:hover
+{
+    border: thin solid coral;
+}

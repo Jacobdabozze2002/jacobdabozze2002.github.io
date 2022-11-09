@@ -17,18 +17,10 @@ body
     border: thin solid white;
 }
 
-
-.child1
+.child
 {
     border: thin solid white;
     color: white;
-}
-
-.child2
-{
-    border: thin solid white;
-    color: white;
-    cursor: pointer;
 }
 
 .master

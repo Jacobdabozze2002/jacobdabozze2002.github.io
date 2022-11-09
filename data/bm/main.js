@@ -1,9 +1,39 @@
 main = () =>
 {
-    enableDragging(); // handler einrichten
+    // init
+    chooseExample();
+    enableDragging();
+    enableMouseOver();
 
-    // wenn fail, dann main oder introduction reloaden
-    // wenn finaler success, dann ending laden und handler removen
+
+}
+
+const bm_examples =
+[
+    ["Mississippi", "sissi"],
+    ["Banana", "nan"],
+    ["Ananas", "nas"],
+    ["Hexenbesen", "enbe"],
+    ["Alohomora", "mora"]
+]
+
+chooseExample = () =>
+{
+    const example = bm_examples[Math.floor(Math.random() * bm_examples.length)];
+    text.removeChildren().addChildrenByText(example[0]);
+    search.removeChildren().addChildrenByText(example[1]);
+}
+
+enableMouseOver = () =>
+{
+    text.forEachChild(child => child.self().classList.add("childText"));
+    search.forEachChild(child => child.self().classList.add("childSearch"));
+}
+
+disableMoueOver = () =>
+{
+    text.forEachChild(child => child.self().classList.remove("childText"));
+    search.forEachChild(child => child.self().classList.remove("childSearch"));
 }
 
 

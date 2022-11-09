@@ -8,7 +8,7 @@ styleClass("standard_jf_window_style");
 
 // T
 const text = new JF_PatternContainer(container);
-text.childrenStyleClass("child1 standard_font").
+text.childrenStyleClass("child standard_font").
 padding(childPadding).
 sizingByChildren(true, childSize).
 addChildrenByText("Mein Suchtext").
@@ -16,7 +16,7 @@ moveBy("0px", `calc(-${childSize[1]} + 2 * ${childPadding})`);
 
 // M
 const search = new JF_PatternContainer(container);
-search.childrenStyleClass("child2 standard_font").
+search.childrenStyleClass("child standard_font").
 padding(childPadding).
 sizingByChildren(true, childSize).
 addChildrenByText("Muster").
@@ -104,6 +104,9 @@ enableDragging = () =>
         }
         jf_onmouseup();
     }
+
+    text.forEachChild(child => child.css("cursor", "pointer"));
+    search.forEachChild(child => child.css("cursor", "pointer"));
 }
 
 disableDragging = () =>
@@ -111,4 +114,7 @@ disableDragging = () =>
     search.self().onmousedown = () => {};
     onmouseup = () => {};
     onmousemove = () => {};
+
+    text.forEachChild(child => child.css("cursor", "default"));
+    search.forEachChild(child => child.css("cursor", "default"));
 }
