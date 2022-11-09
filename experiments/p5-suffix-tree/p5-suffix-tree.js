@@ -5,18 +5,24 @@ const lineWidth = 2;
 const lineTextSize = 20;
 const hiddenRenderFrames = 10;
 
+let renderScale = 0.5;
+let initialWidth = 1000;
+let initialHeight = 1000;
+
 let root;
 let treeDepth;
 let nodes = [];
 let treeRenderFrame = 0;
 
 function setup() {
-    const canvas = createCanvas(1000, 1000);
+    const canvas = createCanvas(initialWidth * renderScale, initialHeight * renderScale);
+
     // frameRate(2);
     canvas.elt.oncontextmenu = () => false;
     root = new TreeNode(null);
     nodes.push(root);
 
+    // BEISPIEL 1
     root.addChild("A");
     root.getChild(0).addChild("a");
     root.getChild(0).getChild(0).addChild("a0");
@@ -38,6 +44,7 @@ function setup() {
     root.getChild(1).addChild("f");
     root.getChild(1).getChild(1).addChild("f0");
 
+    // BEISPIEL banana\0 komprimiert
     /*root.addChild("banana\\0");
     root.addChild("a");
     root.getChild(1).addChild("na");
@@ -49,6 +56,7 @@ function setup() {
     root.getChild(2).addChild("\\0");
     root.addChild("\\0");*/
 
+    // BEISPIEL banana\0
     /*root.addChild("b");
     root.getChild(0).addChild("a");
     root.getChild(0).getChild(0).addChild("n");
@@ -72,11 +80,14 @@ function setup() {
     root.getChild(2).getChild(0).addChild("\\0");
     root.addChild("\\0");*/
 
+    // TODO: Depth automatisch berechnen
     treeDepth = 3;
     root.calcTree(0, 0);
 }
 
 function draw() {
+    resizeCanvas(initialWidth * renderScale, initialHeight * renderScale);
+    scale(renderScale);
     background(220);
     root.drawTree(treeDepth);
     treeRenderFrame++;
