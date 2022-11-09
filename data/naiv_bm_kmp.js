@@ -11,7 +11,6 @@ const text = new JF_PatternContainer(container);
 text.childrenStyleClass("child standard_font").
 padding(childPadding).
 sizingByChildren(true, childSize).
-addChildrenByText("Mein Suchtext").
 moveBy("0px", `calc(-${childSize[1]} + 2 * ${childPadding})`);
 
 // M
@@ -19,7 +18,6 @@ const search = new JF_PatternContainer(container);
 search.childrenStyleClass("child standard_font").
 padding(childPadding).
 sizingByChildren(true, childSize).
-addChildrenByText("Muster").
 attachTo(text, "below-left");
 
 // master Text
@@ -31,7 +29,7 @@ alignTo("top-center");
 const notes = new JF_Element(container).
 styleClass("notes standard_font").
 alignTo("bottom-right").
-applyText("note 1 \nnote 2\nnote 3");
+applyText("j = ja\n n = nein\nb = bereit");
 
 
 /*
@@ -105,8 +103,8 @@ enableDragging = () =>
         jf_onmouseup();
     }
 
-    text.forEachChild(child => child.css("cursor", "pointer"));
-    search.forEachChild(child => child.css("cursor", "pointer"));
+    text.childrenStyle("cursor: pointer;");
+    search.childrenStyle("cursor: pointer;");
 }
 
 disableDragging = () =>
@@ -115,6 +113,36 @@ disableDragging = () =>
     onmouseup = () => {};
     onmousemove = () => {};
 
-    text.forEachChild(child => child.css("cursor", "default"));
-    search.forEachChild(child => child.css("cursor", "default"));
+    text.childrenStyle("cursor: default;");
+    search.childrenStyle("cursor: default;");
+}
+
+/*
+    Master says text, click on master to continue
+    uses master.self().onclick
+*/
+say = async (messages = [""]) =>
+{
+    let next = false; // this is to be changed on user input
+
+    const waitUserInput = async () =>
+    {
+        while (next === false) await new Promise(res => setTimeout(res, 50));
+        next = false; // reset var
+    }
+
+    master.self().onclick = () => next = true;
+
+    master.applyText(messages[0]);
+    await waitUserInput();
+
+    for (let i = 1; i < messages.length; ++i)
+    {
+        master.applyText(messages[i]);
+        await waitUserInput();
+    }
+
+    master.self().onclick = () => {};
+
+    return new Promise(res => setTimeout(res, 50));
 }

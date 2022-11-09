@@ -13,29 +13,10 @@ const bm_intro_messages =
     "Bist Du bereit?"
 ];
 
-introduction = () =>
+introduction = async () =>
 {
-    // ersten Text anzeigen
-    master.applyText(bm_intro_messages[0]);
-
-    // bei Click nächsten Text anzeigen
-    let index = 1;
-    master.self().onclick = () =>
-    {
-        if (index === bm_intro_messages.length)
-        {
-            // handler entfernen
-            master.self().onclick = () => {};
-
-            // zusammenrollen und text entfernen
-            master.applyText("");
-
-            // main laden
-            main();
-        }
-
-        master.applyText(bm_intro_messages[index++]);
-    }
+    await say(bm_intro_messages);
+    main();
 }
 
 

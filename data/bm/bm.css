@@ -1,9 +1,11 @@
-.childText:hover
+.childText_selected
 {
-    border: thin solid orange;
+    border: thin dashed black;
+    color: black;
 }
 
-.childSearch:hover
+.childSearch_selected
 {
-    border: thin solid coral;
+    border: thin dashed black;
+    color: black;
 }
