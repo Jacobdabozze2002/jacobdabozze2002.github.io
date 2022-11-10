@@ -4,6 +4,7 @@ body
 {
     background-color: black;
     overflow: hidden;
+    user-select: none;
 }
 
 .standard_font
