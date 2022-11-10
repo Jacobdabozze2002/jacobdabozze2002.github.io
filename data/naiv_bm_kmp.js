@@ -144,12 +144,15 @@ waitForKeyPressed = async (key = "b") =>
 
 saySlow = async (text = "", wait = 75) =>
 {
+    let speedUp = false;
+    onclick = () => speedUp = true;
+
     let sayed = "";
     for (let i = 0; i < text.length; ++i)
     {
         sayed += text[i];
         master.applyText(sayed);
-        if (text[i] !== " ") await new Promise(res => setTimeout(res, wait));
+        if (text[i] !== " " && !speedUp) await new Promise(res => setTimeout(res, wait));
     }
 
     // text anzeigen (klicken, um fortzusetzen)

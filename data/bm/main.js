@@ -34,7 +34,7 @@ abrakadabra = async () =>
     await saySlow("Du kannst nun das Muster verschieben!");
     await waitForClick();
 
-    await saySlow("Drücke b, damit ich bescheid weiß, wann Du fertig bist!");
+    await saySlow("Drücke b, damit ich bescheid weiß, wenn Du fertig bist!");
     await waitForKeyPressed("b");
 
     await saySlow("Gut gemacht!");
