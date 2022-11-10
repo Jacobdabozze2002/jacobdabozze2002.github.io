@@ -155,7 +155,7 @@ saySlow = async (text = "", wait = 75) =>
         if (text[i] !== " " && !speedUp) await new Promise(res => setTimeout(res, wait));
     }
 
-    // text anzeigen (klicken, um fortzusetzen)
+    onclick = () => {};
 
     return new Promise(res => setTimeout(res, 50));
 }
