@@ -15,7 +15,11 @@ const bm_intro_messages =
 
 introduction = async () =>
 {
-    await say(bm_intro_messages);
+    for (let i = 0; i < bm_intro_messages.length; ++i)
+    {
+        await saySlow(bm_intro_messages[i]);
+        await waitForClick();
+    }
     main();
 }
 

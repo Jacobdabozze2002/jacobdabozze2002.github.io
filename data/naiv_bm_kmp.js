@@ -128,20 +128,31 @@ waitUserInput = async () =>
     next = false; // reset var
 }
 
-say = async (messages = [""]) =>
+waitForClick = async (obj = document.body) =>
 {
-    master.self().onclick = () => next = true;
-
-    master.applyText(messages[0]);
+    obj.onclick = () => next = true;
     await waitUserInput();
+    obj.onclick = () => {};
+}
 
-    for (let i = 1; i < messages.length; ++i)
+waitForKeyPressed = async (key = "b") =>
+{
+    onkeydown = e => next = e.key === key;
+    await waitUserInput();
+    onkeydown = () => {};
+}
+
+saySlow = async (text = "", wait = 50) =>
+{
+    let sayed = "";
+    for (let i = 0; i < text.length; ++i)
     {
-        master.applyText(messages[i]);
-        await waitUserInput();
+        sayed += text[i];
+        master.applyText(sayed);
+        await new Promise(res => setTimeout(res, wait));
     }
 
-    master.self().onclick = () => {};
+    // text anzeigen (klicken, um fortzusetzen)
 
     return new Promise(res => setTimeout(res, 50));
 }

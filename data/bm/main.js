@@ -24,21 +24,23 @@ main = async () =>
 
 abrakadabra = async () =>
 {
-    await say([
-        "Guck mal! Gleich zu Beginn ist ein Mismatch aufgetreten.",
-        "Du kannst jetzt verschieben."
-    ]);
-    master.applyText("Drücke b, damit ich bescheid weiß, wenn Du fertig bist!");
+    await saySlow("Guck mal! Gleich zu Beginn ist ein Mismatch aufgetreten.")
+    await waitForClick(master.self());
 
     enableDragging();
-    onkeydown = e => next = e.key === "b";
-    await waitUserInput();
+    await saySlow("Du kannst nun das Muster verschieben!");
+    await waitForClick();
 
-    master.applyText("Gut gemacht!");
+    await saySlow("Drücke b, damit ich bescheid weiß, wenn Du fertig bist!");
+    await waitForKeyPressed("b");
+
+    await saySlow("Gut gemacht!");
 
     // return
     return new Promise(res => setTimeout(res, 50));
 }
+
+
 
 textSelect = (indizes = []) =>
 {
