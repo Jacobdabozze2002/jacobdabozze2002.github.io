@@ -142,7 +142,7 @@ waitForKeyPressed = async (key = "b") =>
     onkeydown = () => {};
 }
 
-saySlow = async (text = "", wait = 100) =>
+saySlow = async (text = "", wait = 75) =>
 {
     let sayed = "";
     for (let i = 0; i < text.length; ++i)
