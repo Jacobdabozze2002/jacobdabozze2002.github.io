@@ -24,14 +24,17 @@ main = async () =>
 
 abrakadabra = async () =>
 {
-    await saySlow("Guck mal! Gleich zu Beginn ist ein Mismatch aufgetreten.")
-    await waitForClick(master.self());
+    await saySlow("Guck mal!");
+    await waitForClick();
+
+    await saySlow("Gleich zu Beginn ist ein Mismatch aufgetreten.")
+    await waitForClick();
 
     enableDragging();
     await saySlow("Du kannst nun das Muster verschieben!");
     await waitForClick();
 
-    await saySlow("Drücke b, damit ich bescheid weiß, wenn Du fertig bist!");
+    await saySlow("Drücke b, damit ich bescheid weiß, wann Du fertig bist!");
     await waitForKeyPressed("b");
 
     await saySlow("Gut gemacht!");

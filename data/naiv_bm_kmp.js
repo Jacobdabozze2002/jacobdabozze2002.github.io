@@ -142,14 +142,14 @@ waitForKeyPressed = async (key = "b") =>
     onkeydown = () => {};
 }
 
-saySlow = async (text = "", wait = 50) =>
+saySlow = async (text = "", wait = 100) =>
 {
     let sayed = "";
     for (let i = 0; i < text.length; ++i)
     {
         sayed += text[i];
         master.applyText(sayed);
-        await new Promise(res => setTimeout(res, wait));
+        if (text[i] !== " ") await new Promise(res => setTimeout(res, wait));
     }
 
     // text anzeigen (klicken, um fortzusetzen)
