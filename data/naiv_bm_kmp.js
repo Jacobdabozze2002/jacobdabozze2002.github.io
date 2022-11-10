@@ -25,6 +25,10 @@ const master = new JF_Element(container).
 styleClass("master standard_font").
 alignTo("top-center");
 
+const continuation = new JF_Text(master).
+styleClass("small_font").
+alignTo("bottom-center");
+
 // notes
 const notes = new JF_Element(container).
 styleClass("notes standard_font").
@@ -128,18 +132,29 @@ waitUserInput = async () =>
     next = false; // reset var
 }
 
+
 waitForClick = async (obj = document.body) =>
 {
+    continuation.applyText("(mit Mouse klicken)").style(`
+        animation: continuation 3s infinite alternate;
+        animation-delay: 5s;
+    `);
     obj.onclick = () => next = true;
     await waitUserInput();
     obj.onclick = () => {};
+    continuation.applyText("").css("animation", "");
 }
 
 waitForKeyPressed = async (key = "b") =>
 {
+    continuation.applyText(`(Taste ${key} drücken)`).style(`
+        animation: continuation 3s infinite alternate;
+        animation-delay: 5s;
+    `);
     onkeydown = e => next = e.key === key;
     await waitUserInput();
     onkeydown = () => {};
+    continuation.applyText("").css("animation", "");
 }
 
 saySlow = async (text = "", wait = 75) =>

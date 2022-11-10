@@ -14,6 +14,25 @@ body
     font-size: 3vw;
 }
 
+.small_font
+{
+    color: rgba(255,255,255,0);
+    font-family: 'VT323', cursive;
+    font-size: 1.5vw;
+}
+
+@keyframes continuation
+{
+    0%
+    {
+        color: rgba(255,255,255,.1);
+    }
+    100%
+    {
+        color: rgba(255,255,255,1);
+    }
+}
+
 .standard_jf_window_style
 {
     width: 99.5%;

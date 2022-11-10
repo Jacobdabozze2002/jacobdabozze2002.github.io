@@ -16,7 +16,7 @@ main = async () =>
 
     // start
     let success = false;
-    await example[2]();
+    await example[2](success);
 
     // handle success/ failure
 }
@@ -34,7 +34,7 @@ abrakadabra = async () =>
     await saySlow("Du kannst nun das Muster verschieben!");
     await waitForClick();
 
-    await saySlow("Drücke b, damit ich bescheid weiß, wenn Du fertig bist!");
+    await saySlow("Gib mir bescheid, wenn Du bereit bist!");
     await waitForKeyPressed("b");
 
     await saySlow("Gut gemacht!");
@@ -42,8 +42,6 @@ abrakadabra = async () =>
     // return
     return new Promise(res => setTimeout(res, 50));
 }
-
-
 
 textSelect = (indizes = []) =>
 {
