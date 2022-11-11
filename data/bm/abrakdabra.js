@@ -75,7 +75,6 @@ abrakadabra = async () =>
         if (lastTextClicked !== 5)
         {
             await saySlow("Ihr scheint gut im Tippen zu sein ...");
-            textSelect([2]);
             await waitForClick();
         }
         else completed = true;
@@ -124,10 +123,11 @@ abrakadabra = async () =>
         await saySlow("dann verschiebt das Muster entsprechend.", true);
         await waitForClick();
 
-        await saySlow("So denkt an passende das Suffix von \"a\"!", true);
+        await saySlow("So denkt an das passende Suffix von \"a\"!");
         await waitForClick();
 
-        await saySlow("Es sollte dann unter seinem Vorkommen im Text liegen.", true);
+        await saySlow("Es sollte dann unter seinem Vorkommen", true);
+        await saySlow("im betrachteten Teil vom Text liegen.");
         await waitForClick();
 
         await saySlow("Verschiebt nun das Muster an die richtige Stelle!");
