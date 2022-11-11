@@ -18,23 +18,18 @@ abrakadabra = async () =>
         await saySlow("Die Zeichen <r> und <a> stimmen nicht überein!");
         await waitForClick();
 
-        await saySlow("Es muss dafür Sorge getragen werden,", true);
-        await saySlow("dass <r> über seinem nächsten Vorkommen in [ada] liegt.");
+        await saySlow("Es muss dafür Sorge getragen werden,\ndass <r> über seinem nächsten Vorkommen in [ada] liegt.");
         await waitForClick();
 
-        await saySlow("Doch vergesst nicht!");
+        await saySlow("Lässt sich kein zweites Vorkommen von <r> finden,\ndann möge [ada] um seine volle Länge verschoben werden.");
         await waitForClick();
 
-        await saySlow("Lässt sich ein solches nicht mehr finden,", true);
-        await saySlow("dann möge [ada] um seine volle Länge verschoben werden.");
-        await waitForClick();
-
-        await saySlow("Verschiebt nun das Muster an die richtige Stelle!");
+        await saySlow("Verschiebt nun das Muster den Regeln entsprechend!");
         enableDragging();
         task("Muster an richtige Stelle verschieben");
         await waitForClick();
 
-        await saySlow("Gebt mir ein Zeichen, sobald die Arbeit getan ist.");
+        await saySlow("Gebt mir bescheid, sobald die Arbeit getan ist.");
         await waitForKeyPressed("b");
         disableDragging();
         task();
@@ -54,15 +49,17 @@ abrakadabra = async () =>
     completed = false;
     while (!completed)
     {
-        textSelect([]);
-        await saySlow("Doch könnt Ihr mir auch sagen,", true);
-        await saySlow("welches Zeichen als nächstes im Text betrachtet wird?");
+        textSelect([2]);
+        await saySlow("Doch könnt Ihr mir auch sagen,\nwelches Zeichen als nächstes im Text betrachtet wird?");
         await waitForClick();
 
-        await saySlow("Denkt daran, wie wir begonnen haben!");
+        await saySlow("Denkt einmal ganz scharf nach!");
         await waitForClick();
 
-        await saySlow("Wählt dieses per Klick aus!");
+        await saySlow("Erinnert Ihr Euch noch daran,\nwie wir zu Beginn verglichen haben?");
+        await waitForClick();
+
+        await saySlow("So wählt den Buchstaben im Text,\nwelchen wir <a> als nächstes gegenüberstellen!");
         textSelectOnClickOn();
         task("Zeichen im Text auswählen");
         await waitForClick();
@@ -83,11 +80,10 @@ abrakadabra = async () =>
     await saySlow("Ihr scheint ein flinker Lerner zu sein!");
     await waitForClick();
 
-    await saySlow("Als ein solcher erkennt Ihr sicherlich,", true);
-    await saySlow("dass wir hier ein Match vor Augen haben.");
+    await saySlow("Als ein solcher erkennt Ihr sicherlich,\ndass wir hier ein Match vor Augen haben.");
     await waitForClick();
 
-    await saySlow("Nun achtet aber auf den nächsten Schritt!");
+    await saySlow("Nun achtet aber auf die folgenden Schritte!");
     await waitForClick();
 
     completed = false;
@@ -98,12 +94,10 @@ abrakadabra = async () =>
         searchSelect([1,2]);
         await waitForClick();
 
-        await saySlow("Wie sich unschwer erkennen lässt,", true);
-        await saySlow("stimmen die beiden Zeichen nicht überein.");
+        await saySlow("Wie sich unschwer erkennen lässt,\nstimmen die beiden Buchstaben nicht überein.");
         await waitForClick();
 
-        await saySlow("Wir rudern also ein wenig zurück und", true);
-        await saySlow("betrachten lediglich die bisher passenden beiden.");
+        await saySlow("Wir rudern also ein wenig zurück\nund fassen lediglich die bisher passenden zusammen.");
         textSelect([5]);
         searchSelect([2]);
         await waitForClick();
@@ -111,23 +105,16 @@ abrakadabra = async () =>
         await saySlow("Diese ergeben den String \"a\".");
         await waitForClick();
 
-        await saySlow("Ihr prüft nun im verbleibenden Muster,", true);
-        await saySlow("ob \"a\", oder ein Suffix davon, vorkommt.");
+        await saySlow("Im verbleibenden Muster ist nun zu prüfen,\nob ein Suffix von \"a\" erneut vorkommt.");
         await waitForClick();
 
-        await saySlow("Lässt sich kein weiteres Vorkommen finden,", true);
-        await saySlow("dann möge [ada] um seine volle Länge verschoben werden.");
+        await saySlow("Lässt sich kein weiteres Vorkommen finden,\ndann möge [ada] um seine volle Länge verschoben werden.");
         await waitForClick();
 
-        await saySlow("Könnt Ihr ein solches doch ein zweites Mal erspähen,", true);
-        await saySlow("dann verschiebt das Muster entsprechend.", true);
+        await saySlow("Doch könnt Ihr ein weiteres Suffix des Strings ausmachen,\ndann bewegt das Muster derlei:");
         await waitForClick();
 
-        await saySlow("So denkt an das passende Suffix von \"a\"!");
-        await waitForClick();
-
-        await saySlow("Es sollte dann unter seinem Vorkommen", true);
-        await saySlow("im betrachteten Teil vom Text liegen.");
+        await saySlow("Das zweite Suffix von \"a\" sollte unter\n seinem Vorkommen im markierten Teil vom Text liegen.");
         await waitForClick();
 
         await saySlow("Verschiebt nun das Muster an die richtige Stelle!");

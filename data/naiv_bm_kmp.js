@@ -136,7 +136,7 @@ waitForClick = async (obj = document.body) =>
 {
     continuation.applyText("(mit Maus klicken)").style(`
         animation: continuation 3s infinite alternate;
-        animation-delay: 5s;
+        animation-delay: 3s;
     `);
     obj.onclick = () => next = true;
     await waitUserInput();
@@ -156,7 +156,7 @@ waitForKeyPressed = async (key = "b") =>
     continuation.applyText("").css("animation", "");
 }
 
-saySlow = async (text = "", directAfter = false,  wait = 75) =>
+saySlow = async (text = "",  wait = 75) =>
 {
     let speedUp = false;
     onclick = () => speedUp = true;
@@ -170,9 +170,6 @@ saySlow = async (text = "", directAfter = false,  wait = 75) =>
     }
 
     onclick = () => {};
-
-    if (directAfter && speedUp) await new Promise(res => setTimeout(res, 750));
-    if (directAfter && !speedUp) await new Promise(res => setTimeout(res, 250));
 
     return new Promise(res => setTimeout(res, 50));
 }

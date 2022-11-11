@@ -51,6 +51,7 @@ body
     height: 20%;
     border: thin solid white;
     color: white;
+    line-height: .9;
 }
 
 .notes
