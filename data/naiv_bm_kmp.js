@@ -11,7 +11,7 @@ const text = new JF_PatternContainer(container);
 text.childrenStyleClass("child standard_font").
 padding(childPadding).
 sizingByChildren(true, childSize).
-moveBy("0px", `calc(-${childSize[1]} + 2 * ${childPadding})`);
+moveBy("0px", `calc(-${childSize[1]} + 5 * ${childPadding})`);
 
 // M
 const search = new JF_PatternContainer(container);
@@ -31,9 +31,9 @@ alignTo("bottom-center");
 
 // notes
 const notes = new JF_Element(container).
-styleClass("notes standard_font").
-alignTo("bottom-right").
-applyText("j = ja\n n = nein\nb = bereit");
+styleClass("notes small_font").
+alignTo("bottom-center", "1vw").
+applyText("Aufgabe: -");
 
 
 /*
@@ -132,10 +132,9 @@ waitUserInput = async () =>
     next = false; // reset var
 }
 
-
 waitForClick = async (obj = document.body) =>
 {
-    continuation.applyText("(mit Mouse klicken)").style(`
+    continuation.applyText("(mit Maus klicken)").style(`
         animation: continuation 3s infinite alternate;
         animation-delay: 5s;
     `);
@@ -157,7 +156,7 @@ waitForKeyPressed = async (key = "b") =>
     continuation.applyText("").css("animation", "");
 }
 
-saySlow = async (text = "", wait = 75) =>
+saySlow = async (text = "", directAfter = false,  wait = 75) =>
 {
     let speedUp = false;
     onclick = () => speedUp = true;
@@ -172,5 +171,59 @@ saySlow = async (text = "", wait = 75) =>
 
     onclick = () => {};
 
+    if (directAfter && speedUp) await new Promise(res => setTimeout(res, 750));
+    if (directAfter && !speedUp) await new Promise(res => setTimeout(res, 250));
+
     return new Promise(res => setTimeout(res, 50));
+}
+
+move = (fields = 1) =>
+{
+    search.moveBy(`calc((${childSize[0]} + ${childPadding}) * ${fields})`);
+}
+
+task = (task = "-") =>
+{
+    notes.applyText("Aufgabe: " + task)
+}
+
+textSelect = (indizes = []) =>
+{
+    for (let i = 0; i < text.getChildren().length; ++i)
+    {
+        if (indizes.includes(i)) text.getChildren()[i].self().classList.add("childText_selected");
+        else text.getChildren()[i].self().classList.remove("childText_selected");
+    }
+}
+
+searchSelect = (indizes = []) =>
+{
+    for (let i = 0; i < search.getChildren().length; ++i)
+    {
+        if (indizes.includes(i)) search.getChildren()[i].self().classList.add("childSearch_selected");
+        else search.getChildren()[i].self().classList.remove("childSearch_selected");
+    }
+}
+
+let lastTextClicked = 0;
+textSelectOnClickOn = () =>
+{
+    text.forEachChild(child =>
+    {
+        child.self().onclick = () =>
+        {
+            textSelect([text.getIndexOf(child)]);
+            lastTextClicked = text.getIndexOf(child);
+        }
+        child.css("cursor", "pointer");
+    });
+}
+
+textSelectOnClickOff = () =>
+{
+    text.forEachChild(child =>
+    {
+        child.self().onclick = () => {};
+        child.css("cursor", "default");
+    });
 }
