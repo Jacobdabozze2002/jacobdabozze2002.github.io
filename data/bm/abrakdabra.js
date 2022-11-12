@@ -236,7 +236,7 @@ abrakadabra = async () =>
     await saySlow("Ich kann wahrlich stolz auf Euch sein!");
     await waitForClick();
 
-    // return
+    // return to main
     return new Promise(res => setTimeout(res, 50));
 }
 
