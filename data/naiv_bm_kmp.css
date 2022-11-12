@@ -42,7 +42,6 @@ body
 .child
 {
     border: thin solid white;
-    color: white;
 }
 
 .master
@@ -50,11 +49,19 @@ body
     width: 75%;
     height: 20%;
     border: thin solid white;
-    color: white;
     line-height: .9;
 }
 
 .notes
+{
+    width: 17%;
+    height: 17%;
+    border: thin solid white;
+    line-height: .9;
+    color: white;
+}
+
+.tasks
 {
     color: white;
 }

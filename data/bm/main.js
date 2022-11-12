@@ -12,10 +12,14 @@ main = async () =>
     search.removeChildren().addChildrenByText(example[1]);
 
     // start
-    let success = false;
-    await example[2](success);
+    await example[2]();
 
-    // handle success/ failure
+    // clean up
+    text.removeChildren();
+    search.removeChildren();
+
+    // end
+    ending();
 }
 
 

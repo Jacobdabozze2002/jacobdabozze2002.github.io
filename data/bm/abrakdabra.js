@@ -137,8 +137,104 @@ abrakadabra = async () =>
         else completed = true;
     }
 
+    await saySlow("Zu wissen, was man weiß und zu wissen,\nwas man tut, das ist Wissen!");
+    await waitForClick();
 
+    await saySlow("Ihr liegt wieder einmal völlig richtig!");
+    await waitForClick();
 
+    await saySlow("Daher erahnt Ihr sicherlich auch,\nwelche Frage wir uns als nächstes stellen.");
+    await waitForClick();
+    textSelect([7]);
+
+    completed = false;
+    while (!completed)
+    {
+        await saySlow("Handelt es sich hierbei um ein Match?");
+        await waitForClick();
+
+        await saySlow("Ja oder nein?\nSo schwer kann das doch nicht sein!");
+        task("mit \"ja\" oder \"nein\" antworten")
+        await waitFor1of2KeysPressed(["j","n"]);
+        task();
+
+        if (lastKeyPressed !== "j")
+        {
+            await saySlow("Denkt einmal etwas schärfer nach!");
+            await waitForClick();
+        }
+        else completed = true;
+    }
+
+    await saySlow("Ich irrte mich nicht, als ich mich dazu entschloss,\nEuch zu meinem Lehrling zu machen!");
+    await waitForClick();
+
+    await saySlow("Wir sind kurz vor dem großen Fund!");
+    await waitForClick();
+
+    await saySlow("Denn so seht doch nur hier ...");
+    textSelect([6,7]);
+    searchSelect([1,2]);
+    await waitForClick();
+
+    completed = false;
+    while (!completed)
+    {
+        await saySlow("... und seht doch nur da!");
+        textSelect([5,6,7]);
+        searchSelect([0,1,2]);
+        await waitForClick();
+
+        await saySlow("Ist es nicht mehr als offensichtlich?");
+        await waitForClick();
+
+        await saySlow("Im Text muss nun ein weiteres Zeichen markiert werden.");
+        await waitForClick();
+
+        await saySlow("Ha ha ha ha!");
+        await waitForClick();
+
+        await saySlow("Zweifelt Ihr etwa?");
+        await waitForClick();
+
+        await saySlow("Wählt dieses Zeichen mit einem Klick.");
+        textSelectOnClickOn([5,6,7]);
+        task("Zeichen im Text auswählen");
+        await waitForClick();
+
+        await saySlow("Ich warte, während Ihr wankt!");
+        await waitForKeyPressed("b");
+        textSelectOnClickOff();
+        task();
+
+        if (![5,6,7].includes(lastTextClicked))
+        {
+            textSelect([6,7]);
+            searchSelect([1,2]);
+            await saySlow("Leichtgläubig seid Ihr!");
+            await waitForClick();
+
+            await saySlow("Mir verbleibt dazu nur zu sagen:");
+            await waitForClick();
+
+            await saySlow("So seht doch nur hier ...");
+            textSelect([6,7]);
+            searchSelect([1,2]);
+            await waitForClick();
+
+            lastTextClicked = 5;
+        }
+        else completed = true;
+    }
+
+    await saySlow("Einen Schüler wie euch hat man nicht alle Tage!");
+    await waitForClick();
+
+    await saySlow("Ihr erkanntet nicht nur meine List,\nsondern konntet auch das Muster finden!");
+    await waitForClick();
+
+    await saySlow("Ich kann wahrlich stolz auf Euch sein!");
+    await waitForClick();
 
     // return
     return new Promise(res => setTimeout(res, 50));

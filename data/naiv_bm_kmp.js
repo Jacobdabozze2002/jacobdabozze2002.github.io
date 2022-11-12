@@ -27,13 +27,19 @@ alignTo("top-center");
 
 const continuation = new JF_Text(master).
 styleClass("small_font").
-alignTo("bottom-center");
+alignTo("bottom-center", ".1vw");
+
+// tasks
+const tasks = new JF_Element(container).
+styleClass("tasks small_font").
+alignTo("bottom-center", "1vw").
+applyText("Aufgabe: -");
 
 // notes
 const notes = new JF_Element(container).
-styleClass("notes small_font").
-alignTo("bottom-center", "1vw").
-applyText("Aufgabe: -");
+styleClass("notes standard_font").
+alignTo("bottom-right").
+applyText("b = bereit\nj = ja\nn = nein");
 
 
 /*
@@ -107,7 +113,6 @@ enableDragging = () =>
         jf_onmouseup();
     }
 
-    text.childrenStyle("cursor: pointer;");
     search.childrenStyle("cursor: pointer;");
 }
 
@@ -117,7 +122,6 @@ disableDragging = () =>
     onmouseup = () => {};
     onmousemove = () => {};
 
-    text.childrenStyle("cursor: default;");
     search.childrenStyle("cursor: default;");
 }
 
@@ -156,6 +160,26 @@ waitForKeyPressed = async (key = "b") =>
     continuation.applyText("").css("animation", "");
 }
 
+let lastKeyPressed = "";
+waitFor1of2KeysPressed = async (keys = ["j", "n"]) =>
+{
+    continuation.applyText(`(Taste ${keys[0]} oder ${keys[1]} drücken)`).style(`
+        animation: continuation 3s infinite alternate;
+        animation-delay: 5s;
+    `);
+    onkeydown = e =>
+    {
+        if (e.key === keys[0] || e.key === keys[1])
+        {
+            next = true;
+            lastKeyPressed = e.key;
+        }
+    };
+    await waitUserInput();
+    onkeydown = () => {};
+    continuation.applyText("").css("animation", "");
+}
+
 saySlow = async (text = "",  wait = 75) =>
 {
     let speedUp = false;
@@ -181,7 +205,7 @@ move = (fields = 1) =>
 
 task = (task = "-") =>
 {
-    notes.applyText("Aufgabe: " + task)
+    tasks.applyText("Aufgabe: " + task)
 }
 
 textSelect = (indizes = []) =>
@@ -203,13 +227,13 @@ searchSelect = (indizes = []) =>
 }
 
 let lastTextClicked = 0;
-textSelectOnClickOn = () =>
+textSelectOnClickOn = (defaults = []) =>
 {
     text.forEachChild(child =>
     {
         child.self().onclick = () =>
         {
-            textSelect([text.getIndexOf(child)]);
+            textSelect([text.getIndexOf(child)].concat(defaults));
             lastTextClicked = text.getIndexOf(child);
         }
         child.css("cursor", "pointer");
