@@ -201,6 +201,7 @@ saySlow = async (text = "",  wait = 75) =>
 move = (fields = 1) =>
 {
     search.moveBy(`calc((${childSize[0]} + ${childPadding}) * ${fields})`);
+    jf_index += fields;
 }
 
 task = (task = "-") =>

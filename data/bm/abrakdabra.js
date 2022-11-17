@@ -29,7 +29,7 @@ abrakadabra = async () =>
         task("Muster an richtige Stelle verschieben");
         await waitForClick();
 
-        await saySlow("Gebt mir bescheid, sobald die Arbeit getan ist.");
+        await saySlow("Gebt mir Bescheid, sobald die Arbeit getan ist.");
         await waitForKeyPressed("b");
         disableDragging();
         task();
