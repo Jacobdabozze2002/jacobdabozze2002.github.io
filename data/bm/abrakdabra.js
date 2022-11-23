@@ -1,6 +1,9 @@
 abrakadabra = async () =>
 {
     task();
+    await saySlow("Oho?!");
+    await waitForClick();
+
     await saySlow("Ich traue meinen Augen kaum!");
     await waitForClick();
 

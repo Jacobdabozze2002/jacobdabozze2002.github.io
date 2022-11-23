@@ -21,8 +21,12 @@ sizingByChildren(true, childSize).
 attachTo(text, "below-left");
 
 // master Text
-const master = new JF_Element(container).
-styleClass("master standard_font").
+const master = new JF_Element(container);
+master.styleClass("master standard_font").
+style(`
+    background: url('/data/images/rico.png');
+    background-size: cover;
+`).
 alignTo("top-center");
 
 const continuation = new JF_Text(master).
@@ -36,10 +40,19 @@ alignTo("bottom-center", "1vw").
 applyText("Aufgabe: -");
 
 // notes
-const notes = new JF_Element(container).
-styleClass("notes standard_font").
+const notes = new JF_Element(container);
+notes.styleClass("notes standard_font").
+style(`
+    background: url('/data/images/rico.png');
+    background-size: cover;
+`).
 alignTo("bottom-right").
 applyText("b = bereit\nj = ja\nn = nein");
+
+// picture for master and puzzle
+const pic = new JF_Element(container).
+styleClass("pic").
+alignTo("bottom-center", "10vw");
 
 
 /*
@@ -248,4 +261,21 @@ textSelectOnClickOff = () =>
         child.self().onclick = () => {};
         child.css("cursor", "default");
     });
+}
+
+// load picture for master or puzzle
+showPicture = (path = "") =>
+{
+    pic.style(`
+        visibility: visible;
+        background: url(${path});
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    `);
+}
+
+hidePicture = () =>
+{
+    pic.css("visibility", "hidden");
 }

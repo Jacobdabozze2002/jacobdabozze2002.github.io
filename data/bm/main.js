@@ -12,6 +12,7 @@ main = async () =>
     search.removeChildren().addChildrenByText(example[1]);
 
     // start
+    await waitForClick();
     await example[2]();
 
     // clean up

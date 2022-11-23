@@ -33,6 +33,12 @@ body
     }
 }
 
+.pic
+{
+    width: 50%;
+    height: 50%;
+}
+
 .standard_jf_window_style
 {
     width: 99.5%;
