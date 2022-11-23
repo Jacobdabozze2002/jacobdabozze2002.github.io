@@ -23,6 +23,10 @@ attachTo(text, "below-left");
 // master Text
 const master = new JF_Element(container);
 master.styleClass("master standard_font").
+style(`
+    background: url('/data/images/rico.png');
+    background-size: cover;
+`).
 alignTo("top-center");
 
 const continuation = new JF_Text(master).
@@ -38,6 +42,10 @@ applyText("Aufgabe: -");
 // notes
 const notes = new JF_Element(container);
 notes.styleClass("notes standard_font").
+style(`
+    background: url('/data/images/rico.png');
+    background-size: cover;
+`).
 alignTo("bottom-right").
 applyText("b = bereit\nj = ja\nn = nein");
 
@@ -46,20 +54,6 @@ const pic = new JF_Element(container).
 styleClass("pic").
 alignTo("bottom-center", "10vw");
 
-// load backgrounds for master and notes
-pict = () =>
-{
-    notes.style(`    
-        background: url('/data/images/rico.png');
-        background-size: cover;`
-    )
-
-    master.style(`    
-        background: url('/data/images/rico.png');
-        background-size: cover;`
-    )
-}
-pict();
 
 /*
     drag search pattern
@@ -285,4 +279,3 @@ hidePicture = () =>
 {
     pic.css("visibility", "hidden");
 }
-
