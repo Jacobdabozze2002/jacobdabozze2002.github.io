@@ -23,6 +23,10 @@ attachTo(text, "below-left");
 // master Text
 const master = new JF_Element(container);
 master.styleClass("master standard_font").
+style(`
+    background: url('/data/images/rico.PNG');
+    background-size: cover;
+`).
 alignTo("top-center");
 
 const continuation = new JF_Text(master).
@@ -39,7 +43,7 @@ applyText("Aufgabe: -");
 const notes = new JF_Element(container);
 notes.styleClass("notes standard_font").
 style(`
-    background: url('/data/images/rico.png');
+    background: url('/data/images/rico.PNG');
     background-size: cover;
 `).
 alignTo("bottom-right").
