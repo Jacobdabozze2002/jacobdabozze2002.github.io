@@ -165,7 +165,7 @@ waitForKeyPressed = async (key = "b") =>
 {
     continuation.applyText(`(Taste ${key} drücken)`).style(`
         animation: continuation 3s infinite alternate;
-        animation-delay: 5s;
+        animation-delay: 2s;
     `);
     onkeydown = e => next = e.key === key;
     await waitUserInput();
@@ -178,7 +178,7 @@ waitFor1of2KeysPressed = async (keys = ["j", "n"]) =>
 {
     continuation.applyText(`(Taste ${keys[0]} oder ${keys[1]} drücken)`).style(`
         animation: continuation 3s infinite alternate;
-        animation-delay: 5s;
+        animation-delay: 2s;
     `);
     onkeydown = e =>
     {
