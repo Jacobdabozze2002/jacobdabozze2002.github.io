@@ -5,7 +5,7 @@ ending = async () =>
 
     // puzzleteil bekommen
     await saySlow("Für Eure Mühen möchte ich Euch dies geben:");
-    showPicture("/data/images/rico.PNG");
+    showPicture("/data/images/puzzle-teil-3.png");
     await waitForClick();
 
     await saySlow("Nun seid Ihr des Rätsels Lösung einen Schritt näher!");

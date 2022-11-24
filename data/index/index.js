@@ -22,7 +22,7 @@ forEachChild(child =>
     `);
 
     new JF_Text().
-    styleClass("standard_font").
+    styleClass("standard_font2").
     attachTo(child, "bottom-center", "1vw").
     applyText("Level " + (i + 1));
     
@@ -31,20 +31,20 @@ forEachChild(child =>
 
 // Überschrift
 new JF_Text().
-styleClass("standard_font").
+styleClass("standard_font2").
 textSize("5vw").
 attachTo(levels, "top-center", "2vw").
-applyText("SUCHALGORITHMEN");
+applyText("Master Ocir's Grand Search");
 
 // Link zu Konzept
 new JF_Text(container).
-styleClass("standard_font link").
+styleClass("standard_font2 link").
 applyText("Unser Konzept").
 alignTo("bottom-center", ".75vw").
 self().onclick = () => openPage(pages[4]);
 
 // Spielempfehlung
 new JF_Text().
-styleClass("standard_font").
+styleClass("standard_font2").
 attachTo(container, "top-center", "7.5vw").
 applyText("öffnen und schließen Sie den Vollbildmodus mit F11");
