@@ -1,11 +1,11 @@
 const nodeSize = 30;
 const distanceH = 40;
-const distanceV = 80;
+const distanceV = 50;
 const lineWidth = 2;
 const lineTextSize = 20;
 const hiddenRenderFrames = 10;
 
-let renderScale = 0.5;
+let renderScale = 1;
 let initialWidth = 1000;
 let initialHeight = 1000;
 
@@ -23,7 +23,7 @@ function setup() {
     nodes.push(root);
 
     // BEISPIEL 1
-    root.addChild("A");
+    /*root.addChild("A");
     root.getChild(0).addChild("a");
     root.getChild(0).getChild(0).addChild("a0");
     root.getChild(0).addChild("b");
@@ -42,7 +42,7 @@ function setup() {
     root.getChild(1).getChild(0).addChild("e1");
     root.getChild(1).getChild(0).addChild("e2");
     root.getChild(1).addChild("f");
-    root.getChild(1).getChild(1).addChild("f0");
+    root.getChild(1).getChild(1).addChild("f0");*/
 
     // BEISPIEL banana\0 komprimiert
     /*root.addChild("banana\\0");
@@ -81,7 +81,7 @@ function setup() {
     root.addChild("\\0");*/
 
     // TODO: Depth automatisch berechnen
-    treeDepth = 3;
+    treeDepth = 20;
     root.calcTree(0, 0);
 }
 
@@ -93,21 +93,50 @@ function draw() {
     treeRenderFrame++;
 }
 
-function mouseClicked() {
+function mouseReleased() {
     if (mouseButton === LEFT) {
         for (let i = 0; i < nodes.length; i++) {
             if (nodes[i].isMouseOver()) {
-                console.log("Node: " + nodes[i].lineText);
+                console.log("Parent Node: " + nodes[i].lineText);
                 let newText = document.getElementById("input").value;
+                console.log("New Text: " + newText);
                 let newNode = nodes[i].addChild(newText);
                 if (newNode.depth > treeDepth) {
                     treeDepth = newNode.depth;
                 }
+
                 root.calcTree(0, 0);
                 treeRenderFrame = 0;
-                break;
+                return false;
             }
         }
+        return false;
+
+    } else {
+        for (let i = 0; i < nodes.length; i++) {
+            if (nodes[i].isMouseOver()) {
+                if (nodes[i].parent != null && nodes[i].children.length === 0) {
+                    console.log("Removing Node: " + nodes[i].lineText);
+                    nodes[i].parent.children.splice(nodes[i].parent.getChildIndex(nodes[i]), 1);
+                    nodes.splice(i, 1);
+
+                    root.calcTree(0, 0);
+                    treeRenderFrame = 0;
+                    break;
+                } else {
+                    console.log("Can't remove Node: " + nodes[i].lineText);
+                }
+
+            }
+        }
+        return false;
+    }
+}
+
+function keyReleased() {
+    if ("abcdefghijklmnopqrstuvwxyzäöü".includes(key)) {
+        console.log("Key: " + key.toUpperCase());
+        document.getElementById("input").value = key.toUpperCase();
     }
 }
 
@@ -169,12 +198,12 @@ class TreeNode {
     calcHorizontalOffset(index) {
         return(distanceH + nodeSize / 2 + index * (nodeSize + distanceH));
     }
-    
+
     calcVerticalOffset() {
         let offset = distanceV + nodeSize / 2 + this.depth * (nodeSize + distanceV);
         return(offset);
     }
-    
+
     childrenCount() {
         return(this.children.length);
     }
@@ -220,7 +249,18 @@ class TreeNode {
             return(this.parent.getChild(index - 1));
         }
     }
-    
+
+    getTreeString() {
+        let tempString = "";
+        if (this.lineText !== undefined) {
+            tempString = this.lineText;
+        }
+        for (let i = 0; i < this.children.length; i++) {
+            tempString += this.children[i].getTreeString();
+        }
+        return(tempString);
+    }
+
     childrenWidth() {
         return(this.children.length * (nodeSize + distanceH));
     }
@@ -243,7 +283,9 @@ class TreeNode {
         }
 
         for (let i = 0; i < this.children.length; i++) {
-            nodes.push(this.children[i]);
+            if (!nodes.includes(this.children[i])) {
+                nodes.push(this.children[i]);
+            }
             this.children[i].calcTree(i, this.offset);
         }
     }
@@ -318,11 +360,11 @@ class TreeNode {
             this.children[i].drawNodes(i, this.offset);
         }
     }
-    
+
     getChild(index) {
         return(this.children[index]);
     }
-    
+
     getParent() {
         return(this.parent);
     }
