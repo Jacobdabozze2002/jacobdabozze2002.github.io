@@ -19,6 +19,8 @@ function setup() {
 
     // frameRate(2);
     canvas.elt.oncontextmenu = () => false;
+    canvas.parent("tree-container");
+
     root = new TreeNode(null);
     nodes.push(root);
 
