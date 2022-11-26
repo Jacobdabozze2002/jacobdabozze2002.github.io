@@ -23,7 +23,7 @@ ending = async () =>
     hidePicture();
 
     // nächste Seite freischalten
-    pages[2][1] = true;
+    pages[3][1] = true;
     storeVar(pages, "pages");
 
     // zur Startseite zurückkehren
