@@ -1,7 +1,7 @@
 // masters instructions
 introduction = async () =>
 {
-    showPicture("/data/images/rico.PNG");
+    showPicture("/data/images/master.png");
 
     await saySlow("Willkommen zurück, mein Schüler!");
     await waitForClick();
@@ -36,16 +36,13 @@ introduction = async () =>
     await saySlow("Das Wort der Good-Suffix-Heuristik zum einen,\ndieses der Bad-Character-Heuristik zum anderen.");
     await waitForClick();
 
-    await saySlow("Merkt Euch diese Namen!");
-    await waitForClick();
-
     await saySlow("Ich werde wieder darauf zu sprechen kommen!");
     await waitForClick();
 
     let completed = false;
     while (!completed)
     {
-        await saySlow("Nun denn - seid Ihr bereit?");
+        await saySlow("Nun denn - können wir beginnen?");
         await waitFor1of2KeysPressed(["j","n"]);
 
         if (lastKeyPressed !== "j")

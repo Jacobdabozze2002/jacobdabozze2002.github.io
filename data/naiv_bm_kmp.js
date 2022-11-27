@@ -24,14 +24,16 @@ attachTo(text, "below-left");
 const master = new JF_Element(container);
 master.styleClass("master standard_font").
 style(`
-    background: url('/data/images/rico.PNG');
-    background-size: cover;
+    background: url('/data/images/schriftrolle.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 `).
-alignTo("top-center");
+moveTextBy("0px", "-.125vw").
+alignTo("top-center", ".25vw");
 
 const continuation = new JF_Text(master).
 styleClass("small_font").
-alignTo("bottom-center", ".1vw");
+alignTo("bottom-center", "1.3vw");
 
 // tasks
 const tasks = new JF_Element(container).
@@ -47,12 +49,13 @@ style(`
     background-size: cover;
 `).
 alignTo("bottom-right").
-applyText("b = bereit\nj = ja\nn = nein");
+applyText("j = ja\nn = nein\nb = bereit").
+moveTextBy("0px", ".225vw");
 
 // picture for master and puzzle
 const pic = new JF_Element(container).
 styleClass("pic").
-alignTo("bottom-center", "10vw");
+alignTo("bottom-center", "7vw");
 
 
 /*
@@ -126,7 +129,7 @@ enableDragging = () =>
         jf_onmouseup();
     }
 
-    search.childrenStyle("cursor: pointer;");
+    search.childrenStyle("cursor: ew-resize;");
 }
 
 disableDragging = () =>
@@ -279,3 +282,13 @@ hidePicture = () =>
 {
     pic.css("visibility", "hidden");
 }
+
+centerText = async () =>
+{
+    text.forEachChild(child => child.alignTextTo("center").moveTextBy("0px", ".225vw"));
+    search.forEachChild(child => child.alignTextTo("center").moveTextBy("0px", ".225vw"));
+
+    await new Promise(resolve => setTimeout(resolve, 50));
+    centerText();
+}
+centerText();

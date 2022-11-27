@@ -1,3 +1,10 @@
+.standard_font2
+{
+  color: white;
+  font-family: 'Vollkorn', cursive;
+  font-size: 2.25vw;
+}
+
 .child
 {
   border: .1vw solid silver;
