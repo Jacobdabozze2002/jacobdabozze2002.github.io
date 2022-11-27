@@ -6,20 +6,6 @@ const childPadding = "1vw";
 const container = new JF_Window().
     styleClass("standard_jf_window_style");
 
-// T
-const text = new JF_PatternContainer(container);
-text.childrenStyleClass("child standard_font").
-padding(childPadding).
-sizingByChildren(true, childSize).
-moveBy("0px", `calc(-${childSize[1]} + 5 * ${childPadding})`);
-
-// M
-const search = new JF_PatternContainer(container);
-search.childrenStyleClass("child standard_font").
-padding(childPadding).
-sizingByChildren(true, childSize).
-attachTo(text, "below-left");
-
 // master Text
 const master = new JF_Element(container);
 master.styleClass("master standard_font").
@@ -57,5 +43,112 @@ const pic = new JF_Element(container).
 styleClass("pic").
 alignTo("bottom-center", "7vw");
 
-const tree = new JF_Element(container);
-tree.setID("tree-container")
+// tree canvas
+const tree = new JF_Element(container).
+setID("tree-container").
+alignTo("top-center", "24vw");
+
+// input text field
+const input_text = new JF_Element(container).
+styleClass("standard_font").
+setID("input_text").
+alignTo("bottom-center", "34vw").
+applyText("");
+
+
+let next = false;
+waitUserInput = async () =>
+{
+    while (next === false) await new Promise(res => setTimeout(res, 50));
+    next = false; // reset var
+}
+
+waitForClick = async (obj = document.body) =>
+{
+    continuation.applyText("(mit Maus klicken)").style(`
+        animation: continuation 3s infinite alternate;
+        animation-delay: 3s;
+    `);
+    obj.onclick = () => next = true;
+    await waitUserInput();
+    obj.onclick = () => {};
+    continuation.applyText("").css("animation", "");
+}
+
+waitForKeyPressed = async (key = "b") =>
+{
+    continuation.applyText(`(Taste ${key} drücken)`).style(`
+        animation: continuation 3s infinite alternate;
+        animation-delay: 2s;
+    `);
+    onkeydown = e => next = e.key === key;
+    await waitUserInput();
+    onkeydown = () => {};
+    continuation.applyText("").css("animation", "");
+}
+
+let lastKeyPressed = "";
+waitFor1of2KeysPressed = async (keys = ["j", "n"]) =>
+{
+    continuation.applyText(`(Taste ${keys[0]} oder ${keys[1]} drücken)`).style(`
+        animation: continuation 3s infinite alternate;
+        animation-delay: 2s;
+    `);
+    onkeydown = e =>
+    {
+        if (e.key === keys[0] || e.key === keys[1])
+        {
+            next = true;
+            lastKeyPressed = e.key;
+        }
+    };
+    await waitUserInput();
+    onkeydown = () => {};
+    continuation.applyText("").css("animation", "");
+}
+
+saySlow = async (text = "",  wait = 75) =>
+{
+    let speedUp = false;
+    onclick = () => speedUp = true;
+
+    let sayed = "";
+    for (let i = 0; i < text.length; ++i)
+    {
+        sayed += text[i];
+        master.applyText(sayed);
+        if (text[i] !== " " && !speedUp) await new Promise(res => setTimeout(res, wait));
+    }
+
+    onclick = () => {};
+
+    return new Promise(res => setTimeout(res, 50));
+}
+
+task = (task = "-") =>
+{
+    tasks.applyText("Aufgabe: " + task)
+}
+
+// load picture for master or puzzle
+showPicture = (path = "") =>
+{
+    pic.style(`
+        visibility: visible;
+        background: url(${path});
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    `);
+}
+
+hidePicture = () =>
+{
+    pic.css("visibility", "hidden");
+}
+
+saySlowAndWait = async (text = "") =>
+{
+    await saySlow(text);
+    await waitForClick();
+}

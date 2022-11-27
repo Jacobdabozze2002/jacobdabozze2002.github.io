@@ -13,6 +13,7 @@ let root;
 let treeDepth;
 let nodes = [];
 let treeRenderFrame = 0;
+let treeVisible = false;
 
 function setup() {
     const canvas = createCanvas(initialWidth * renderScale, initialHeight * renderScale);
@@ -91,8 +92,25 @@ function draw() {
     resizeCanvas(initialWidth * renderScale, initialHeight * renderScale);
     scale(renderScale);
     background(color(0, 0, 0, 0));
-    root.drawTree(treeDepth);
-    treeRenderFrame++;
+    if (treeVisible) {
+        root.drawTree(treeDepth);
+        treeRenderFrame++;
+    }
+}
+
+function setRenderScale(scale) {
+    renderScale = scale;
+}
+
+function setTreeVisible(visible) {
+    treeVisible = visible;
+}
+
+function resetToRoot() {
+    root = new TreeNode(null);
+    nodes = [];
+    nodes.push(root);
+    treeRenderFrame = 0;
 }
 
 function mouseReleased() {
@@ -100,7 +118,7 @@ function mouseReleased() {
         for (let i = 0; i < nodes.length; i++) {
             if (nodes[i].isMouseOver()) {
                 console.log("Parent Node: " + nodes[i].lineText);
-                let newText = document.getElementById("input").value;
+                let newText = document.getElementById("input_text").innerText;
                 console.log("New Text: " + newText);
                 let newNode = nodes[i].addChild(newText);
                 if (newNode.depth > treeDepth) {
@@ -138,7 +156,7 @@ function mouseReleased() {
 function keyReleased() {
     if ("abcdefghijklmnopqrstuvwxyzäöü".includes(key)) {
         console.log("Key: " + key.toUpperCase());
-        document.getElementById("input").value = key.toUpperCase();
+        document.getElementById("input_text").innerText = key.toUpperCase();
     }
 }
 
@@ -337,8 +355,8 @@ class TreeNode {
 
     drawEdges() {
         textSize(lineTextSize);
-        textFont('Courier New');
-        textStyle(BOLD)
+        textFont('Vollkorn');
+        // textStyle(BOLD)
         textAlign(CENTER, CENTER);
         stroke(180);
         if (this.parent !== null) {
