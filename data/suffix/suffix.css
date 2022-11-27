@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+
 #input {
     position: absolute;
     top: 0.5em;
@@ -5,6 +7,85 @@
     font-size: 1.5em;
 }
 
-body {
-    background-color: beige;
+body
+{
+    background-color: black;
+    overflow: hidden;
+    user-select: none;
+}
+
+.standard_font
+{
+    color: rgba(25,25,25,1);
+    font-family: 'Vollkorn', cursive;
+    font-size: 2.25vw;
+}
+
+.small_font
+{
+    color: rgba(25,25,25,0);
+    font-family: 'Vollkorn', cursive;
+    font-size: 1vw;
+}
+
+@keyframes continuation
+{
+    0%
+    {
+        color: rgba(25,25,25,.1);
+    }
+    100%
+    {
+        color: rgba(25,25,25,1);
+    }
+}
+
+.tasks
+{
+    color: rgba(25,25,25,1);
+}
+
+.pic
+{
+    width: 50%;
+    height: 60%;
+}
+
+.standard_jf_window_style
+{
+    width: 99.5%;
+    border: thin solid white;
+}
+
+.child
+{
+    border-radius: .35vw;
+    border: .1vw solid black;
+}
+
+.master
+{
+    width: 70%;
+    height: 22%;
+    line-height: .925;
+}
+
+.notes
+{
+    width: 15%;
+    height: 15%;
+    border: thin solid white;
+    line-height: .9;
+}
+
+.childText_selected
+{
+    border: .1vw dashed black;
+    color: black;
+}
+
+.childSearch_selected
+{
+    border: .1vw dashed black;
+    color: black;
 }
