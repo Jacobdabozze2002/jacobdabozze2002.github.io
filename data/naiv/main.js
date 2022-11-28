@@ -1,32 +1,25 @@
 main = async () =>
 {
+    // init
+   const naiv_examples =
+       [
+            ["Hexenbesen", "enb", hexenbesen],      // Text, Muster, Index
+       ]
 
-    // wenn fail, dann main oder introduction reloaden
+    const example = naiv_examples[Math.floor(Math.random() * naiv_examples.length)];
 
-    await example1();
-    alert(213)
+    text.removeChildren().addChildrenByText(example[0]);
+    search.removeChildren().addChildrenByText(example[1]);
 
-    // wenn finaler success, dann ending laden und handler removen
-}
-
-example1 = async () =>
-{
-    await saySlow("Hallo Michael!");
+    // start
     await waitForClick();
+    await example[2]();
 
-    text.addChildrenByText("Suchtext_12345");
-    search.addChildrenByText("Muster")
+    // clean up
+    text.removeChildren();
+    search.removeChildren();
 
-    enableDragging(); // handler einrichten
-    await saySlow("Jetzt kannst Du das Muster bewegen!");
-    await waitForClick();
-
-    await saySlow("Drücke auf b, wenn Du fertig bist");
-    await waitForKeyPressed("b");
-
-    await saySlow("Gut gemacht, Arschloch!");
-
-    return new Promise(res => setTimeout(res, 50));
+    // end
+   ending();
 }
-
 

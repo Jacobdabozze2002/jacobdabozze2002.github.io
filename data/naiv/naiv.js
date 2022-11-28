@@ -1,4 +1,4 @@
-// Hintergrund
+// custom styling (Hintergrund)
 
 container.style(`
     background: url('/data/images/bm_background.png');
@@ -6,4 +6,4 @@ container.style(`
 `);
 
 introduction();
-//main()
+
