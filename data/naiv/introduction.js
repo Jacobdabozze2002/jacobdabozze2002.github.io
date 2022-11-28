@@ -21,19 +21,16 @@ introduction = async () =>
     await saySlow("Ich habe nämlich nach einen neuen Schüler gesucht.");
     await waitForClick();
 
-    await saySlow("Ich bin gerade dabei\n das Geheimnis der Suchalgorithmen zu erforschen.");
+    await saySlow("Ich bin gerade dabei,\n das Geheimnis der Suchalgorithmen zu erforschen.");
     await waitForClick();
 
     await saySlow("Wisst ihr was?");
     await waitForClick();
 
-    await saySlow("Ich werde euch alles beibringen\n was ich bis jetzt herausgefunden habe.");
+    await saySlow("Ich werde euch alles beibringen,\n was ich bis jetzt herausgefunden habe.");
     await waitForClick();
 
-    await saySlow("Zuerst werde ich euch das Gesetz des Vergleichs beibringen.");
-    await waitForClick();
-
-    await saySlow("Für den Einstieg,\n in diese Thema würde sich die Naive-Suche eignen.");
+    await saySlow("Als Einstieg wäre die Naive-Suche am geeignetsten.");
     await waitForClick();
 
 

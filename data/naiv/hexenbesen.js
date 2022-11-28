@@ -1,15 +1,18 @@
 hexenbesen = async () =>
 {
     task();
-    await saySlow("Beginnen wir!");
+    await saySlow("Dann beginnen wir doch einmal ganz von vorn.");
     await waitForClick();
 
-    await saySlow("Wie ihr seht ist gleich am Anfang ein Mismatch aufgetreten.");
+    await saySlow("Unsere Suchmaske wurde an Position 0 des Textes angelegt.");
+    await waitForClick();
+
+    await saySlow("Das Zeichen <e> wird\n mit dem darüberliegenden Zeichen des Textes verglichen.");
     await waitForClick();
 
     // Zeichen <e> und <H> werden makiert
 
-    await saySlow("Seht genau hin.");
+    await saySlow("Seht genau hin!");
     textSelect([0]);
     searchSelect([0]);
     await waitForClick();
@@ -22,10 +25,13 @@ hexenbesen = async () =>
         await saySlow("Die Zeichen <H> und <e> stimmen nicht überein!");
         await waitForClick();
 
-        await saySlow("Immer wenn ein Mismatch aufttrit muss [enb]\n ein Zeichen weiter nach rechts verschoben werden.");
+        await saySlow("Immer wenn ein sogenanntes Mismatch auftritt.");
         await waitForClick();
 
-        await saySlow("Verschiebt nun das Muster den Regeln entsprechend!");
+        await saySlow("Muss das Suchmuster\n ein Zeichen weiter nach rechts verschoben werden.");
+        await waitForClick();
+
+        await saySlow("Verschiebt nun das Muster nach den Regeln der Naive-Suche.");
         enableDragging();
         task("Muster an richtige Stelle verschieben");
         await waitForClick();
@@ -56,7 +62,7 @@ hexenbesen = async () =>
     while (!completed)
     {
         textSelect([0]);
-        await saySlow("Nach der Regel müsste jetzt welches Zeichen über <e> stehen.");
+        await saySlow("Welches Zeichen wird nun mit <e> verglichen?");
         textSelectOnClickOn();
         task("Zeichen im Text auswählen");
         await waitForClick();
@@ -77,7 +83,7 @@ hexenbesen = async () =>
     await saySlow("Richtig!");
     await waitForClick();
 
-    await saySlow("Oho, wie ihr seht haben wir ein Match gefunden.");
+    await saySlow("Oho, wie Ihr seht haben wir ein Match gefunden.");
     await waitForClick();
 
     await saySlow("Damit kommen wir zum folgenden Schritt.");
@@ -86,18 +92,21 @@ hexenbesen = async () =>
     completed = false;
     while (!completed)
     {
-        await saySlow("Es werden die Zeichen <x> und <n> mit herbeigezogen.");
+        await saySlow("Es werden die Zeichen <x> und <n> mit verglichen.");
         textSelect([1,2]);
         searchSelect([0,1]);
         await waitForClick();
 
-        await saySlow("Leider ist ein weiteres Mismatch aufgetreten.");
+        await saySlow("Leider ist ein erneutes Mismatch aufgetreten.");
         await waitForClick();
 
-        await saySlow("Da die weitern Zeichen nicht übereinstimmen.");
+        await saySlow("Was geschiet als nächstes?");
         await waitForClick();
 
-        await saySlow("Müsste was passieren? ");
+        await saySlow("Erinnert Ihr euch daran?");
+        await waitForClick();
+
+        await saySlow("Ein Tipp: es muss etwas verschoben werden.");
         textSelect([1]);
         searchSelect([0]);
         enableDragging();
@@ -112,7 +121,7 @@ hexenbesen = async () =>
         if (jf_index !== 2)
         {   await saySlow("Denkt dran!");
             await waitForClick();
-            await saySlow("Immer wenn ein Mismatch aufttrit muss [enb]\n EIN ZEICHEN weiter nach rechts verschoben werden.");
+            await saySlow("Immer wenn ein Mismatch aufttrit muss das Suchmuster\n EIN ZEICHEN weiter nach rechts verschoben werden.");
             move(-jf_index);
             move(1);
             await waitForClick();
@@ -123,12 +132,22 @@ hexenbesen = async () =>
     await saySlow("Ihr werdet immer besser!");
     await waitForClick();
 
+    await saySlow("Das zieht sich wirklich. Dabei hatte wir schon ein Match.");
+    await waitForClick();
+
     completed = false;
     while (!completed)
     {
 
-        await saySlow("Nach der Regel müsste jetzt welches Zeichen über <e> stehen.");
+        await saySlow("Vielleicht solltet Ihr es weiter probieren.")
+        await waitForClick();
+
+
+        await saySlow("Welches Zeichen wird jetzt mit <e> verglichen?");
         textSelectOnClickOn();
+        task("Zeichen im Text auswählen");
+        await waitForClick();
+
         task("Zeichen im Text auswählen");
         await waitForClick();
 
@@ -139,7 +158,7 @@ hexenbesen = async () =>
 
         if (lastTextClicked !== 2)
         {
-            await saySlow("Wollt ihr mich ärgern!");
+            await saySlow("Wollt Ihr mich ärgern!");
             await waitForClick();
         }
         else completed = true;
@@ -173,18 +192,15 @@ hexenbesen = async () =>
     await saySlow("Ha ha ha! ");
     await waitForClick();
 
-    await saySlow("Ich bin stolz auf euch.");
+    await saySlow("Ich bin stolz auf Euch.");
     await waitForClick();
-
-    await saySlow("Ihr wisst sicherlich auch,\nwelche Frage wir uns als nächstes stellen.");
-    await waitForClick();
-    textSelect([2]);
-
 
     completed = false;
     while (!completed) {
 
-        await saySlow("Ihr wisst sicher was jetzt passiert");
+        await saySlow("Ihr wisst sicherlich was nun kommt.");
+        await waitForClick();
+        textSelect([2]);
         enableDragging();
         task("Muster an richtige Stelle verschieben");
         await waitForClick();
@@ -196,7 +212,7 @@ hexenbesen = async () =>
 
 
         if (jf_index !== 3) {
-            await saySlow("Wollt ihr mich ärgern!");
+            await saySlow("Wollt Ihr mich ärgern!");
             await waitForClick();
             await saySlow("Nochmal!");
             move(-jf_index);
@@ -204,7 +220,7 @@ hexenbesen = async () =>
             await waitForClick();
         } else completed = true;
     }
-    await saySlow("Ich denke ihr habt nun verstanden wie es geht.");
+    await saySlow("Ich denke Ihr habt nun verstanden wie es geht.");
     await waitForClick();
 
     await saySlow("Wir haben es fast geschaft!");
@@ -245,7 +261,7 @@ hexenbesen = async () =>
     searchSelect([0,1]);
     await waitForClick();
 
-    await saySlow("und oho seht mal.");
+    await saySlow("Na wenn das mal kein Zufall ist..");
     textSelect([3,4,5]);
     searchSelect([0,1,2]);
     await waitForClick();
