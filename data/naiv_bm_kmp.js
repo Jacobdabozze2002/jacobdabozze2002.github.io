@@ -33,7 +33,7 @@ alignTo("top-center", ".25vw");
 
 const continuation = new JF_Text(master).
 styleClass("small_font").
-alignTo("bottom-center", "1.3vw");
+alignTo("bottom-center", "1.6vw");
 
 // tasks
 const tasks = new JF_Element(container).
@@ -45,12 +45,12 @@ applyText("Aufgabe: -");
 const notes = new JF_Element(container);
 notes.styleClass("notes standard_font").
 style(`
-    background: url('/data/images/rico.PNG');
+    background: url('/data/images/notizzettel.png');
     background-size: cover;
 `).
 alignTo("bottom-right").
 applyText("j = ja\nn = nein\nb = bereit").
-moveTextBy("0px", ".225vw");
+moveTextBy("0px", ".7vw");
 
 // picture for master and puzzle
 const pic = new JF_Element(container).

@@ -3,10 +3,10 @@ introduction = async () =>
 {
     showPicture("/data/images/master.png");
 
-    await saySlow("Willkommen in der großen Bobliothek des Wissens.");
+    await saySlow("Willkommen in der großen Bibliothek des Wissens.");
     await waitForClick();
 
-   await saySlow("Ich bin Professor Ocir.");
+    await saySlow("Ich bin Professor Ocir.");
     await waitForClick();
 
     await saySlow("Mein damaliger Schüler Rico hat euch zu mir geschickt?");
