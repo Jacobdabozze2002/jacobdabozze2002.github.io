@@ -1,13 +1,13 @@
-const nodeSize = 30;
+const nodeSize = 24;
 const distanceH = 65;
 const distanceV = 50;
 const lineWidth = 2;
-const lineTextSize = 20;
+const lineTextSize = 28;
 const hiddenRenderFrames = 10;
 
 let renderScale = 1;
 let initialWidth = 1000;
-let initialHeight = 1500;
+let initialHeight = 1000;
 
 let root;
 let treeDepth;
@@ -15,7 +15,17 @@ let nodes = [];
 let treeRenderFrame = 0;
 let treeVisible = false;
 
+let col_edge;
+let col_node;
+let col_node_border;
+let col_edge_text;
+
 function setup() {
+    col_edge = color(255, 255, 255);
+    col_node = color(255, 255, 255);
+    col_node_border = color(0, 0, 0);
+    col_edge_text = color(0, 0, 0);
+
     const canvas = createCanvas(initialWidth * renderScale, initialHeight * renderScale);
 
     // frameRate(2);
@@ -60,7 +70,7 @@ function setup() {
     root.addChild("\\0");*/
 
     // BEISPIEL banana\0
-    root.addChild("b");
+    /*root.addChild("b");
     root.getChild(0).addChild("a");
     root.getChild(0).getChild(0).addChild("n");
     root.getChild(0).getChild(0).getChild(0).addChild("a");
@@ -81,7 +91,7 @@ function setup() {
     root.getChild(2).getChild(0).getChild(0).addChild("a");
     root.getChild(2).getChild(0).getChild(0).getChild(0).addChild("\\0");
     root.getChild(2).getChild(0).addChild("\\0");
-    root.addChild("\\0");
+    root.addChild("\\0");*/
 
     // TODO: Depth automatisch berechnen
     treeDepth = 20;
@@ -90,6 +100,7 @@ function setup() {
 
 function draw() {
     resizeCanvas(initialWidth * renderScale, initialHeight * renderScale);
+    textAlign(LEFT);
     scale(renderScale);
     background(color(0, 0, 0, 0));
     if (treeVisible) {
@@ -183,6 +194,7 @@ class TreeNode {
         if (treeRenderFrame > hiddenRenderFrames) {
             this.drawEdges();
             this.drawNodes();
+            this.drawEdgeText();
         }
 
         for (let i = 1; i < treeDepth; i++) {
@@ -199,7 +211,7 @@ class TreeNode {
     }
 
     isMouseOver() {
-        return (sqrt(pow(mouseX - this.x, 2) + pow(mouseY - this.y, 2)) < nodeSize / 2);
+        return (sqrt(pow((mouseX/renderScale) - this.x, 2) + pow((mouseY/renderScale) - this.y, 2)) < nodeSize / 2);
     }
 
     calcHorizontalOffsetBroken() {
@@ -354,16 +366,10 @@ class TreeNode {
     }
 
     drawEdges() {
-        textSize(lineTextSize);
-        textFont('Vollkorn');
-        // textStyle(BOLD)
-        textAlign(CENTER, CENTER);
-        stroke(180);
+        stroke(col_edge);
         if (this.parent !== null) {
             strokeWeight(3);
             line(this.x, this.y, this.parent.x, this.parent.y);
-            strokeWeight(0);
-            text(this.lineText, (this.x + this.parent.x) / 2, (this.y + this.parent.y) / 2);
         }
 
         for (let i = 0; i < this.children.length; i++) {
@@ -371,8 +377,24 @@ class TreeNode {
         }
     }
 
+    drawEdgeText() {
+        textSize(lineTextSize);
+        textFont('Vollkorn');
+        textStyle(BOLD)
+        textAlign(CENTER, CENTER);
+
+        if (this.parent !== null) {
+            strokeWeight(0);
+            text(this.lineText, (this.x + this.parent.x) / 2, (this.y + this.parent.y) / 2);
+        }
+
+        for (let i = 0; i < this.children.length; i++) {
+            this.children[i].drawEdgeText(i, this.offset);
+        }
+    }
+
     drawNodes() {
-        stroke(0);
+        stroke(col_node_border);
         strokeWeight(lineWidth);
         circle(this.x, this.y, nodeSize);
 
