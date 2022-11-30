@@ -40,7 +40,7 @@ introduction = async () => {
     await saySlowAndWait("...");*/
 
     // Calculate suffix tree render scale
-    let scale = (0.521 * window.innerWidth) / 1000;
+    let scale = (0.48 * window.innerWidth) / 1000;
     setRenderScale(scale);
 
     setTreeVisible(true);

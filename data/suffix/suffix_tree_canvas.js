@@ -1,5 +1,5 @@
 const nodeSize = 30;
-const distanceH = 40;
+const distanceH = 65;
 const distanceV = 50;
 const lineWidth = 2;
 const lineTextSize = 20;
@@ -7,7 +7,7 @@ const hiddenRenderFrames = 10;
 
 let renderScale = 1;
 let initialWidth = 1000;
-let initialHeight = 1000;
+let initialHeight = 1500;
 
 let root;
 let treeDepth;
@@ -60,7 +60,7 @@ function setup() {
     root.addChild("\\0");*/
 
     // BEISPIEL banana\0
-    /*root.addChild("b");
+    root.addChild("b");
     root.getChild(0).addChild("a");
     root.getChild(0).getChild(0).addChild("n");
     root.getChild(0).getChild(0).getChild(0).addChild("a");
@@ -81,7 +81,7 @@ function setup() {
     root.getChild(2).getChild(0).getChild(0).addChild("a");
     root.getChild(2).getChild(0).getChild(0).getChild(0).addChild("\\0");
     root.getChild(2).getChild(0).addChild("\\0");
-    root.addChild("\\0");*/
+    root.addChild("\\0");
 
     // TODO: Depth automatisch berechnen
     treeDepth = 20;
