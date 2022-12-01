@@ -177,7 +177,6 @@ function mouseReleased() {
 }
 
 function keyReleased() {
-    console.log(treeAllowInput);
     if ("abcdefghijklmnopqrstuvwxyzäöü".includes(key) && treeAllowInput) {
         document.getElementById("input_text").innerText = key.toUpperCase();
     }

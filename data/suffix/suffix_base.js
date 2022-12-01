@@ -100,6 +100,19 @@ waitForKeyPressed = async (key = "b") => {
     continuation.applyText("").css("animation", "");
 }
 
+waitForLetterPressed = async () => {
+    continuation.applyText(`(Beliebigen Buchstaben drücken)`).style(`
+        animation: continuation 3s infinite alternate;
+        animation-delay: 2s;
+    `);
+    while (true) {
+        let oldInputText = input_text.self().innerText;
+        console.log(oldInputText);
+        await new Promise(res => setTimeout(res, 50));
+        if (input_text.self().innerText !== oldInputText) break;
+    }
+}
+
 let lastKeyPressed = "";
 waitFor1of2KeysPressed = async (keys = ["j", "n"]) => {
     continuation.applyText(`(Taste ${keys[0]} oder ${keys[1]} drücken)`).style(`
