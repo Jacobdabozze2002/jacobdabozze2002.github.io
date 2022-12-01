@@ -14,6 +14,7 @@ let treeDepth;
 let nodes = [];
 let treeRenderFrame = 0;
 let treeVisible = false;
+let treeAllowInput = true;
 
 let col_edge;
 let col_node;
@@ -117,6 +118,15 @@ function setTreeVisible(visible) {
     treeVisible = visible;
 }
 
+function setTreeAllowInput(allow) {
+    if (allow) {
+        treeAllowInput = true;
+    } else {
+        document.getElementById("input_text").innerText = "";
+        treeAllowInput = false;
+    }
+}
+
 function resetToRoot() {
     root = new TreeNode(null);
     nodes = [];
@@ -125,48 +135,50 @@ function resetToRoot() {
 }
 
 function mouseReleased() {
-    if (mouseButton === LEFT) {
-        for (let i = 0; i < nodes.length; i++) {
-            if (nodes[i].isMouseOver()) {
-                console.log("Parent Node: " + nodes[i].lineText);
-                let newText = document.getElementById("input_text").innerText;
-                console.log("New Text: " + newText);
-                let newNode = nodes[i].addChild(newText);
-                if (newNode.depth > treeDepth) {
-                    treeDepth = newNode.depth;
-                }
-
-                root.calcTree(0, 0);
-                treeRenderFrame = 0;
-                return false;
-            }
-        }
-        return false;
-
-    } else {
-        for (let i = 0; i < nodes.length; i++) {
-            if (nodes[i].isMouseOver()) {
-                if (nodes[i].parent != null && nodes[i].children.length === 0) {
-                    console.log("Removing Node: " + nodes[i].lineText);
-                    nodes[i].parent.children.splice(nodes[i].parent.getChildIndex(nodes[i]), 1);
-                    nodes.splice(i, 1);
+    if (treeAllowInput) {
+        if (mouseButton === LEFT) {
+            for (let i = 0; i < nodes.length; i++) {
+                if (nodes[i].isMouseOver()) {
+                    console.log("Parent Node: " + nodes[i].lineText);
+                    let newText = document.getElementById("input_text").innerText;
+                    console.log("New Text: " + newText);
+                    let newNode = nodes[i].addChild(newText);
+                    if (newNode.depth > treeDepth) {
+                        treeDepth = newNode.depth;
+                    }
 
                     root.calcTree(0, 0);
                     treeRenderFrame = 0;
-                    break;
-                } else {
-                    console.log("Can't remove Node: " + nodes[i].lineText);
+                    return false;
                 }
-
             }
+            return false;
+
+        } else {
+            for (let i = 0; i < nodes.length; i++) {
+                if (nodes[i].isMouseOver()) {
+                    if (nodes[i].parent != null && nodes[i].children.length === 0) {
+                        console.log("Removing Node: " + nodes[i].lineText);
+                        nodes[i].parent.children.splice(nodes[i].parent.getChildIndex(nodes[i]), 1);
+                        nodes.splice(i, 1);
+
+                        root.calcTree(0, 0);
+                        treeRenderFrame = 0;
+                        break;
+                    } else {
+                        console.log("Can't remove Node: " + nodes[i].lineText);
+                    }
+
+                }
+            }
+            return false;
         }
-        return false;
     }
 }
 
 function keyReleased() {
-    if ("abcdefghijklmnopqrstuvwxyzäöü".includes(key)) {
-        console.log("Key: " + key.toUpperCase());
+    console.log(treeAllowInput);
+    if ("abcdefghijklmnopqrstuvwxyzäöü".includes(key) && treeAllowInput) {
         document.getElementById("input_text").innerText = key.toUpperCase();
     }
 }
@@ -188,6 +200,19 @@ class TreeNode {
 
         this.x = 0;
         this.y = 0;
+    }
+
+    getTreeString() {
+        let tempString = "";
+        if (this.lineText !== undefined && this.lineText !== null && this.lineText !== "") {
+            tempString = this.lineText;
+        } else {
+            tempString += "!";
+        }
+        for (let i = 0; i < this.children.length; i++) {
+            tempString += this.children[i].getTreeString();
+        }
+        return(tempString);
     }
 
     drawTree(treeDepth) {
@@ -212,19 +237,6 @@ class TreeNode {
 
     isMouseOver() {
         return (sqrt(pow((mouseX/renderScale) - this.x, 2) + pow((mouseY/renderScale) - this.y, 2)) < nodeSize / 2);
-    }
-
-    calcHorizontalOffsetBroken() {
-        if (this.children.length === 0) {
-            return(0);
-        }
-
-        let offset = 0;
-
-        for (let i = 0; i < this.children.length; i++) {
-            offset += nodeSize + distanceH + this.children[i].calcHorizontalOffset();
-        }
-        return(offset);
     }
 
     calcHorizontalOffset(index) {
@@ -280,17 +292,6 @@ class TreeNode {
         } else {
             return(this.parent.getChild(index - 1));
         }
-    }
-
-    getTreeString() {
-        let tempString = "";
-        if (this.lineText !== undefined) {
-            tempString = this.lineText;
-        }
-        for (let i = 0; i < this.children.length; i++) {
-            tempString += this.children[i].getTreeString();
-        }
-        return(tempString);
     }
 
     childrenWidth() {

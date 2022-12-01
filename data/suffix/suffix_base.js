@@ -51,20 +51,19 @@ alignTo("top-center", "20vw");
 // input text field
 const input_text = new JF_Element(container).
 styleClass("standard_font").
+style('font-size: 3vw;').
 setID("input_text").
 alignTo("bottom-center", "34vw").
 applyText("");
 
 
 let next = false;
-waitUserInput = async () =>
-{
+waitUserInput = async () => {
     while (next === false) await new Promise(res => setTimeout(res, 50));
     next = false; // reset var
 }
 
-waitForClick = async (obj = document.body) =>
-{
+waitForClick = async (obj = document.body) => {
     continuation.applyText("(mit Maus klicken)").style(`
         animation: continuation 3s infinite alternate;
         animation-delay: 3s;
@@ -75,8 +74,22 @@ waitForClick = async (obj = document.body) =>
     continuation.applyText("").css("animation", "");
 }
 
-waitForKeyPressed = async (key = "b") =>
-{
+waitForTreeChange = async () => {
+    setTreeAllowInput(true);
+    continuation.applyText("(auf Baum klicken)").style(`
+        animation: continuation 3s infinite alternate;
+        animation-delay: 3s;
+    `);
+    task("Baum verändern");
+    while (true) {
+        let oldTree = root.getTreeString();
+        await waitForClick();
+        await new Promise(res => setTimeout(res, 50));
+        if (root.getTreeString() !== oldTree) break;
+    }
+}
+
+waitForKeyPressed = async (key = "b") => {
     continuation.applyText(`(Taste ${key} drücken)`).style(`
         animation: continuation 3s infinite alternate;
         animation-delay: 2s;
@@ -88,8 +101,7 @@ waitForKeyPressed = async (key = "b") =>
 }
 
 let lastKeyPressed = "";
-waitFor1of2KeysPressed = async (keys = ["j", "n"]) =>
-{
+waitFor1of2KeysPressed = async (keys = ["j", "n"]) => {
     continuation.applyText(`(Taste ${keys[0]} oder ${keys[1]} drücken)`).style(`
         animation: continuation 3s infinite alternate;
         animation-delay: 2s;
@@ -107,8 +119,7 @@ waitFor1of2KeysPressed = async (keys = ["j", "n"]) =>
     continuation.applyText("").css("animation", "");
 }
 
-saySlow = async (text = "",  wait = 75) =>
-{
+saySlow = async (text = "",  wait = 75) => {
     let speedUp = false;
     onclick = () => speedUp = true;
 
@@ -125,14 +136,12 @@ saySlow = async (text = "",  wait = 75) =>
     return new Promise(res => setTimeout(res, 50));
 }
 
-task = (task = "-") =>
-{
+task = (task = "-") => {
     tasks.applyText("Aufgabe: " + task)
 }
 
 // load picture for master or puzzle
-showPicture = (path = "") =>
-{
+showPicture = (path = "") => {
     pic.style(`
         visibility: visible;
         background: url(${path});
@@ -142,13 +151,16 @@ showPicture = (path = "") =>
     `);
 }
 
-hidePicture = () =>
-{
+hidePicture = () => {
     pic.css("visibility", "hidden");
 }
 
-saySlowAndWait = async (text = "") =>
-{
+sayAndWait = async (text = "") => {
     await saySlow(text);
     await waitForClick();
+}
+
+sayAndWaitForTreeChange = async (text = "") => {
+    await saySlow(text);
+    await waitForTreeChange();
 }
