@@ -4,6 +4,7 @@ main = async () =>
     const bm_examples =
     [
         ["Abrakadabra", "ada", abrakadabra],      // Text, Muster, Index
+        ["Alohomora", "oho", alohomora],
     ]
 
     const example = bm_examples[Math.floor(Math.random() * bm_examples.length)];
