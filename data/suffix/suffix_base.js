@@ -83,6 +83,7 @@ waitForTreeChange = async () => {
     task("Baum verändern");
     while (true) {
         let oldTree = root.getTreeString();
+        console.log(oldTree);
         await waitForClick();
         await new Promise(res => setTimeout(res, 50));
         if (root.getTreeString() !== oldTree) break;
@@ -90,6 +91,7 @@ waitForTreeChange = async () => {
 }
 
 waitForTreeString = async (treeString = "") => {
+    setTreeAllowInput(true);
     while (true) {
         await waitForTreeChange();
         console.log(root.getTreeString());
@@ -109,6 +111,7 @@ waitForKeyPressed = async (key = "b") => {
 }
 
 waitForLetterPressed = async () => {
+    setTreeAllowInput(true);
     continuation.applyText(`(Beliebigen Buchstaben drücken)`).style(`
         animation: continuation 3s infinite alternate;
         animation-delay: 2s;

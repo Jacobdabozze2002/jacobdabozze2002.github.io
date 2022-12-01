@@ -1,11 +1,11 @@
 main_maxmaus = async () =>
 {
     task();
-    await sayAndWait("Seht Ihr den kleinen Punkt,\nder sich nun auf der Buchseite befindet?");
+    /*await sayAndWait("Seht Ihr den kleinen Punkt,\nder sich nun auf der Buchseite befindet?");
     await sayAndWait("Dieser Punkt ist der Anfang des besagten Baumes.");
     await sayAndWait("Nun, genauer gesagt repräsentiert er den Wurzelknoten.");
     await sayAndWait("Wir werden uns erst einmal damit befassen,\nwie Ihr den Baum selbstständig erweitern könnt.");
-    await sayAndWait("Versucht doch einmal, den Baum um\neinen weiteren Knoten zu erweitern.");
+    await sayAndWait("Versucht doch einmal, den Baum um\neinen weiteren Knoten zu erweitern.");*/
     await sayAndWaitForTreeChange("Dazu müsst Ihr einfach den\nPunkt auf der Buchseite anklicken.");
     setTreeAllowInput(false);
     await sayAndWait("Sehr gut!");
@@ -18,15 +18,16 @@ main_maxmaus = async () =>
     await sayAndWait("Bisher wisst Ihr also, wie Ihr den Baum\nmit leeren Knoten erweitern könnt.");
     await sayAndWait("Für den Suffix-Baum ist das jedoch nicht ausreichend!");
     await sayAndWait("Wir müssen die Kanten auch mit den\nentsprechenden Buchstaben versehen.");
-    setTreeAllowInput(true);
     await sayAndWait("Versucht es doch einmal selbst!");
     await saySlow("Tippt auf Eurer Tastatur einen beliebigen Buchstaben.");
     await waitForLetterPressed();
-    await sayAndWait("Ihr lernt  schnell!");
-    await sayAndWait("Seht Ihr den Buchstaben, der nun\noben auf der Buchseite erschienen ist?");
-    await sayAndWaitForTreeChange("Klickt nun auf einen der\nPunkte auf der Buchseite.");
-    await sayAndWait("Ha! Jetzt steht der Buchstabe\nauch auf der neuen Kante!");
     setTreeAllowInput(false);
+    let pickedLetter = input_text.self().innerText;
+    await sayAndWait("Oho! "+ pickedLetter + ", eine sehr gute Wahl!");
+    await sayAndWait("Seht Ihr das " + pickedLetter + ", das nun oben auf\nder Buchseite erschienen ist?");
+    await sayAndWaitForTreeChange("Klickt nun auf einen der\nPunkte auf der Buchseite.");
+    setTreeAllowInput(false);
+    await sayAndWait("Ha! Jetzt steht es auch\nauf der neuen Kante!");
     await sayAndWait("Jetzt wisst Ihr also, wie Ihr den Baum\nmit beschrifteten Kanten erweitern könnt.");
     await sayAndWait("Das ist wahrhaft unerlässlich, um den Baum\nmit den Suffixen zu füllen!");
 
@@ -38,6 +39,7 @@ main_maxmaus = async () =>
     await sayAndWait("Wir benötigen also eine Möglichkeit,\nKnoten und Kanten zu entfernen.");
     await sayAndWait("Das geht ganz leicht! Klickt einfach mit Rechtsklick\nauf den Knoten, den Ihr entfernen wollt.");
     await sayAndWaitForTreeChange("Aber Vorsicht! Das funktioniert nur bei Knoten,\ndie keine Kinder haben!");
+    setTreeAllowInput(false);
     await sayAndWait("Seht Ihr, wie der Knoten nun verschwunden ist?");
 
     await sayAndWait("Das war's auch schon!");
@@ -66,14 +68,16 @@ main_maxmaus = async () =>
     await sayAndWait("Diesen können wir in seiner Gänze in den Baum einfügen.");
     await sayAndWait("Gehen wir nun also die Buchstaben von MAXMAUS durch!");
     await sayAndWaitForTreeChange("Der erste Buchstabe ist M. Tippt nun ein M\nein und klickt auf den Wurzelknoten.");
+    setTreeAllowInput(false);
     await sayAndWait("Sehr gut! Ich hoffe, Ihr treibt keinen Schabernack!");
     await sayAndWait("Höhöhö!");
 
-    await sayAndWait("Der nächste Buchstabe ist ein A. Tippt es also ein und klickt\nauf den Knoten mit dem M, den Ihr soeben erstellt habt.");
+    await sayAndWaitForTreeChange("Der nächste Buchstabe ist ein A. Tippt es also ein und klickt\nauf den Knoten mit dem M, den Ihr soeben erstellt habt.");
     await sayAndWait("Das wiederholt Ihr nun noch einmal mit dem X,\nund dann mit dem M, und...");
     await sayAndWait("Ach! Ihr versteht schon!");
     await saySlow("Erweitert den Baum also so, dass er den gesamten\nSuffix MAXMAUS enthält! Ich warte solange...");
     await waitForTreeString("MAXMAUS");
+    setTreeAllowInput(false);
     await sayAndWait("Das ging ja schnell!");
 
     await sayAndWait("Dann wollen wir geschwind den nächsten Suffix hinzufügen!");
@@ -86,6 +90,7 @@ main_maxmaus = async () =>
     await sayAndWait("In diesem Fall hängt noch kein A an der\nWurzel, nur ein M.");
     await saySlow("Also müssen wir einen neuen Knoten mit dem\nBuchstaben A an der Wurzel anhängen.");
     await waitForTreeChange();
+    setTreeAllowInput(false);
     await sayAndWait("Nun machen wir mit dem Rest des Suffixes weiter.");
     await sayAndWait("Wir prüfen also, ob an dem Knoten mit dem A\nschon ein X hängt.");
 
@@ -93,10 +98,12 @@ main_maxmaus = async () =>
     await sayAndWait("Und so weiter...");
     await saySlow("Ich warte solange, bis Ihr den Suffix AXMAUS\nin den Baum eingefügt habt.");
     await waitForTreeString("MAXMAUSAXMAUS");
+    setTreeAllowInput(false);
     await sayAndWait("Hervorragend! Ihr werdet wirklich immer schneller!");
 
     await saySlow("Sicherlich schafft Ihr es auch, den Suffix\nXMAUS in den Baum einzufügen!");
     await waitForTreeString("MAXMAUSAXMAUSXMAUS");
+    setTreeAllowInput(false);
     await sayAndWait("Sehr gut! Ihr seid wirklich ein Meister!");
     await sayAndWait("Nun...");
     await sayAndWait("Natürlich kein richtiger Meister wie Ich, höhöhöhö!");
@@ -121,7 +128,6 @@ main_maxmaus = async () =>
     root.getChild(2).getChild(0).getChild(0).addChild("U");
     root.getChild(2).getChild(0).getChild(0).getChild(0).addChild("S");*/
 
-    setTreeAllowInput(false);
     await sayAndWait("Machen wir weiter...");
     await sayAndWait("Nun wollen wir den Suffix MAUS hinzufügen.");
     await sayAndWait("Aber diesmal müssen wir wirklich ganz genau aufpassen!");
@@ -133,20 +139,24 @@ main_maxmaus = async () =>
 
     await saySlow("Ihr seid bestimmt schon auf die Lösung gekommen!\nProbiert es einfach aus!");
     await waitForTreeString("MAXMAUSUAXMAUSXMAUS");
+    setTreeAllowInput(false);
 
     await sayAndWait("Ach, Ihr habt es ja schon gemacht!");
     await saySlow("Fehlt nur noch das S!");
     await waitForTreeString("MAXMAUSUSAXMAUSXMAUS");
+    setTreeAllowInput(false);
 
     await sayAndWait("Ihr seid wahrhaftig der beste Schüler, den Ich je hatte!");
     await sayAndWait("Ich bin stolz auf Euch!");
     await sayAndWait("Ich denke, Ihr schafft es auch, den Suffix\nAUS in den Baum einzufügen!");
     await saySlow("Vergesst nur nicht, auf das A zu achten!");
     await waitForTreeString("MAXMAUSUSAXMAUSUSXMAUS");
+    setTreeAllowInput(false);
     await sayAndWait("Echt klasse! Und so schnell!");
 
     await saySlow("Gewiss schafft Ihr auch noch die letzten beiden\nSuffixe, US und S!");
     await waitForTreeString("MAXMAUSUSAXMAUSUSXMAUSUSS");
+    setTreeAllowInput(false);
     await sayAndWait("100% richtig! Jetzt habt Ihr wirklich alles gelernt!");
     await sayAndWait("Der Baum ist vollständig!");
     await sayAndWait("Um ihn zu testen, könnt Ihr ja mal nachschauen,\nob Ihr beliebige Teile von MAXMAUS finden könnt!");

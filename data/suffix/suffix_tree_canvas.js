@@ -122,7 +122,6 @@ function setTreeAllowInput(allow) {
     if (allow) {
         treeAllowInput = true;
     } else {
-        document.getElementById("input_text").innerText = "";
         treeAllowInput = false;
     }
 }
@@ -178,7 +177,7 @@ function mouseReleased() {
 }
 
 function keyReleased() {
-    if ("abcdefghijklmnopqrstuvwxyzäöü".includes(key) && treeAllowInput) {
+    if ("abcdefghijklmnopqrstuvwxyzäöü".includes(key.toLowerCase()) && treeAllowInput) {
         document.getElementById("input_text").innerText = key.toUpperCase();
     }
 }
@@ -204,13 +203,15 @@ class TreeNode {
 
     getTreeString() {
         let tempString = "";
-        if (this.lineText !== undefined && this.lineText !== null && this.lineText !== "") {
-            tempString = this.lineText;
-        } else {
-            if (this.parent !== null) {
-                tempString += "!";
+
+        if (this.parent !== null) {
+            if (this.lineText === "" || this.lineText === null || this.lineText === undefined) {
+                tempString = "!"
+            } else {
+                tempString = this.lineText;
             }
         }
+
         for (let i = 0; i < this.children.length; i++) {
             tempString += this.children[i].getTreeString();
         }
