@@ -132,6 +132,7 @@ function resetToRoot() {
     nodes = [];
     nodes.push(root);
     treeRenderFrame = 0;
+    root.calcTree(0, 0);
 }
 
 function mouseReleased() {
@@ -139,9 +140,9 @@ function mouseReleased() {
         if (mouseButton === LEFT) {
             for (let i = 0; i < nodes.length; i++) {
                 if (nodes[i].isMouseOver()) {
-                    console.log("Parent Node: " + nodes[i].lineText);
+                    // console.log("Parent Node: " + nodes[i].lineText);
                     let newText = document.getElementById("input_text").innerText;
-                    console.log("New Text: " + newText);
+                    // console.log("New Text: " + newText);
                     let newNode = nodes[i].addChild(newText);
                     if (newNode.depth > treeDepth) {
                         treeDepth = newNode.depth;
@@ -158,7 +159,7 @@ function mouseReleased() {
             for (let i = 0; i < nodes.length; i++) {
                 if (nodes[i].isMouseOver()) {
                     if (nodes[i].parent != null && nodes[i].children.length === 0) {
-                        console.log("Removing Node: " + nodes[i].lineText);
+                        // console.log("Removing Node: " + nodes[i].lineText);
                         nodes[i].parent.children.splice(nodes[i].parent.getChildIndex(nodes[i]), 1);
                         nodes.splice(i, 1);
 
@@ -166,7 +167,7 @@ function mouseReleased() {
                         treeRenderFrame = 0;
                         break;
                     } else {
-                        console.log("Can't remove Node: " + nodes[i].lineText);
+                        // console.log("Can't remove Node: " + nodes[i].lineText);
                     }
 
                 }
@@ -206,7 +207,9 @@ class TreeNode {
         if (this.lineText !== undefined && this.lineText !== null && this.lineText !== "") {
             tempString = this.lineText;
         } else {
-            tempString += "!";
+            if (this.parent !== null) {
+                tempString += "!";
+            }
         }
         for (let i = 0; i < this.children.length; i++) {
             tempString += this.children[i].getTreeString();
@@ -231,6 +234,7 @@ class TreeNode {
         let child = new TreeNode(this, lineText);
         this.children.push(child);
         nodes.push(child);
+        root.calcTree(0, 0);
         return(child);
     }
 

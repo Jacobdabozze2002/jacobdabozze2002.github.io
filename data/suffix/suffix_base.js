@@ -89,6 +89,14 @@ waitForTreeChange = async () => {
     }
 }
 
+waitForTreeString = async (treeString = "") => {
+    while (true) {
+        await waitForTreeChange();
+        console.log(root.getTreeString());
+        if (root.getTreeString() === treeString) break;
+    }
+}
+
 waitForKeyPressed = async (key = "b") => {
     continuation.applyText(`(Taste ${key} drücken)`).style(`
         animation: continuation 3s infinite alternate;
