@@ -8,11 +8,11 @@ ending = async () =>
     await saySlow("Nun für den Anfang lief es zimlich gut!");
     await waitForClick();
 
-    await saySlow("Aber, dies war auch zuerwarten. ");
+    await saySlow("Aber, dies war auch zu erwarten. ");
     await waitForClick();
 
     await saySlow("Für Eure Mühen möchte ich Euch dies geben:");
-    showPicture("/data/images/puzzle-teil-3.png");
+    showPicture("/data/images/puzzle/puzzle_step1.png");
     await waitForClick();
 
     await saySlow("Die nächste Herausforderung wartet bereits auf Euch!");
