@@ -69,8 +69,10 @@ waitForClick = async (obj = document.body) => {
         animation-delay: 3s;
     `);
     obj.onclick = () => next = true;
+    obj.oncontextmenu = () => next = true;
     await waitUserInput();
     obj.onclick = () => {};
+    obj.oncontextmenu = () => {};
     continuation.applyText("").css("animation", "");
 }
 
