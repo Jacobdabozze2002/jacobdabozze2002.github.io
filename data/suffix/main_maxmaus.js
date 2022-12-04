@@ -1,11 +1,11 @@
 main_maxmaus = async () =>
 {
     task();
-    /*await sayAndWait("Seht Ihr den kleinen Punkt,\nder sich nun auf der Buchseite befindet?");
+    await sayAndWait("Seht Ihr den kleinen Punkt,\nder sich nun auf der Buchseite befindet?");
     await sayAndWait("Dieser Punkt ist der Anfang des besagten Baumes.");
     await sayAndWait("Nun, genauer gesagt repräsentiert er den Wurzelknoten.");
     await sayAndWait("Wir werden uns erst einmal damit befassen,\nwie Ihr den Baum selbstständig erweitern könnt.");
-    await sayAndWait("Versucht doch einmal, den Baum um\neinen weiteren Knoten zu erweitern.");*/
+    await sayAndWait("Versucht doch einmal, den Baum um\neinen weiteren Knoten zu erweitern.");
     await sayAndWaitForTreeChange("Dazu müsst Ihr einfach den\nPunkt auf der Buchseite anklicken.");
     setTreeAllowInput(false);
     await sayAndWait("Sehr gut!");

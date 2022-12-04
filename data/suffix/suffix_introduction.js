@@ -4,7 +4,7 @@ introduction = async () => {
     setTreeAllowInput(false);
     document.getElementById("input_text").style.display = "none";
 
-    /*await sayAndWait("Da seid Ihr ja wieder, mein Schüler!");
+    await sayAndWait("Da seid Ihr ja wieder, mein Schüler!");
     await sayAndWait("Ihr habt wirklich nicht lange auf Euch warten lassen.");
     await sayAndWait("Ich bin sehr stolz auf Euch und eure Neugier!");
     await sayAndWait("Ich möchte Euch nun in das Wissen um einen\nweiteren Algorithmus einweihen.");
@@ -32,7 +32,7 @@ introduction = async () => {
         } else {
             break;
         }
-    }*/
+    }
 
     hidePicture();
 
