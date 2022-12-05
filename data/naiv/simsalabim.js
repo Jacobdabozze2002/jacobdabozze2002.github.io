@@ -244,7 +244,7 @@ simsalabim = async () =>
     await saySlow("Sehr gut! Doch leider stimmen <b> und <l> nicht überein.");
     await waitForClick();
 
-    await saySlow("Ich hab es Euch einmal verschoben,\n aber wie es scheint, gibt es wieder kein Match.");
+    await saySlow("Ich hab es Euch einmal verschoben.");
     searchSelect([0]);
     move(1);
     await waitForClick();

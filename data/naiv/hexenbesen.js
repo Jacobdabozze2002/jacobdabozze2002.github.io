@@ -74,8 +74,9 @@ hexenbesen = async () =>
 
         if (lastTextClicked !== 1)
         {
-            await saySlow("Ich zweifel langsan an eurer Intelligenz.");
+            await saySlow("Wollt Ihr mich ärgern!");
             move(-jf_index);
+            move([1]);
             await waitForClick();
         }
         else completed = true;
@@ -124,7 +125,7 @@ hexenbesen = async () =>
             await waitForClick();
             await saySlow("Immer wenn ein Mismatch aufttrit muss das Suchmuster\n EIN ZEICHEN weiter nach rechts verschoben werden.");
             move(-jf_index);
-            move(1);
+            move([1]);
             await waitForClick();
         }
         else completed = true;
@@ -159,7 +160,7 @@ hexenbesen = async () =>
 
         if (lastTextClicked !== 2)
         {
-            await saySlow("Wollt Ihr mich ärgern!");
+            await saySlow("Ich zweifel langsan an eurer Intelligenz.");
             await waitForClick();
         }
         else completed = true;
@@ -185,6 +186,8 @@ hexenbesen = async () =>
         if (lastKeyPressed !== "n")
         {
             await saySlow("Ihr habt einen weiteren Versuch");
+            move(-jf_index);
+            move([2]);
             await waitForClick();
         }
         else completed = true;
@@ -217,7 +220,7 @@ hexenbesen = async () =>
             await waitForClick();
             await saySlow("Nochmal!");
             move(-jf_index);
-            move(2);
+            move([2]);
             await waitForClick();
         } else completed = true;
     }
@@ -249,6 +252,8 @@ hexenbesen = async () =>
         if (lastTextClicked !== 3)
         {
             await saySlow("Ich zweifel langsan an eurer Intelligenz.");
+            move(-jf_index);
+            move([3]);
             await waitForClick();
         }
         else completed = true;
