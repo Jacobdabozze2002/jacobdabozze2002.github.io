@@ -1,10 +1,12 @@
 alohomora = async () =>
 {
+    hidePicture();
+
     task();
     await saySlow("Das sieht doch gar nicht so schlecht aus.");
     await waitForClick();
 
-    await saySlow("Vielleicht sind wir dieses Mal sogar schneller durch\ndenn direkt beim ersten Vergleich gab es ein Match!");
+    await saySlow("Vielleicht sind wir dieses Mal sogar schneller durch, denn\ndirekt beim ersten Vergleich gab es ein Match!");
     await waitForClick();
 
     await saySlow("Schaut einmal genauer hin!");
@@ -29,15 +31,17 @@ alohomora = async () =>
     await waitForClick();
 
     await saySlow("Wir müssen wohl oder übel einen Schritt zurückgehen.");
+    textSelect();
+    searchSelect();
     await waitForClick();
 
     await saySlow("Die Regeln zum Verschieben sind gar nicht so schwierig.");
     await waitForClick();
 
-    await saySlow("Das Zeichen <o> muss über seinem nächsten Vorkommen in\n[oho] liegen.");
+    await saySlow("Das Zeichen <o> muss über seinem nächsten Vorkommen\nin [oho] liegen.");
     await waitForClick();
 
-    await saySlow("Sollte <o> kein weiteres Mal vorkommen, dann verschieben\n wir [oho] um seine volle Länge.");
+    await saySlow("Sollte <o> kein zweites Mal vorkommen, dann verschieben\nwir [oho] um seine volle Länge.");
     await waitForClick();
 
     let completed = false;
@@ -75,7 +79,7 @@ alohomora = async () =>
 
     completed = false;
     while (!completed) {
-        await saySlow("Dann zeigt doch mal, welches Zeichen als nächstes verglichen wird.");
+        await saySlow("Dann zeigt doch mal, welches Zeichen im Text als\nNächstes verglichen wird.");
         textSelectOnClickOn();
         task("Zeichen im Text auswählen");
         await waitForClick();
@@ -89,9 +93,10 @@ alohomora = async () =>
         if (lastTextClicked !== 3) {
             //falls falsch
             await saySlow("Das war leider das falsche Zeichen.");
+            textSelect();
             await waitForClick();
 
-            await saySlow("Schaut nochmal einmal genauer hin.");
+            await saySlow("Schaut noch mal einmal genauer hin.");
             await waitForClick();
 
             // beide o´s nochmal markieren?
@@ -101,15 +106,21 @@ alohomora = async () =>
             await saySlow("Soeben hatten wir ein Match.");
             await waitForClick();
 
-            await saySlow("Es muss also weiter verglichen werden und wie Ihr wisst\nvon rechts nach links.")
+            await saySlow("Es muss also weiter verglichen werden und wie Ihr wisst\nvon rechts nach links.");
+            await waitForClick();
         }
         else completed = true;
     }
     //falls korrekt
-    await saySlow("Das war hervorragend. Ich wusste doch, dass ich den Richtigen zu\nmeinem Schüler machte.");
+    await saySlow("Das war hervorragend!");
     await waitForClick();
 
-    await saySlow("Dazu kommt, dass es scheinbar zu einem weiteren Match kam.");
+    await saySlow("Ich wusste doch, dass ich den Richtigen zu meinem Schüler\nmachte.");
+    await waitForClick();
+
+    await saySlow("Dazu kam es scheinbar zu einem weiteren Match.");
+    textSelect();
+    searchSelect();
     await waitForClick();
 
     await saySlow("Betrachtet nun noch die letzte Stelle.");
@@ -130,14 +141,14 @@ alohomora = async () =>
         //warten auf Eingabe "J" für Ja oder "N" für Nein --> J ist die Richtige Wahl
 
         //falls falsch
-        if (lastKeyPressed !== "n") {
+        if (lastKeyPressed !== "j") {
             await saySlow("Das war leider falsch geraten...");
             await waitForClick();
 
             await saySlow("Schaut doch genau hin!");
             await waitForClick();
 
-            await saySlow("Es werden das 3. Zeichen des Textes und das 1. Zeichen des Suchmusters verglichen.");
+            await saySlow("Es werden das dritte Zeichen des Textes und das erste\nZeichen des Suchmusters verglichen.");
             await waitForClick();
 
             await saySlow("Probiert es also erneut.");
@@ -150,12 +161,11 @@ alohomora = async () =>
     await waitForClick();
 
     await saySlow("RICHTIG! Wundervoll und damit ist es geschafft!");
+    textSelect();
+    searchSelect();
     await waitForClick();
 
     await saySlow("Ihr habt wahrlich Köpfchen bewiesen.");
-    await waitForClick();
-
-    await saySlow("Für Eure Mühen habt ihr euch das nun redlich verdient:");
     await waitForClick();
 
     // return to main
