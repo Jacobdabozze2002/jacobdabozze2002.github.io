@@ -3,7 +3,8 @@ main = async () =>
     // init
    const naiv_examples =
        [
-            ["Hexenbesen", "enb", hexenbesen],      // Text, Muster, Index
+            ["Hexenbesen", "enb", hexenbesen],  // Text, Muster, Index
+            ["Simsalabim", "abi", simsalabim],
        ]
 
     const example = naiv_examples[Math.floor(Math.random() * naiv_examples.length)];

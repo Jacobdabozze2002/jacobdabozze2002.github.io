@@ -75,6 +75,7 @@ hexenbesen = async () =>
         if (lastTextClicked !== 1)
         {
             await saySlow("Ich zweifel langsan an eurer Intelligenz.");
+            move(-jf_index);
             await waitForClick();
         }
         else completed = true;
