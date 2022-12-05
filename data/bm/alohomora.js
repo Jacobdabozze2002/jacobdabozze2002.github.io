@@ -4,10 +4,10 @@ alohomora = async () =>
     await saySlow("Das sieht doch gar nicht so schlecht aus.");
     await waitForClick();
 
-    await saySlow("Vielleicht sind wir dieses Mal sogar schneller durch,\ndenn direkt beim ersten Vergleich gab es ein Match!");
+    await saySlow("Vielleicht sind wir dieses Mal sogar schneller durch\ndenn direkt beim ersten Vergleich gab es ein Match!");
     await waitForClick();
 
-    await saySlow("Schau einmal genauer hin!");
+    await saySlow("Schaut einmal genauer hin!");
     textSelect([2]);
     searchSelect([2]);
     await waitForClick();
@@ -15,7 +15,7 @@ alohomora = async () =>
     await saySlow("Die Zeichen stimmen überein!");
     await waitForClick();
 
-    await saySlow("Nun schauen wir doch einmal,\nob auch beim nächsten Vergleich ein Match auftritt.");
+    await saySlow("Nun schauen wir, ob auch beim nächsten Vergleich ein\nMatch auftritt.");
     await waitForClick();
 
     await saySlow("Dazu betrachten wir nun die Buchstaben <l> und <h>.");
@@ -25,112 +25,137 @@ alohomora = async () =>
 
     //Zeichen stimmen nicht überein (l und h)
 
-    await saySlow("So ein Mist!");
+    await saySlow("Leider ist dem nicht so!");
     await waitForClick();
 
-    await saySlow("Leider scheinen diese beiden nicht zusammen zu passen.");
+    await saySlow("Wir müssen wohl oder übel einen Schritt zurückgehen.");
     await waitForClick();
 
-    await saySlow("Wir müssen wohl wieder einen Schritt zurückgehen.");
+    await saySlow("Die Regeln zum Verschieben sind gar nicht so schwierig.");
     await waitForClick();
 
-    await saySlow("Verschiebe das Muster doch einmal zu der nächsten zu vergleichenden Stelle");
+    await saySlow("Das Zeichen <o> muss über seinem nächsten Vorkommen in\n[oho] liegen.");
     await waitForClick();
 
-    await saySlow("Dafür prüfen wir, ob ein Suffix von \"o\" noch einmal vorkommt.");
+    await saySlow("Sollte <o> kein weiteres Mal vorkommen, dann verschieben\n wir [oho] um seine volle Länge.");
     await waitForClick();
 
-    await saySlow("Sollten wir kein weiteres Vorkommen finden, dann wird [oho] um seine volle Länge verschoben.");
+    let completed = false;
+    while (!completed) {
+
+        await saySlow("Dann verschiebt doch einmal das Muster.");
+        enableDragging();
+        task("Muster an die richtige Stelle verschieben");
+        await waitForClick();
+
+        await saySlow("Sagt mir Bescheid, wenn Ihr fertig seid.");
+        await waitForKeyPressed("b");
+        disableDragging();
+        task();
+
+        if (jf_index !== 2) {
+            await saySlow("Denkt noch einmal nach.");
+            move(-jf_index);
+            await waitForClick();
+
+            await saySlow("Nur wenn das zu vergleichende Zeichen <o> nicht noch\neinmal vorkommt, wird es um seine volle Länge verschoben.");
+            await waitForClick();
+
+            await saySlow("Was ist dementsprechend zu tun, sollte das Zeichen\nvorher erneut vorkommen?");
+            await waitForClick();
+        }
+        else completed = true;
+    }
+
+    await saySlow("Ausgezeichnet! Als hättet Ihr nie etwas anderes gemacht.");
     await waitForClick();
 
-    await saySlow("Dann verschieb doch einmal das Muster");
+    await saySlow("Der Buchstabe <o> kam noch einmal vor.");
     await waitForClick();
 
-    await saySlow("Sag mir Bescheid, wenn du fertig bist");
+    completed = false;
+    while (!completed) {
+        await saySlow("Dann zeigt doch mal, welches Zeichen als nächstes verglichen wird.");
+        textSelectOnClickOn();
+        task("Zeichen im Text auswählen");
+        await waitForClick();
 
-    //Muster verschieben aktivieren, warten bis Taste "b" gedrückt wurde, richtig: Muster bis nach o verschieben [4]
+        await saySlow("Lasst Euch ruhig Zeit.");
+        await waitForKeyPressed("b");
+        textSelectOnClickOff();
+        task();
 
-    //falls falsch
-    await saySlow("Denk noch einmal nach.");
-    await waitForClick();
+        //Nutzer klickt <h> aus dem zu untersuchenden Text aus [3], warten bis "b" gedrückt wurde
+        if (lastTextClicked !== 3) {
+            //falls falsch
+            await saySlow("Das war leider das falsche Zeichen.");
+            await waitForClick();
 
-    await saySlow("Sollte das zu vergleichende Zeichen nicht noch einmal vorkommen, wird es um seine volle Länge verschoben.");
-    await waitForClick();
+            await saySlow("Schaut nochmal einmal genauer hin.");
+            await waitForClick();
 
-    await saySlow("Was ist also zu tun, wenn das Zeichen doch vorher erneut vorkommt?");
-    await waitForClick();
+            // beide o´s nochmal markieren?
+            textSelect([4]);
+            searchSelect([2]);
 
-    //return zu Aufgabe
+            await saySlow("Soeben hatten wir ein Match.");
+            await waitForClick();
 
+            await saySlow("Es muss also weiter verglichen werden und wie Ihr wisst\nvon rechts nach links.")
+        }
+        else completed = true;
+    }
     //falls korrekt
-    await saySlow("Ausgezeichnet! Als hättest du nie etwas anderes gemacht.");
+    await saySlow("Das war hervorragend. Ich wusste doch, dass ich den Richtigen zu\nmeinem Schüler machte.");
     await waitForClick();
 
-    await saySlow("Der zuvor schon einmal zu vergleichende Buchstabe <o> kam noch einmal vor.");
+    await saySlow("Dazu kommt, dass es scheinbar zu einem weiteren Match kam.");
     await waitForClick();
 
-    await saySlow("Dann zeig doch mal, welches Zeichen als nächstes verglichen wird.");
+    await saySlow("Betrachtet nun noch die letzte Stelle.");
+    //Text <o> [2] und Muster <o> [0] hervorheben
+    textSelect([2]);
+    searchSelect([0]);
     await waitForClick();
 
-    await saySlow("Lass dir ruhig Zeit.");
+    completed = false;
+    while (!completed) {
+        await saySlow("Nun beantwortet mir meine Frage:\nIst auch der dritte Vergleich ein Match?");
+        await waitForClick();
 
-    //Nutzer klickt <h> aus dem zu untersuchenden Text aus [3], warten bis "b" gedrückt wurde
+        await saySlow("Ja oder Nein? So schwer ist das nicht.");
+        task("mit \"ja\" oder \"nein\" antworten")
+        await waitFor1of2KeysPressed(["j", "n"]);
+        task();
+        //warten auf Eingabe "J" für Ja oder "N" für Nein --> J ist die Richtige Wahl
 
-    //falls falsch
-    await saySlow("Das war leider das falsche Zeichen.");
-    await waitForClick();
+        //falls falsch
+        if (lastKeyPressed !== "n") {
+            await saySlow("Das war leider falsch geraten...");
+            await waitForClick();
 
-    await saySlow("Schau nochmal genauer hin.");
-    await waitForClick();
-    // beide o´s nochmal markieren?
-    await saySlow("Soeben hatten wir ein Match. Wir müssen also weiter vergleichen und wie du weißt vergleichen wir von rechts nach links.");
-    await waitForClick();
-    //return zu Aufgabe
+            await saySlow("Schaut doch genau hin!");
+            await waitForClick();
 
-    //falls korrekt
-    await saySlow("Das war hervorragend. Ich wusste doch, dass ich den richtigen zu meinem Schüler machte.");
-    await waitForClick();
+            await saySlow("Es werden das 3. Zeichen des Textes und das 1. Zeichen des Suchmusters verglichen.");
+            await waitForClick();
 
-    await saySlow("Dazu kommt noch, dass es scheinbar wieder ein Match ist.");
-    await waitForClick();
-
-    await saySlow("Also betrachten wir nun noch die letzte Stelle.");
-    await waitForClick();
-
-    //Text <o> [1] und Muster <o> [0] hervorheben
-
-    await saySlow("Nun beantworte mir die Frage: Ist auch der dritte Vergleich ein Match?");
-    await waitForClick();
-
-    await saySlow("Ja oder Nein? So schwer ist das nicht.");
-
-    //warten auf Eingabe "J" für Ja oder "N" für Nein --> J ist die Richtige Wahl
-
-    //falls falsch
-    await saySlow("Das war leider falsch geraten...");
-    await waitForClick();
-
-    await saySlow("Schau noch einmal genauer hin");
-    await waitForClick();
-
-    await saySlow("Es werden das 3. Zeichen des Textes und das 1. Zeichen des Suchmusters verglichen.");
-    await waitForClick();
-
-    await saySlow("Probieren wir es also noch einmal.");
-    await waitForClick();
-    // --> return zur Aufgabe
-
+            await saySlow("Probiert es also erneut.");
+            await waitForClick();
+        }
+        else completed = true;
+    }
     //falls korrekt
     await saySlow("Und das ist...");
     await waitForClick();
 
-    await saySlow("RICHTIG! Wundervoll und damit haben wir es geschafft!");
+    await saySlow("RICHTIG! Wundervoll und damit ist es geschafft!");
     await waitForClick();
 
-    await saySlow("Du hast wahrlich Köpfchen bewiesen.");
+    await saySlow("Ihr habt wahrlich Köpfchen bewiesen.");
     await waitForClick();
 
-    await saySlow("Für deine Mühen hast du dir das nun redlich verdient:");
+    await saySlow("Für Eure Mühen habt ihr euch das nun redlich verdient:");
     await waitForClick();
 
     // return to main
