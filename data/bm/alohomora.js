@@ -28,11 +28,11 @@ alohomora = async () =>
     //Zeichen stimmen nicht überein (l und h)
 
     await saySlow("Leider ist dem nicht so!");
+    textSelect();
+    searchSelect([2]);
     await waitForClick();
 
     await saySlow("Wir müssen wohl oder übel einen Schritt zurückgehen.");
-    textSelect();
-    searchSelect();
     await waitForClick();
 
     await saySlow("Die Regeln zum Verschieben sind gar nicht so schwierig.");
@@ -71,6 +71,7 @@ alohomora = async () =>
         else completed = true;
     }
 
+    searchSelect();
     await saySlow("Ausgezeichnet! Als hättet Ihr nie etwas anderes gemacht.");
     await waitForClick();
 
