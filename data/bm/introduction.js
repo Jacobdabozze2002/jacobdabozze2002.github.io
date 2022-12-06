@@ -1,7 +1,7 @@
 // masters instructions
 introduction = async () =>
 {
-    showPicture("/data/images/master.png");
+    showPicture("/data/images/master2.png");
 
     await saySlow("Willkommen zurück, mein Schüler!");
     await waitForClick();
