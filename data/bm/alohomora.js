@@ -69,9 +69,9 @@ alohomora = async () =>
             await waitForClick();
         }
         else completed = true;
+        searchSelect();
     }
 
-    searchSelect();
     await saySlow("Ausgezeichnet! Als hättet Ihr nie etwas anderes gemacht.");
     await waitForClick();
 
