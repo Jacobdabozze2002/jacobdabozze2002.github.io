@@ -1,10 +1,10 @@
 introduction = async () => {
-    showPicture("/data/images/master.png");
+    showPicture("/data/images/master4.png");
     setTreeVisible(false);
     setTreeAllowInput(false);
     document.getElementById("input_text").style.display = "none";
 
-    await sayAndWait("Da seid Ihr ja wieder, mein Schüler!");
+    /*await sayAndWait("Da seid Ihr ja wieder, mein Schüler!");
     await sayAndWait("Ihr habt wirklich nicht lange auf Euch warten lassen.");
     await sayAndWait("Ich bin sehr stolz auf Euch und eure Neugier!");
     await sayAndWait("Ich möchte Euch nun in das Wissen um einen\nweiteren Algorithmus einweihen.");
@@ -13,7 +13,7 @@ introduction = async () => {
     await sayAndWait("Ach ja! Den Algorithmus für den fantastischen...");
     await sayAndWait("... sogar ganz unglaublichen...");
     await sayAndWait("... Suffix-Baum!!!");
-    await sayAndWait("Ja, genau! Den Suffix-Baum! Oder wie er auf\nEnglisch auch genannt wird: \"Suffix Tree\"!");
+    await sayAndWait("Ja, genau! Den Suffix-Baum! Oder wie er auf\nEnglisch auch genannt wird: \"Suffix Tree\"!");*/
 
     while (true) {
         await saySlow("Seid Ihr bereit, das Geheimnis der Suffix-Bäume zu erfahren?");
@@ -49,5 +49,6 @@ introduction = async () => {
     document.getElementById("input_text").style.display = "block";
     await sayAndWait("So, ich bin bereit!");
 
-    main();
+    ending();
+    // main();
 }

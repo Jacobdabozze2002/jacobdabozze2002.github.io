@@ -1,6 +1,6 @@
 main_maxmaus = async () =>
 {
-/*    task();
+    task();
     await sayAndWait("Seht Ihr den kleinen Punkt,\nder sich nun auf der Buchseite befindet?");
     await sayAndWait("Dieser Punkt ist der Anfang des besagten Baumes.");
     await sayAndWait("Nun, genauer gesagt repräsentiert er den Wurzelknoten.");
@@ -37,7 +37,7 @@ main_maxmaus = async () =>
     await sayAndWait("Außer mir natürlich!");
     await sayAndWait("Höhöhö!");
     await sayAndWait("Aber das ist jetzt unwichtig!");
-    await sayAndWait("Wir benötigen also eine Möglichkeit,\nKnoten und Kanten zu entfernen.");*/
+    await sayAndWait("Wir benötigen also eine Möglichkeit,\nKnoten und Kanten zu entfernen.");
     await sayAndWait("Das geht ganz leicht! Klickt einfach mit Rechtsklick\nauf den Knoten, den Ihr entfernen wollt.");
     await saySlow("Aber Vorsicht! Das funktioniert nur bei\nKnoten, die keine Kinder haben!");
     setTreeAllowInput(true);
@@ -178,4 +178,6 @@ main_maxmaus = async () =>
     await sayAndWait("Zum Beispiel MAU! Oder AXMA! Fangt einfach\nimmer bei der Wurzel an. Die Welt ist Euer!");
 
     await sayAndWait("Wenn Ihr das schafft, könnt Euch wahrhaftig\nals Suffix-Baum-Meister bezeichnen!");
+
+    ending();
 }
