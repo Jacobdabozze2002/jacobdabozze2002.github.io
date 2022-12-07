@@ -4,7 +4,7 @@ main = async () =>
     const kmp_examples =
         [
             ["ONIONIONSON", "ONIONS", Test],      // Text, Muster, Index
-            //["ABCABCABDAB","ABCABD", zweiterText]
+            ["ABCABCABDAB","ABCABD", zweiterText]
         ]
 
     const example = kmp_examples[Math.floor(Math.random() * kmp_examples.length)];
