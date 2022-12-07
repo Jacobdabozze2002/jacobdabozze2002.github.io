@@ -1,4 +1,5 @@
 ending = async () => {
+    setTreeVisible(false);
     showPicture("/data/images/master4.png");
 
     await sayAndWait("Sooo, das war nun wirklich alles, das ich\nEuch über die Suche in Texten beibringen konnte.");
@@ -7,7 +8,7 @@ ending = async () => {
     await sayAndWait("Und nun, auf Wiedersehen!");
     await sayAndWait("... Moment mal!!!");
     await sayAndWait("Ich habe Euch doch noch etwas versprochen!");
-    await sayAndWait("Hier, nehmt das!");
+    await sayAndWait("Hier, nehmt dies!");
     showPicture("/data/images/puzzle/puzzle_step4.png");
     await waitForClick();
     await sayAndWait("Jetzt hätte ich doch beinahe vergessen,\nEuch das letzte Puzzleteil zu geben!");

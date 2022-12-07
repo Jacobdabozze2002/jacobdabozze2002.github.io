@@ -21,10 +21,10 @@ introduction = async () =>
     await saySlow("Zweimal befolgtet Ihr die Regel des Vergleichs.");
     await waitForClick();
 
-    await saySlow("Doch dieses Mal ist es etwas anders, als zuvor!");
+    await saySlow("Doch dieses Mal ist es etwas anders als zuvor!");
     await waitForClick();
 
-    await saySlow("Wir betrachten nicht das Muster von links nach rechts,\nsondern von rechts nach links - entgegensetzt.");
+    await saySlow("Wir betrachten nicht das Muster von links nach rechts,\nsondern von rechts nach links - also entgegensetzt.");
     await waitForClick();
 
     await saySlow("Doch damit ist dem Gesetz noch nicht zur Genüge getan!");
@@ -63,5 +63,3 @@ introduction = async () =>
 
     main();
 }
-
-

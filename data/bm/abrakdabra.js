@@ -230,7 +230,7 @@ abrakadabra = async () =>
         else completed = true;
     }
 
-    await saySlow("Einen Schüler wie euch hat man nicht alle Tage!");
+    await saySlow("Einen Schüler wie Euch hat man nicht alle Tage!");
     await waitForClick();
 
     await saySlow("Ihr erkanntet nicht nur meine List,\nsondern konntet auch das Muster finden!");

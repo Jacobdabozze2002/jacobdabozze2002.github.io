@@ -1,13 +1,13 @@
 ending = async () =>
 {
     task();
-    await saySlow("Das habt ihr super gemacht!");
+    await saySlow("Das habt Ihr super gemacht!");
     await waitForClick();
 
     await saySlow("Ihr habt den Knuth-Morris-Pratt Algorithmus gemeistert.");
     await waitForClick();
 
-    await saySlow("Für Eure hervorragende Leistung, \nbekommt ihr ein weiteres Puzzleteil.");
+    await saySlow("Für Eure hervorragende Leistung, \nbekommt Ihr ein weiteres Puzzleteil.");
     showPicture("/data/images/puzzle/puzzle_step1.png");
     await waitForClick();
 

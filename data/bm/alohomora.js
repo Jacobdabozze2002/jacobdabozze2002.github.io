@@ -3,10 +3,10 @@ alohomora = async () =>
     hidePicture();
 
     task();
-    await saySlow("Das sieht doch gar nicht so schlecht aus.");
+    await saySlow("Das sieht doch gar nicht so schlecht aus!");
     await waitForClick();
 
-    await saySlow("Vielleicht sind wir dieses Mal sogar schneller durch, denn\ndirekt beim ersten Vergleich gab es ein Match!");
+    await saySlow("Vielleicht kommen wir dieses Mal sogar schneller durch,\ndenn direkt beim ersten Vergleich gibt es ein Match!");
     await waitForClick();
 
     await saySlow("Schaut einmal genauer hin!");
@@ -17,7 +17,7 @@ alohomora = async () =>
     await saySlow("Die Zeichen stimmen überein!");
     await waitForClick();
 
-    await saySlow("Nun schauen wir, ob auch beim nächsten Vergleich ein\nMatch auftritt.");
+    await saySlow("Nun schauen wir, ob auch beim nächsten\nVergleich ein Match auftritt.");
     await waitForClick();
 
     await saySlow("Dazu betrachten wir nun die Buchstaben <l> und <h>.");
@@ -27,12 +27,14 @@ alohomora = async () =>
 
     //Zeichen stimmen nicht überein (l und h)
 
-    await saySlow("Leider ist dem nicht so!");
-    textSelect();
-    searchSelect([2]);
+    await saySlow("Leider ist dem nicht so, die Zeichen stimmen nicht überein!");
     await waitForClick();
 
     await saySlow("Wir müssen wohl oder übel einen Schritt zurückgehen.");
+    await waitForClick();
+
+    textSelect([2]);
+    searchSelect([2]);
     await waitForClick();
 
     await saySlow("Die Regeln zum Verschieben sind gar nicht so schwierig.");
