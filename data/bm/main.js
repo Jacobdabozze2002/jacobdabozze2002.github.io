@@ -3,7 +3,7 @@ main = async () =>
     // init
     const bm_examples =
     [
-        ["Abrakadabra", "ada", abrakadabra],      // Text, Muster, Index
+        //["Abrakadabra", "ada", abrakadabra],      // Text, Muster, Index
         ["Alohomora", "oho", alohomora],
     ]
 

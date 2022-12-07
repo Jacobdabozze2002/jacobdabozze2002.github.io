@@ -377,6 +377,9 @@ Test = async () =>
 
     await saySlow("Ihr habt es Geschafft!\nDas gesuchte Muster wurde gefunden.");
     await waitForClick();
+
+    abc.style("display: none");
+
     // return to main
     return new Promise(res => setTimeout(res, 50));
 }

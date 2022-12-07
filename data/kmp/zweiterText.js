@@ -377,6 +377,9 @@ zweiterText = async () =>
 
     await saySlow("Ihr habt es Geschafft!\nDas gesuchte Muster wurde gefunden.");
     await waitForClick();
+
+    abc2.style("display: none;")
+
     // return to main
     return new Promise(res => setTimeout(res, 50));
 }

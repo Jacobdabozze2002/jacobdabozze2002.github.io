@@ -5,10 +5,10 @@ ending = async () =>
 
     // puzzleteil bekommen
 
-    await saySlow("Nun für den Anfang lief es zimlich gut!");
+    await saySlow("Für den Anfang lief es ziemlich gut!");
     await waitForClick();
 
-    await saySlow("Aber, dies war auch zu erwarten. ");
+    await saySlow("Aber dies war auch zu erwarten. ");
     await waitForClick();
 
     await saySlow("Für Eure Mühen möchte ich Euch dies geben:");

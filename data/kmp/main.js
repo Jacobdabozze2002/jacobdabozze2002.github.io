@@ -4,7 +4,7 @@ main = async () =>
     const kmp_examples =
         [
             ["ONIONIONSON", "ONIONS", Test],      // Text, Muster, Index
-            ["ABCABCABDAB","ABCABD", zweiterText]
+            //["ABCABCABDAB","ABCABD", zweiterText]
         ]
 
     const example = kmp_examples[Math.floor(Math.random() * kmp_examples.length)];
@@ -19,9 +19,6 @@ main = async () =>
     // clean up
     text.removeChildren();
     search.removeChildren();
-    abc.removeChildren();   //warum geht das nicht????????
-    abc2.removeChildren();  //warum geht das nicht????????
-
 
     // end
     ending();       //wechselt nicht zu ending wahrscheinlich wegen clean up

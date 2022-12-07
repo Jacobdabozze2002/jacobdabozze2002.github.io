@@ -23,10 +23,10 @@ simsalabim = async () =>
     await saySlow("Hierfür müssen wir jedes einzelne Zeichen vergleichen.");
     await waitForClick();
 
-    await saySlow("Fürs erste Mal werde ich es Euch noch einmal zeigen.");
+    await saySlow("Beim ersten Mal werde ich es Euch noch einmal zeigen.");
     await waitForClick();
 
-    await saySlow("Schaut gut hin.");
+    await saySlow("Schaut genau hin!");
     await waitForClick();
 
 //Verschiebe Muster automatisch um eins
@@ -43,25 +43,25 @@ simsalabim = async () =>
     while (!completed)
     {
 
-        await saySlow("Verschiebt nun\n das Suchmuster an die nächste zu vergleichende Stelle.");
+        await saySlow("Verschiebt nun das Suchmuster\nan die nächste zu vergleichende Stelle.");
 //verschieben ermöglichen
         enableDragging();
         task("Muster an die richtige Stelle verschieben");
         await waitForClick();
 
-        await saySlow("Sagt einfach, wenn Ihr bereit seid.");
+        await saySlow("Gebt Bescheid, wenn Ihr bereit seid.");
         await waitForKeyPressed("b");
         disableDragging();
         task();
 
         if (jf_index !== 2) {
-            await saySlow("Nanu? Waren Euch die Regeln doch nicht ganz klar?");
+            await saySlow("Waren Euch die Regeln doch nicht ganz klar?");
             await waitForClick();
 
             await saySlow("Macht Euch keinen Kopf.\n Es ist noch kein Meister vom Himmel gefallen.");
             await waitForClick();
 
-            await saySlow("Bedenkt,\n dass bei der Naiven Suche jedes Zeichen verglichen wird.");
+            await saySlow("Bedenkt, dass bei der Naiven Suche\njedes Zeichen verglichen wird.");
             await waitForClick();
 
             await saySlow("Probiert es einfach nochmal!");
@@ -76,10 +76,13 @@ simsalabim = async () =>
 
     //RICHTIG: Muster wurde um ein Zeichen verschoben (verglichen werden nun a und m)
 
-    await saySlow("Nicht anders erwarte ich es von meinem Schüler!");
+    await saySlow("Ich hätte nichts anderes von meinem Schüler erwartet!");
     await waitForClick();
 
-    await saySlow("Das habt Ihr gut gemacht!\n Doch schauen wir einmal genauer hin...");
+    await saySlow("Das habt Ihr gut gemacht!");
+    await waitForClick();
+
+    await saySlow("Doch schauen wir einmal genauer hin.")
 //Text[2] und Suchmuster[0] hervorheben
     textSelect([2]);
     searchSelect([0]);
@@ -88,7 +91,7 @@ simsalabim = async () =>
     await saySlow("Scheinbar haben wir kein Match gefunden.");
     await waitForClick();
 
-    await saySlow("Aber verzagt nicht. Verschieben wir es einfach erneut.");
+    await saySlow("Doch verzagt nicht - verschiebt es einfach erneut.");
     await waitForClick();
 
     completed = false;
@@ -102,14 +105,17 @@ simsalabim = async () =>
         task("Muster an die richtige Stelle verschieben");
         await waitForClick();
 
-        await saySlow("Sag, wenn du fertig bist.");
+        await saySlow("Sagt, wenn Ihr fertig seid.");
         await waitForKeyPressed("b");
         disableDragging();
         task();
 
         //FALSCH: Um mehr als ein Zeichen verschoben
         if (jf_index !== 3) {
-            await saySlow("Ich bin nicht sauer... nur enttäuscht.");
+            await saySlow("Ich bin nicht sauer...");
+            await waitForClick();
+
+            await saySlow("...nur enttäuscht.");
             await waitForClick();
 
             await saySlow("Also war es eben doch nur Glück.");
@@ -118,10 +124,10 @@ simsalabim = async () =>
             await saySlow("Denkt noch einmal nach.");
             await waitForClick();
 
-            await saySlow("Ich weiß, dass der Algorithmus leider sehr zeitaufwendig ist.");
+            await saySlow("Ich weiß, es ist zeitaufwändig.");
             await waitForClick();
 
-            await saySlow("Dennoch müssen wir j e d e s Zeichen vergleichen.");
+            await saySlow("Dennoch müssen wir jedes Zeichen vergleichen.");
             await waitForClick();
 
             await saySlow("Versucht es am besten gleich noch einmal!");
@@ -149,17 +155,17 @@ simsalabim = async () =>
         task("Muster an die richtige Stelle verschieben");
         await waitForClick();
 
-        await saySlow("Sag, wenn du fertig bist.");
+        await saySlow("Sagt, wenn Ihr fertig seid.");
         await waitForKeyPressed("b");
         disableDragging();
         task();
 
         //FALSCH: Um mehr als ein Zeichen verschoben
         if (jf_index !== 4) {
-            await saySlow("Ich zweifel langsan an eurer Intelligenz.");
+            await saySlow("Ich zweifele langsam an Eurer Intelligenz.");
             await waitForClick();
 
-            await saySlow("Ihr müsst j e d e s Zeichen vergleichen.");
+            await saySlow("Ihr müsst jedes Zeichen vergleichen.");
             await waitForClick();
 
             await saySlow("Versucht es noch einmal!");
@@ -180,7 +186,6 @@ simsalabim = async () =>
     {
         await saySlow("Wie sieht es aus? Gibt es jetzt ein Match?");
         textSelect([4]);
-        await waitForClick();
 
 //warten bis J oder N gedrückt wurde
 
@@ -194,7 +199,7 @@ simsalabim = async () =>
             await saySlow("Das ist leider falsch.");
             await waitForClick();
 
-            await saySlow("Probiert es einfach erneut. Das wird schon!");
+            await saySlow("Probiert es einfach erneut.");
             move(-jf_index);
             move(4);
             await waitForClick();
@@ -203,7 +208,10 @@ simsalabim = async () =>
     }
 
 //RICHTIG: J wurde gedrückt
-    await saySlow("Exakt! Endlich haben wir ein Match gefunden!");
+    await saySlow("Exakt!");
+    await waitForClick();
+
+    await saySlow("Endlich haben wir ein Match gefunden!");
     await waitForClick();
 
     completed = false;
@@ -237,11 +245,14 @@ simsalabim = async () =>
         else completed = true;
     }
 
-    await saySlow("Seht, ihr schafft dass auch ohne mich.");
+    await saySlow("Seht Ihr, Ihr schafft das auch ohne mich.");
     await waitForClick();
 
 
-    await saySlow("Sehr gut! Doch leider stimmen <b> und <l> nicht überein.");
+    await saySlow("Sehr gut!");
+    await waitForClick();
+
+    await saySlow(" Doch leider stimmen <b> und <l> nicht überein.");
     await waitForClick();
 
     await saySlow("Ich hab es Euch einmal verschoben.");
@@ -257,7 +268,6 @@ simsalabim = async () =>
     {
         await saySlow("Wie sieht es aus? Gibt es jetzt ein Match?");
         textSelect([5]);
-        await waitForClick();
 
 //warten bis J oder N gedrückt wurde
 
@@ -283,13 +293,16 @@ simsalabim = async () =>
         else completed = true;
     }
 
-    await saySlow("Sehr gut! Wobei es natürlich schade ist,\n dass wir kein Match finden konnten.");
+    await saySlow("Sehr gut!");
+    await waitForClick();
+
+    await saySlow(" Wobei es natürlich schade ist,\n dass wir kein Match finden konnten.");
     await waitForClick();
 
     completed = false;
     while (!completed) {
 
-        await saySlow("Verschiebt nun bitte erneut das Suchmuster.");
+        await saySlow("Verschiebt nun erneut das Suchmuster.");
         enableDragging();
         task("Muster an die richtige Stelle verschieben");
         await waitForClick();
@@ -304,7 +317,10 @@ simsalabim = async () =>
             await saySlow("Denkt noch einmal nach.");
             await waitForClick();
 
-            await saySlow("Habt Ihr nicht genau hingeschaut?\n Wir machen das doch nun schon das dritte Mal.");
+            await saySlow("Habt Ihr nicht genau hingeschaut?");
+            await waitForClick();
+
+            await saySlow("Wir machen das doch nun schon das dritte Mal.");
             await waitForClick();
 
             await saySlow("Ihr dürft kein Zeichen überspringen!");
@@ -317,10 +333,10 @@ simsalabim = async () =>
         } else completed = true;
     }
 
-    await saySlow("Seht Ihr! So schwer ist das gar nicht.");
+    await saySlow("Seht Ihr? So schwer ist das gar nicht.");
     await waitForClick();
 
-    await saySlow("Was haben wir den hier?");
+    await saySlow("Was haben wir denn hier?");
     textSelect([6]);
     searchSelect([0]);
     await waitForClick();
@@ -335,7 +351,7 @@ simsalabim = async () =>
     searchSelect([0,1,2]);
     await waitForClick();
 
-    await saySlow("Was denkt ihr?");
+    await saySlow("Was denkt Ihr?");
     await waitForClick();
 
     completed = false;
@@ -352,13 +368,13 @@ simsalabim = async () =>
 
         if (lastKeyPressed !== "j")
         {
-            await saySlow("DAS KANN DOCH NICHT DEIN ERNST SEIN!!!!!!");
+            await saySlow("DAS KANN DOCH NICHT EUER ERNST SEIN!!!!!!");
             await waitForClick();
         }
         else completed = true;
     }
 
-    await saySlow("Ihr habt euch gut geschlagen.");
+    await saySlow("Ihr habt Euch gut geschlagen.");
     await waitForClick();
 
 // return to main

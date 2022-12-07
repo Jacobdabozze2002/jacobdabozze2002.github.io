@@ -9,7 +9,7 @@ introduction = async () =>
     await saySlow("Ich bin Professor Ocir.");
     await waitForClick();
 
-    await saySlow("Mein damaliger Schüler Rico hat euch zu mir geschickt?");
+    await saySlow("Mein damaliger Schüler Rico hat Euch zu mir geschickt?");
     await waitForClick();
 
     await saySlow("Ihr wollt also mein neuer Lehrling werden.");
@@ -18,16 +18,16 @@ introduction = async () =>
     await saySlow("Das trifft sich gut.");
     await waitForClick();
 
-    await saySlow("Ich habe nämlich nach einen neuen Schüler gesucht.");
+    await saySlow("Ich habe nämlich nach einem neuen Schüler gesucht.");
     await waitForClick();
 
     await saySlow("Ich bin gerade dabei,\n das Geheimnis der Suchalgorithmen zu erforschen.");
     await waitForClick();
 
-    await saySlow("Wisst ihr was?");
+    await saySlow("Wisst Ihr was?");
     await waitForClick();
 
-    await saySlow("Ich werde euch alles beibringen,\n was ich bis jetzt herausgefunden habe.");
+    await saySlow("Ich werde Euch alles beibringen,\n was ich bis jetzt herausgefunden habe.");
     await waitForClick();
 
     await saySlow("Als Einstieg wäre die Naive-Suche am geeignetsten.");
