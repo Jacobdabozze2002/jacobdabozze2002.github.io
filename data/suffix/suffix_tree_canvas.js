@@ -36,65 +36,6 @@ function setup() {
     root = new TreeNode(null);
     nodes.push(root);
 
-    // BEISPIEL 1
-    /*root.addChild("A");
-    root.getChild(0).addChild("a");
-    root.getChild(0).getChild(0).addChild("a0");
-    root.getChild(0).addChild("b");
-    root.getChild(0).getChild(1).addChild("b0")
-    root.getChild(0).getChild(1).addChild("b1")
-    root.getChild(0).addChild("c");
-    root.getChild(0).getChild(2).addChild("c0")
-    root.getChild(0).getChild(2).addChild("c1")
-    root.getChild(0).addChild("d");
-    root.getChild(0).getChild(3).addChild("d0")
-    root.getChild(0).getChild(3).addChild("d1")
-    root.getChild(0).getChild(3).addChild("d2")
-    root.addChild("B");
-    root.getChild(1).addChild("e");
-    root.getChild(1).getChild(0).addChild("e0");
-    root.getChild(1).getChild(0).addChild("e1");
-    root.getChild(1).getChild(0).addChild("e2");
-    root.getChild(1).addChild("f");
-    root.getChild(1).getChild(1).addChild("f0");*/
-
-    // BEISPIEL banana\0 komprimiert
-    /*root.addChild("banana\\0");
-    root.addChild("a");
-    root.getChild(1).addChild("na");
-    root.getChild(1).getChild(0).addChild("na\\0");
-    root.getChild(1).getChild(0).addChild("\\0");
-    root.getChild(1).addChild("\\0");
-    root.addChild("na");
-    root.getChild(2).addChild("na\\0");
-    root.getChild(2).addChild("\\0");
-    root.addChild("\\0");*/
-
-    // BEISPIEL banana\0
-    /*root.addChild("b");
-    root.getChild(0).addChild("a");
-    root.getChild(0).getChild(0).addChild("n");
-    root.getChild(0).getChild(0).getChild(0).addChild("a");
-    root.getChild(0).getChild(0).getChild(0).getChild(0).addChild("n");
-    root.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).addChild("a");
-    root.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).addChild("\\0");
-    root.addChild("a");
-    root.getChild(1).addChild("n");
-    root.getChild(1).getChild(0).addChild("a");
-    root.getChild(1).getChild(0).getChild(0).addChild("n");
-    root.getChild(1).getChild(0).getChild(0).getChild(0).addChild("a");
-    root.getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).addChild("\\0");
-    root.getChild(1).getChild(0).getChild(0).addChild("\\0");
-    root.getChild(1).addChild("\\0");
-    root.addChild("n");
-    root.getChild(2).addChild("a");
-    root.getChild(2).getChild(0).addChild("n");
-    root.getChild(2).getChild(0).getChild(0).addChild("a");
-    root.getChild(2).getChild(0).getChild(0).getChild(0).addChild("\\0");
-    root.getChild(2).getChild(0).addChild("\\0");
-    root.addChild("\\0");*/
-
-    // TODO: Depth automatisch berechnen
     treeDepth = 20;
     root.calcTree(0, 0);
 }
@@ -119,11 +60,7 @@ function setTreeVisible(visible) {
 }
 
 function setTreeAllowInput(allow) {
-    if (allow) {
-        treeAllowInput = true;
-    } else {
-        treeAllowInput = false;
-    }
+    treeAllowInput = allow;
 }
 
 function resetToRoot() {

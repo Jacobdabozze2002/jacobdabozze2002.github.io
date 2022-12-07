@@ -159,25 +159,6 @@ main_maxmaus = async () =>
     await sayAndWait("Natürlich kein richtiger Meister wie Ich, höhöhöhö!");
     await sayAndWait("Aber Ihr seid auf jeden Fall schon sehr gut!");
 
-/*    root.addChild("M");
-    root.getChild(0).addChild("A");
-    root.getChild(0).getChild(0).addChild("X");
-    root.getChild(0).getChild(0).getChild(0).addChild("M");
-    root.getChild(0).getChild(0).getChild(0).getChild(0).addChild("A");
-    root.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).addChild("U");
-    root.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).addChild("S");
-    root.addChild("A");
-    root.getChild(1).addChild("X");
-    root.getChild(1).getChild(0).addChild("M");
-    root.getChild(1).getChild(0).getChild(0).addChild("A");
-    root.getChild(1).getChild(0).getChild(0).getChild(0).addChild("U");
-    root.getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).addChild("S");
-    root.addChild("X");
-    root.getChild(2).addChild("M");
-    root.getChild(2).getChild(0).addChild("A");
-    root.getChild(2).getChild(0).getChild(0).addChild("U");
-    root.getChild(2).getChild(0).getChild(0).getChild(0).addChild("S");*/
-
     await sayAndWait("Machen wir weiter...");
     await sayAndWait("Nun wollen wir den Suffix MAUS hinzufügen.");
     setTask("Suffix MAUS einfügen");
