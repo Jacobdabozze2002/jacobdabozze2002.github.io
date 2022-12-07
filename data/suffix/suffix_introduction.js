@@ -13,7 +13,7 @@ introduction = async () => {
     await sayAndWait("Ach ja! Den Algorithmus für den fantastischen...");
     await sayAndWait("... sogar ganz unglaublichen...");
     await sayAndWait("... Suffix-Baum!!!");
-    await sayAndWait("Ja, genau! Den Suffix-Baum! Oder wie er auf\nEnglisch auch genannt wird: \"Suffix Tree\"!");*/
+    await sayAndWait("Ja, genau! Den Suffix-Baum! Oder wie er auf\nEnglisch auch genannt wird: \"Suffix Tree\"!");
 
     while (true) {
         await saySlow("Seid Ihr bereit, das Geheimnis der Suffix-Bäume zu erfahren?");
@@ -38,7 +38,7 @@ introduction = async () => {
 
     await sayAndWait("Prima! Ich freue mich schon!");
     await sayAndWait("Dann gebt mir einen Moment, um mich vorzubereiten...");
-    await sayAndWait("...");
+    await sayAndWait("...");*/
 
     // Calculate suffix tree render scale
     let scale = (0.48 * window.innerWidth) / 1000;
@@ -49,6 +49,6 @@ introduction = async () => {
     document.getElementById("input_text").style.display = "block";
     await sayAndWait("So, ich bin bereit!");
 
-    ending();
-    // main();
+    // ending();
+    main();
 }

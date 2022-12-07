@@ -24,8 +24,7 @@ alignTo("bottom-center", "1.6vw");
 // tasks
 const tasks = new JF_Element(container).
 styleClass("tasks small_font").
-alignTo("bottom-center", "1vw").
-applyText("Aufgabe: -");
+alignTo("bottom-center", "1vw");
 
 // notes
 const notes = new JF_Element(container);
@@ -64,28 +63,18 @@ waitUserInput = async () => {
 }
 
 waitForClick = async (obj = document.body) => {
-    continuation.applyText("(mit Maus klicken)").style(`
-        animation: continuation 3s infinite alternate;
-        animation-delay: 3s;
-    `);
     obj.onclick = () => next = true;
     obj.oncontextmenu = () => next = true;
     await waitUserInput();
     obj.onclick = () => {};
     obj.oncontextmenu = () => {};
-    continuation.applyText("").css("animation", "");
+    // setContinuation();
 }
 
 waitForTreeChange = async () => {
     setTreeAllowInput(true);
-    continuation.applyText("(auf Baum klicken)").style(`
-        animation: continuation 3s infinite alternate;
-        animation-delay: 3s;
-    `);
-    task("Baum verändern");
     while (true) {
         let oldTree = root.getTreeString();
-        console.log(oldTree);
         await waitForClick();
         await new Promise(res => setTimeout(res, 50));
         if (root.getTreeString() !== oldTree) break;
@@ -102,22 +91,15 @@ waitForTreeString = async (treeString = "") => {
 }
 
 waitForKeyPressed = async (key = "b") => {
-    continuation.applyText(`(Taste ${key} drücken)`).style(`
-        animation: continuation 3s infinite alternate;
-        animation-delay: 2s;
-    `);
+    await setContinuation(`Taste ${key} drücken`);
     onkeydown = e => next = e.key === key;
     await waitUserInput();
     onkeydown = () => {};
-    continuation.applyText("").css("animation", "");
+    await setContinuation();
 }
 
 waitForLetterPressed = async () => {
     setTreeAllowInput(true);
-    continuation.applyText(`(Beliebigen Buchstaben drücken)`).style(`
-        animation: continuation 3s infinite alternate;
-        animation-delay: 2s;
-    `);
     while (true) {
         let oldInputText = input_text.self().innerText;
         console.log(oldInputText);
@@ -128,10 +110,7 @@ waitForLetterPressed = async () => {
 
 let lastKeyPressed = "";
 waitFor1of2KeysPressed = async (keys = ["j", "n"]) => {
-    continuation.applyText(`(Taste ${keys[0]} oder ${keys[1]} drücken)`).style(`
-        animation: continuation 3s infinite alternate;
-        animation-delay: 2s;
-    `);
+    await setContinuation(`Taste ${keys[0]} oder ${keys[1]} drücken`);
     onkeydown = e =>
     {
         if (e.key === keys[0] || e.key === keys[1])
@@ -142,7 +121,7 @@ waitFor1of2KeysPressed = async (keys = ["j", "n"]) => {
     };
     await waitUserInput();
     onkeydown = () => {};
-    continuation.applyText("").css("animation", "");
+    await setContinuation();
 }
 
 saySlow = async (text = "",  wait = 75) => {
@@ -162,8 +141,22 @@ saySlow = async (text = "",  wait = 75) => {
     return new Promise(res => setTimeout(res, 50));
 }
 
-task = (task = "-") => {
-    tasks.applyText("Aufgabe: " + task)
+setTask = (task_text = "") => {
+    if (task_text === "") tasks.applyText("");
+    else tasks.applyText(`Aufgabe: ${task_text}`);
+}
+
+setContinuation = async (input_text = "") => {
+    if (input_text === "") {
+        continuation.applyText("").
+        css("animation", "");
+    } else {
+        continuation.applyText("(" + input_text + ")");
+        continuation.style(`
+            animation: continuation 3s infinite alternate;
+            animation-delay: 3s;
+        `);
+    }
 }
 
 // load picture for master or puzzle
@@ -183,7 +176,9 @@ hidePicture = () => {
 
 sayAndWait = async (text = "") => {
     await saySlow(text);
+    setContinuation("mit Maus klicken");
     await waitForClick();
+    setContinuation();
 }
 
 sayAndWaitForTreeChange = async (text = "") => {

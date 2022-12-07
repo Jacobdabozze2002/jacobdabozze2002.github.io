@@ -1,7 +1,7 @@
 ending = async () => {
     showPicture("/data/images/master4.png");
 
-/*    await sayAndWait("Sooo, das war nun wirklich alles, das ich\nEuch über die Suche in Texten beibringen konnte.");
+    await sayAndWait("Sooo, das war nun wirklich alles, das ich\nEuch über die Suche in Texten beibringen konnte.");
     await sayAndWait("Ich hoffe, Ihr habt es genauso spannend gefunden\nwie ich es fand, Euch das alles zu erklären.");
     await sayAndWait("Ich wünsche Euch viel Erfolg bei Euren\nweiteren Forschungen!");
     await sayAndWait("Und nun, auf Wiedersehen!");
@@ -21,7 +21,7 @@ ending = async () => {
     await sayAndWait("Aber natürlich! Ich habe Euch doch\nnicht für nichts belohnt!");
     await sayAndWait("Das wäre schließlich nicht fair!");
     await sayAndWait("Also, hier ist es:");
-    await sayAndWait("Das große Geheimnis hinter dem Puzzle ist...");*/
+    await sayAndWait("Das große Geheimnis hinter dem Puzzle ist...");
 
     showPicture("/data/images/puzzle/puzzle_step5.png");
     await waitForClick();
