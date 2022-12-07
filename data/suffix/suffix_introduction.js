@@ -1,5 +1,5 @@
 introduction = async () => {
-/*    showPicture("/data/images/master.png");
+    showPicture("/data/images/master.png");
     setTreeVisible(false);
     setTreeAllowInput(false);
     document.getElementById("input_text").style.display = "none";
@@ -38,7 +38,7 @@ introduction = async () => {
 
     await sayAndWait("Prima! Ich freue mich schon!");
     await sayAndWait("Dann gebt mir einen Moment, um mich vorzubereiten...");
-    await sayAndWait("...");*/
+    await sayAndWait("...");
 
     // Calculate suffix tree render scale
     let scale = (0.48 * window.innerWidth) / 1000;
