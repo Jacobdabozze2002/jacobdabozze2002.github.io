@@ -120,7 +120,7 @@ main_maxmaus = async () =>
     await sayAndWait("Gut, das wiederholt Ihr nun noch einmal mit dem X,\nund dann mit dem M, und dann...");
     await sayAndWait("Ach was!");
     await sayAndWait("Ihr versteht schon!");
-    await saySlow("Erweitert den Baum also so, dass er den gesamten\nSuffix MAXMAUS enthält! Ich warte solange...");
+    await saySlow("Erweitert den Baum also so, dass er das gesamte\nSuffix MAXMAUS enthält! Ich warte solange...");
 
     setTask("MAXMAUS vollständig einfügen");
     await setContinuation("XMAUS anhängen");
@@ -129,8 +129,8 @@ main_maxmaus = async () =>
     setTreeAllowInput(false);
     await sayAndWait("Das ging ja schnell!");
 
-    await sayAndWait("Dann wollen wir geschwind den nächsten Suffix hinzufügen!");
-    await sayAndWait("Wie Ihr Euch sicherlich schon denken könnt,\nist das der Suffix AXMAUS.");
+    await sayAndWait("Dann wollen wir geschwind das nächste Suffix hinzufügen!");
+    await sayAndWait("Wie Ihr Euch sicherlich schon denken könnt,\nist das das Suffix AXMAUS.");
     await sayAndWait("Ab jetzt müssen wir aber etwas aufpassen!");
     await sayAndWait("Wir müssen nämlich darauf achten, dass wir\nniemals den gleichen Knoten mehrfach erstellen!");
     await sayAndWait("Das wäre fatal!");
@@ -148,7 +148,7 @@ main_maxmaus = async () =>
 
     await sayAndWait("Das tut es nicht, also müssen wir einen neuen Knoten\nmit dem Buchstaben X an das A anhängen.");
     await sayAndWait("Und so weiter...");
-    await saySlow("Ich warte solange, bis Ihr den Suffix AXMAUS\nin den Baum eingefügt habt.");
+    await saySlow("Ich warte solange, bis Ihr das Suffix AXMAUS\nin den Baum eingefügt habt.");
     await setContinuation("XMAUS anhängen");
     await waitForTreeString("MAXMAUSAXMAUS");
     setTreeAllowInput(false);
@@ -156,7 +156,7 @@ main_maxmaus = async () =>
     await sayAndWait("Ihr werdet wirklich immer schneller!");
     setTask();
 
-    await saySlow("Sicherlich schafft Ihr es auch, den Suffix\nXMAUS in den Baum einzufügen!");
+    await saySlow("Sicherlich schafft Ihr es auch, das Suffix\nXMAUS in den Baum einzufügen!");
     setTask("Suffix XMAUS einfügen");
     await setContinuation("XMAUS an Wurzel hängen");
     await waitForTreeString("MAXMAUSAXMAUSXMAUS");
@@ -169,13 +169,13 @@ main_maxmaus = async () =>
     await sayAndWait("Aber Ihr seid auf jeden Fall schon sehr gut!");
 
     await sayAndWait("Machen wir weiter...");
-    await sayAndWait("Nun wollen wir den Suffix MAUS hinzufügen.");
+    await sayAndWait("Nun wollen wir das Suffix MAUS hinzufügen.");
     setTask("Suffix MAUS einfügen");
     await sayAndWait("Aber diesmal müssen wir wirklich ganz genau aufpassen!");
     await sayAndWait("Ihr habt sicherlich bemerkt, dass wir schon eine\nKante mit dem Buchstaben M an der Wurzel haben.");
     await sayAndWait("Richtet Euren Blick also auf diese Kante mit dem M!");
     await sayAndWait("Sie führt zu einer Kante mit dem Buchstaben A.");
-    await sayAndWait("Und wir wollen schließlich den Suffix MAUS\nhinzufügen! Das passt also!");
+    await sayAndWait("Und wir wollen schließlich das Suffix MAUS\nhinzufügen! Das passt also!");
     await sayAndWait("Das U hingegen passt nicht, denn es gibt am A\nnoch keine Kante mit dem Buchstaben U.");
 
     await sayAndWait("Ihr seid bestimmt schon auf die Lösung gekommen!");
@@ -193,7 +193,7 @@ main_maxmaus = async () =>
     await sayAndWait("Ihr seid wahrhaftig der beste Schüler, den Ich je hatte!");
     setTask();
     await sayAndWait("Ich bin stolz auf Euch!");
-    await sayAndWait("Ich denke, Ihr schafft es auch, den Suffix\nAUS in den Baum einzufügen!");
+    await sayAndWait("Ich denke, Ihr schafft es auch, das Suffix\nAUS in den Baum einzufügen!");
     await saySlow("Vergesst nur nicht, auf das A zu achten!");
     setTask("Suffix AUS einfügen");
     await setContinuation("AUS an Wurzel anhängen");
