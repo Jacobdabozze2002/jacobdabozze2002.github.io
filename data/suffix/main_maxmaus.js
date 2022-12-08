@@ -1,7 +1,7 @@
 main_maxmaus = async () =>
 {
     hidePicture();
-    setTask();
+    /*setTask();
     await sayAndWait("Seht Ihr den kleinen Punkt, der sich\nnun auf der Buchseite befindet?");
     await sayAndWait("Dieser Punkt ist der Anfang des besagten Baumes.");
     await sayAndWait("Nun, genauer gesagt repräsentiert er den Wurzelknoten.");
@@ -103,9 +103,9 @@ main_maxmaus = async () =>
     setTreeAllowInput(false);
     setTask();
     await sayAndWait("Sehr gut! Ich hoffe, Ihr treibt keinen Schabernack!");
-    await sayAndWait("Höhöhö!");
+    await sayAndWait("Höhöhö!");*/
 
-    if (root.getTreeString() === "M") {
+    if (root.getTreeString() === "M1") {
         await saySlow("Der nächste Buchstabe ist ein A. Tippt es also ein und klickt\nauf den Knoten mit dem M, den Ihr soeben erstellt habt.");
     } else {
         await sayAndWait("Der nächste Buchstabe ist ein A.");
@@ -114,7 +114,7 @@ main_maxmaus = async () =>
     }
     setTask("Zweiten Buchstaben einfügen");
     await setContinuation("A anhängen");
-    await waitForTreeString("MA");
+    await waitForTreeString("M1A2");
     setTask();
 
     await sayAndWait("Gut, das wiederholt Ihr nun noch einmal mit dem X,\nund dann mit dem M, und dann...");
@@ -124,7 +124,7 @@ main_maxmaus = async () =>
 
     setTask("MAXMAUS vollständig einfügen");
     await setContinuation("XMAUS anhängen");
-    await waitForTreeString("MAXMAUS");
+    await waitForTreeString("M1A2X3M4A5U6S7");
     setTask();
     setTreeAllowInput(false);
     await sayAndWait("Das ging ja schnell!");
@@ -150,7 +150,7 @@ main_maxmaus = async () =>
     await sayAndWait("Und so weiter...");
     await saySlow("Ich warte solange, bis Ihr das Suffix AXMAUS\nin den Baum eingefügt habt.");
     await setContinuation("XMAUS anhängen");
-    await waitForTreeString("MAXMAUSAXMAUS");
+    await waitForTreeString("M1A2X3M4A5U6S7A1X2M3A4U5S6");
     setTreeAllowInput(false);
     await sayAndWait("Hervorragend!");
     await sayAndWait("Ihr werdet wirklich immer schneller!");
@@ -159,7 +159,7 @@ main_maxmaus = async () =>
     await saySlow("Sicherlich schafft Ihr es auch, das Suffix\nXMAUS in den Baum einzufügen!");
     setTask("Suffix XMAUS einfügen");
     await setContinuation("XMAUS an Wurzel hängen");
-    await waitForTreeString("MAXMAUSAXMAUSXMAUS");
+    await waitForTreeString("M1A2X3M4A5U6S7A1X2M3A4U5S6X1M2A3U4S5");
     setTreeAllowInput(false);
     await sayAndWait("Sehr gut! Ihr seid wirklich ein Meister!");
     setTask();
@@ -181,13 +181,13 @@ main_maxmaus = async () =>
     await sayAndWait("Ihr seid bestimmt schon auf die Lösung gekommen!");
     await saySlow("Probiert es einfach aus!");
     await setContinuation("U an A anhängen");
-    await waitForTreeString("MAXMAUSUAXMAUSXMAUS");
+    await waitForTreeString("M1A2X3M4A5U6S7U3A1X2M3A4U5S6X1M2A3U4S5");
     setTreeAllowInput(false);
 
     await sayAndWait("Ach, Ihr habt es ja schon gemacht!");
     await saySlow("Fehlt nur noch das S!");
     await setContinuation("S an U anhängen");
-    await waitForTreeString("MAXMAUSUSAXMAUSXMAUS");
+    await waitForTreeString("M1A2X3M4A5U6S7U3S4A1X2M3A4U5S6X1M2A3U4S5");
     setTreeAllowInput(false);
 
     await sayAndWait("Ihr seid wahrhaftig der beste Schüler, den Ich je hatte!");
@@ -196,15 +196,15 @@ main_maxmaus = async () =>
     await sayAndWait("Ich denke, Ihr schafft es auch, das Suffix\nAUS in den Baum einzufügen!");
     await saySlow("Vergesst nur nicht, auf das A zu achten!");
     setTask("Suffix AUS einfügen");
-    await setContinuation("AUS an Wurzel anhängen");
-    await waitForTreeString("MAXMAUSUSAXMAUSUSXMAUS");
+    await setContinuation("AUS anhängen");
+    await waitForTreeString("M1A2X3M4A5U6S7U3S4A1X2M3A4U5S6U2S3X1M2A3U4S5");
     setTreeAllowInput(false);
     await sayAndWait("Echt klasse! Und so schnell!");
     setTask();
 
     await saySlow("Gewiss schafft Ihr auch noch die letzten beiden\nSuffixe, US und S!");
     await setContinuation("US und S anhängen");
-    await waitForTreeString("MAXMAUSUSAXMAUSUSXMAUSUSS");
+    await waitForTreeString("M1A2X3M4A5U6S7U3S4A1X2M3A4U5S6U2S3X1M2A3U4S5U1S2S1");
     setTreeAllowInput(false);
     await sayAndWait("100% richtig! Jetzt habt Ihr wirklich alles gelernt!");
     await sayAndWait("Der Baum ist vollständig!");

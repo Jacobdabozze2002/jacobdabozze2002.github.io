@@ -143,9 +143,9 @@ class TreeNode {
 
         if (this.parent !== null) {
             if (this.lineText === "" || this.lineText === null || this.lineText === undefined) {
-                tempString = "!"
+                tempString = "!"  + this.depth.toString();
             } else {
-                tempString = this.lineText;
+                tempString = this.lineText + this.depth.toString();
             }
         }
 
