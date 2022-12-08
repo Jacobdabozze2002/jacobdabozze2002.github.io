@@ -1,7 +1,7 @@
 main_maxmaus = async () =>
 {
     hidePicture();
-    /*setTask();
+    setTask();
     await sayAndWait("Seht Ihr den kleinen Punkt, der sich\nnun auf der Buchseite befindet?");
     await sayAndWait("Dieser Punkt ist der Anfang des besagten Baumes.");
     await sayAndWait("Nun, genauer gesagt repräsentiert er den Wurzelknoten.");
@@ -103,7 +103,7 @@ main_maxmaus = async () =>
     setTreeAllowInput(false);
     setTask();
     await sayAndWait("Sehr gut! Ich hoffe, Ihr treibt keinen Schabernack!");
-    await sayAndWait("Höhöhö!");*/
+    await sayAndWait("Höhöhö!");
 
     if (root.getTreeString() === "M1") {
         await saySlow("Der nächste Buchstabe ist ein A. Tippt es also ein und klickt\nauf den Knoten mit dem M, den Ihr soeben erstellt habt.");

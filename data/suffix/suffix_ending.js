@@ -1,5 +1,6 @@
 ending = async () => {
     setTreeVisible(false);
+    document.getElementById("input_text").style.display = "none";
     showPicture("/data/images/master4.png");
 
     await sayAndWait("Sooo, das war nun wirklich alles, das ich\nEuch über die Suche in Texten beibringen konnte.");
