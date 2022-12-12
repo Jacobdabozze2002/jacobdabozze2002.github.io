@@ -13,9 +13,63 @@ Test = async () =>
 
     task();
 
+    await saySlow("Ich habe für Euch das Muster ein wenig erweitert.");
+    await waitForClick();
+
+    await saySlow("In diese neuen Felder müsst ihr gleich Zahlen eintragen.");
+    await waitForClick();
+
+    await saySlow("Das Ziel ist es die längste Zeichenkette im Muster zu finden, \ndie sich wiederholt.");
+    await waitForClick();
+
+    await saySlow("Die richtige Zahl ergibt sich aus den Antworten zu zwei Fragen:");
+    await waitForClick();
+
+    await saySlow("Erstens:\nIst dieses Zeichen schon einmal im Muster vorgekommen?");
+    await waitForClick();
+
+    await saySlow("Wenn Ihr diese Frage mit 'Nein' beantwortet, \ndann bekommt dieses Zeichen eine 0 zugewiesen.");
+    await waitForClick();
+
+    await saySlow("Ansonsten wisst Ihr, dass das Zeichen\nauf jeden Fall eine Zahl bekommt.");
+    await waitForClick();
+
+    await saySlow("Zweitens:");
+    await waitForClick();
+
+    await saySlow("Wie viele Zeichen waren vor diesem Zeichen,\nwelche auch schon mal im Muster vorkamen?");
+    await waitForClick();
+
+    await saySlow("Nun müsst Ihr zählen, wie viele Zeichen davor bereits\neine andere Zahl als 0 bekommen haben.");
+    await waitForClick();
+
+    await saySlow("Diese Zahl addiert Ihr dann mit 1,\num die gesuchte Zahl zu erhalten.");
+    await waitForClick();
+
+    await saySlow("Nun habt Ihr die Länge der Zeichenkette.");
+    await waitForClick();
+
+    await saySlow("Aber Vorsicht!");
+    await waitForClick();
+
+    await saySlow("Hierbei müsst Ihr noch einige Dinge beachten.");
+    await waitForClick();
+
+    await saySlow("Sobald ein Zeichen eine 0 bekommen hat,\nfangt Ihr wieder von 0 zu zählen an.");
+    await waitForClick();
+
+    await saySlow("Zudem müsst Ihr stets überprüfen, ob die Zeichenkette,\nwelche Ihr gerade bildet, schon genau so einmal vorkam.");
+    await waitForClick();
+
+    await saySlow("Wenn dies nicht der Fall ist,\nfangt Ihr auch wieder von 0 zu zählen an.");
+    await waitForClick();
+
 
     //Zahlen eingeben
     await saySlow("Noch ein kleiner tipp für Euch. \nDas erste Zeichen bekommt immer eine 0 zugewiesen.");
+    await waitForClick();
+
+    await saySlow("Nun lasst uns beginnen.");
     await waitForClick();
 
     await saySlow("Gib nun die richtige Zahl für <O> ein");
@@ -97,7 +151,28 @@ Test = async () =>
 
     // Vergleich
 
-    await saySlow("Nochmal zur Errinerung: \nDieser Teil geht genau so wie die Navie Suche los.");
+    await saySlow("Als nächstes kommen wir zum Vergleichen der Zeichen.");
+    await waitForClick();
+
+    await saySlow("Hierbei wird erst wie bei der Naiven Suche \nvon links nach rechts verglichen.");
+    await waitForClick();
+
+    await saySlow("Sollte es zu einem Mismatch kommen,\nmüsst Ihr ein bisschen rechnen.");
+    await waitForClick();
+
+    await saySlow("Den Index des Zeiches, welches Ihr gerade verglichen hattet,\nminus der zugewiesenen Zahl des vorherigen Zeichens.");
+    await waitForClick();
+
+    await saySlow("Um diese Zahl kann das Muster nun verschoben werden.");
+    await waitForClick();
+
+    await saySlow("Nach dem Verschieben gibt es noch eine Besonderheit,\nfalls die zugewiesene Zahl nicht 0 war.");
+    await waitForClick();
+
+    await saySlow("Denn in diesem Fall wissen wir schon,\ndass gewisse Zeichen gleich sind.");
+    await waitForClick();
+
+    await saySlow("Die Anzahl der gleichen Zeichen\nentspricht der Zugewiesenen Zahl.");
     await waitForClick();
 
 //1
@@ -378,6 +453,7 @@ Test = async () =>
     await saySlow("Ihr habt es Geschafft!\nDas gesuchte Muster wurde gefunden.");
     await waitForClick();
 
+    abc.removeChildren();
     abc.style("display: none");
 
     // return to main

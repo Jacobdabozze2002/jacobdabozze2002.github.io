@@ -3,8 +3,8 @@ main = async () =>
     // init
     const kmp_examples =
         [
-            ["ONIONIONSON", "ONIONS", Test],      // Text, Muster, Index
-            ["ABCABCABDAB","ABCABD", zweiterText]
+            ["ONIONIONSO", "ONIONS", Test],      // Text, Muster, Index
+            ["ABCABCABDA","ABCABD", zweiterText]
         ]
 
     const example = kmp_examples[Math.floor(Math.random() * kmp_examples.length)];
@@ -21,5 +21,5 @@ main = async () =>
     search.removeChildren();
 
     // end
-    ending();       //wechselt nicht zu ending wahrscheinlich wegen clean up
+    ending();
 }

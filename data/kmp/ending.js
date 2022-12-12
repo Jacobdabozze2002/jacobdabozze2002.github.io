@@ -8,7 +8,7 @@ ending = async () =>
     await waitForClick();
 
     await saySlow("Für Eure hervorragende Leistung, \nbekommt Ihr ein weiteres Puzzleteil.");
-    showPicture("/data/images/puzzle/puzzle_step1.png");
+    showPicture("/data/images/puzzle/puzzle_step2.png");
     await waitForClick();
 
     await saySlow("Jetzt können wir zur nächsten Herausforderung gehen.");
