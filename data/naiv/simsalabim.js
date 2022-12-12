@@ -14,13 +14,13 @@ simsalabim = async () =>
     searchSelect([0]);
     await waitForClick();
 
-    await saySlow("Die Zeichen <s> und <a> stimmen nicht überein.");
+    await saySlow("Die Zeichen <S> und <a> stimmen nicht überein.");
     await waitForClick();
 
-    await saySlow("Dann müssen wir es wohl direkt verschieben.");
+    await saySlow("Immer wenn ein sogenanntes Mismatch auftritt.");
     await waitForClick();
 
-    await saySlow("Hierfür müssen wir jedes einzelne Zeichen vergleichen.");
+    await saySlow("Muss das Suchmuster\n ein Zeichen weiter nach rechts verschoben werden.");
     await waitForClick();
 
     await saySlow("Beim ersten Mal werde ich es Euch noch einmal zeigen.");
@@ -220,7 +220,7 @@ simsalabim = async () =>
         await saySlow("Welches Zeichen wird nun mit <b> verglichen?");
         textSelect([4]);
         searchSelect([0,1]);
-        textSelectOnClickOn();
+        textSelectOnClickOn([4]);
         task("Zeichen im Text auswählen");
         await waitForClick();
 
