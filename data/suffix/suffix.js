@@ -5,4 +5,5 @@ container.style(`
     backgroundSize: cover;
 `);
 
-introduction();
+//introduction();
+ending()
