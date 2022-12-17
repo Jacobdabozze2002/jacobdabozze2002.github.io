@@ -13,19 +13,22 @@ Test = async () =>
 
     task();
 
-    await saySlow("Ich habe für Euch das Muster ein wenig erweitert.");
+    /*await saySlow("Ich habe für Euch das Muster ein wenig erweitert.");
     await waitForClick();
 
-    await saySlow("In diese neuen Felder müsst ihr gleich Zahlen eintragen.");
+    await saySlow("In diese neuen Felder müsst Ihr gleich Zahlen eintragen.");
     await waitForClick();
 
-    await saySlow("Das Ziel ist es die längste Zeichenkette im Muster zu finden, \ndie sich wiederholt.");
+    await saySlow("Das Ziel ist es, die, längste Zeichenkette im\nMuster zu finden, die sich wiederholt.");
     await waitForClick();
 
-    await saySlow("Die richtige Zahl ergibt sich aus den Antworten zu zwei Fragen:");
+    await saySlow("Die richtige Zahl ergibt sich aus\nden Antworten zu zwei Fragen:");
     await waitForClick();
 
-    await saySlow("Erstens:\nIst dieses Zeichen schon einmal im Muster vorgekommen?");
+    await saySlow("Erstens:");
+    await waitForClick();
+
+    await saySlow("Ist dieses Zeichen schon einmal im Muster vorgekommen?");
     await waitForClick();
 
     await saySlow("Wenn Ihr diese Frage mit 'Nein' beantwortet, \ndann bekommt dieses Zeichen eine 0 zugewiesen.");
@@ -62,17 +65,17 @@ Test = async () =>
     await waitForClick();
 
     await saySlow("Wenn dies nicht der Fall ist,\nfangt Ihr auch wieder von 0 zu zählen an.");
-    await waitForClick();
+    await waitForClick();*/
 
 
     //Zahlen eingeben
-    await saySlow("Noch ein kleiner tipp für Euch. \nDas erste Zeichen bekommt immer eine 0 zugewiesen.");
+    await saySlow("Noch ein kleiner Tipp für Euch:\nDas erste Zeichen bekommt immer eine 0 zugewiesen.");
     await waitForClick();
 
     await saySlow("Nun lasst uns beginnen.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <O> ein");
+    await saySlow("Gib nun die richtige Zahl für <O> ein.");
     await waitForKeyPressed("0");
     abc.removeChildren().
     addChildrenByText("0").
@@ -81,7 +84,7 @@ Test = async () =>
     await saySlow("Das zweite Zeichen schafft Ihr ganz leicht.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl <N> ein");
+    await saySlow("Gib nun die richtige Zahl für <N> ein.");
     await waitForKeyPressed("0");
     abc.
     removeChildren().
@@ -91,7 +94,7 @@ Test = async () =>
     await saySlow("Auch bei dem dritten Zeichen, \nmüsst Ihr noch nicht viel überlegen.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <I> ein");
+    await saySlow("Gib nun die richtige Zahl für <I> ein.");
     await waitForKeyPressed("0");
     abc.
     removeChildren().
@@ -110,7 +113,7 @@ Test = async () =>
     await saySlow("2. Wie viele Zeichen waren vor diesem Zeichen, \nwelche auch schon mal im Muster vorkamen?");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <O> ein");
+    await saySlow("Gib nun die richtige Zahl für <O> ein.");
     await waitForKeyPressed("1");
     abc.
     removeChildren().
@@ -126,7 +129,7 @@ Test = async () =>
     await saySlow("2. Wie viele Zeichen waren vor diesem Zeichen, \nwelche auch schon mal im Muster vorkamen?");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <N> ein");
+    await saySlow("Gib nun die richtige Zahl für <N> ein.");
     await waitForKeyPressed("2");
     abc.
     removeChildren().
@@ -136,7 +139,7 @@ Test = async () =>
     await saySlow("Bei dem letzten Zeichen wird es wieder einfach.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <S> ein");
+    await saySlow("Gib nun die richtige Zahl für <S> ein.");
     await waitForKeyPressed("0");
     abc.
     removeChildren().
@@ -172,7 +175,7 @@ Test = async () =>
     await saySlow("Denn in diesem Fall wissen wir schon,\ndass gewisse Zeichen gleich sind.");
     await waitForClick();
 
-    await saySlow("Die Anzahl der gleichen Zeichen\nentspricht der Zugewiesenen Zahl.");
+    await saySlow("Die Anzahl der gleichen Zeichen\nentspricht der zugewiesenen Zahl.");
     await waitForClick();
 
 //1
@@ -195,7 +198,7 @@ Test = async () =>
         else completed = true;
     }
 
-    await saySlow("Ich sehe Ihr habt Euch gemerkt \nwie die Naive Suche funktioniert.");
+    await saySlow("Ich sehe Ihr habt Euch gemerkt,\nwie die Naive Suche funktioniert.");
     await waitForClick();
 //2
 
@@ -211,13 +214,13 @@ Test = async () =>
 
         if (lastKeyPressed !== "j")
         {
-            await saySlow("Das ist nicht Korrekt. Nochmal!");
+            await saySlow("Das ist nicht korrekt. Nochmal!");
             await waitForClick();
         }
         else completed = true;
     }
 
-    await saySlow("Weiter so, das war Richtig!");
+    await saySlow("Weiter so, das war richtig!");
     await waitForClick();
 //3
 
@@ -255,13 +258,13 @@ Test = async () =>
 
         if (lastKeyPressed !== "j")
         {
-            await saySlow("Das ist nicht Korrekt. Nochmal!");
+            await saySlow("Das ist nicht korrekt. Nochmal!");
             await waitForClick();
         }
         else completed = true;
     }
 
-    await saySlow("Ihr kommt schnell voran. Das Freut mich!");
+    await saySlow("Ihr kommt schnell voran. Das freut mich!");
     await waitForClick();
 
 //5
@@ -277,13 +280,13 @@ Test = async () =>
 
         if (lastKeyPressed !== "j")
         {
-            await saySlow("Das ist Falsch, versucht nachzudenken!");
+            await saySlow("Das ist falsch, versucht nachzudenken!");
             await waitForClick();
         }
         else completed = true;
     }
 
-    await saySlow("Weiter so, das war Richtig!");
+    await saySlow("Weiter so, das war richtig!");
     await waitForClick();
 
 //6 Mismatch
@@ -299,7 +302,7 @@ Test = async () =>
 
         if (lastKeyPressed !== "n")
         {
-            await saySlow("Das ist Falsch, versucht nachzudenken!");
+            await saySlow("Das ist falsch, versucht nachzudenken!");
             await waitForClick();
         }
         else completed = true;
@@ -309,10 +312,10 @@ Test = async () =>
     completed = false;
     while (!completed)
     {
-        await saySlow("Da Ein Mismatch aufgetreten ist, \nmüsst Ihr das Muster verschieben.");
+        await saySlow("Da ein Mismatch aufgetreten ist, \nmüsst Ihr das Muster verschieben.");
         await waitForClick();
 
-        await saySlow("Errinert Euch dafür an die Rechnung: \nIndex - vorherige zugewiesene Zahl");
+        await saySlow("Erinnert Euch dafür an die Rechnung: \nIndex minus vorherige zugewiesene Zahl");
         await waitForClick();
 
         await saySlow("Verschiebt nun das Muster den Regeln entsprechend!");
@@ -327,7 +330,7 @@ Test = async () =>
 
         if (jf_index !== 3)
         {
-            await saySlow("Das stimmt so nicht! Probiert es nochmal.");
+            await saySlow("Das stimmt so nicht! Probiert es noch einmal.");
             move(-jf_index);
             await waitForClick();
         }
@@ -339,7 +342,7 @@ Test = async () =>
     {
         textSelect();
         searchSelect();
-        await saySlow("Ihr errinert Euch, das wir jetzt schon ein paar Zeichen haben, \nwelche beim Vergleich übereinstimmen.");
+        await saySlow("Ihr erinnert Euch, dass wir jetzt schon ein paar Zeichen haben, \nwelche beim Vergleich übereinstimmen.");
         await waitForClick();
 
         await saySlow("Welches Zeichen müssen wir im Suchtext nun vergleichen?");
@@ -398,13 +401,13 @@ Test = async () =>
 
         if (lastKeyPressed !== "j")
         {
-            await saySlow("Das ist Falsch, strengt Euch etwas an!");
+            await saySlow("Das ist falsch, strengt Euch etwas an!");
             await waitForClick();
         }
         else completed = true;
     }
 
-    await saySlow("Wenn Ihr so weiter macht, \ndann habt Ihr diesen Suchalgorithmus bald gemeistert");
+    await saySlow("Wenn Ihr so weiter macht, \ndann habt Ihr diesen Suchalgorithmus bald gemeistert!");
     await waitForClick();
 
 //8
@@ -450,7 +453,7 @@ Test = async () =>
 
     //ende
 
-    await saySlow("Ihr habt es Geschafft!\nDas gesuchte Muster wurde gefunden.");
+    await saySlow("Ihr habt es geschafft!\nDas gesuchte Muster wurde gefunden.");
     await waitForClick();
 
     abc.removeChildren();

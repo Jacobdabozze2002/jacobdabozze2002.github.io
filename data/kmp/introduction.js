@@ -2,7 +2,7 @@
 introduction = async () =>
 {
 
-    showPicture("/data/images/master3.png");
+    /*showPicture("/data/images/master3.png");
 
     await saySlow("Willkommen zurück, mein Lehrling!");
     await waitForClick();
@@ -13,13 +13,13 @@ introduction = async () =>
     await saySlow("Der Suchalgorithmus heißt: \nKnuth-Morris-Pratt Algorithmus.");
     await waitForClick();
 
-    await saySlow("Dieser kann in vielen Fällen schneller\nsein als die Naive-Suche.");
+    await saySlow("Dieser kann in vielen Fällen schneller\nsein, als die Naive-Suche.");
     await waitForClick();
 
     await saySlow("Das liegt daran, dass der Algorithmus\nsich wiederholende Zeichenketten zu Nutze macht.");
     await waitForClick();
 
-    await saySlow("Dies benögtigt zwar ein wenig Vorbereitung,\naber das rentiert sich bei langen Texten schnell.");
+    await saySlow("Dies benötigt zwar ein wenig Vorbereitung,\naber das rentiert sich bei langen Texten schnell.");
     await waitForClick();
 
     let completed = false;
@@ -39,7 +39,7 @@ introduction = async () =>
             }
         }
         else completed = true;
-    }
+    }*/
     hidePicture();
     await saySlow("So lasst mich einen Text für Euch wählen.");
 

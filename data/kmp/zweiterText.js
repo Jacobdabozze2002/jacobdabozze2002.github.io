@@ -16,13 +16,13 @@ zweiterText = async () =>
     await saySlow("Ich habe für Euch das Muster ein wenig erweitert.");
     await waitForClick();
 
-    await saySlow("In diese neuen Felder müsst ihr gleich Zahlen eintragen.");
+    await saySlow("In diese neuen Felder müsst Ihr gleich Zahlen eintragen.");
     await waitForClick();
 
-    await saySlow("Das Ziel ist es die längste Zeichenkette im Muster zu finden, \ndie sich wiederholt.");
+    await saySlow("Das Ziel ist es, die längste Zeichenkette im\nMuster zu finden, die sich wiederholt.");
     await waitForClick();
 
-    await saySlow("Die richtige Zahl ergibt sich aus den Antworten zu zwei Fragen:");
+    await saySlow("Die richtige Zahl ergibt sich aus\nden Antworten zu zwei Fragen:");
     await waitForClick();
 
     await saySlow("Erstens:\nIst dieses Zeichen schon einmal im Muster vorgekommen?");
