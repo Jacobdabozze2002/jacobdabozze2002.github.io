@@ -120,13 +120,13 @@ Test = async () =>
     addChildrenByText("0001").
     addChildren("2")
 
-    await saySlow("Auf bei dem fünften Zeichen sollte Euch etwas auffallen.");
+    await saySlow("Auch bei dem fünften Zeichen sollte Euch etwas auffallen.");
     await waitForClick();
 
-    await saySlow("Auch hier errinern wir uns an die Fragen: \n1. Ist dieses Zeichen schon mal im Muster vorgekommen?");
+    await saySlow("Errinert Euch noch einmal an die Fragen: \n1. Ist dieses Zeichen schon einmal im Muster vorgekommen?");
     await waitForClick();
 
-    await saySlow("2. Wie viele Zeichen waren vor diesem Zeichen, \nwelche auch schon mal im Muster vorkamen?");
+    await saySlow("2. Wie viele Zeichen waren vor diesem Zeichen, \nwelche auch schon im Muster vorkamen?");
     await waitForClick();
 
     await saySlow("Gib nun die richtige Zahl für <N> ein.");
@@ -154,16 +154,13 @@ Test = async () =>
 
     // Vergleich
 
-    await saySlow("Als nächstes kommen wir zum Vergleichen der Zeichen.");
-    await waitForClick();
-
     await saySlow("Hierbei wird erst wie bei der Naiven Suche \nvon links nach rechts verglichen.");
     await waitForClick();
 
     await saySlow("Sollte es zu einem Mismatch kommen,\nmüsst Ihr ein bisschen rechnen.");
     await waitForClick();
 
-    await saySlow("Den Index des Zeiches, welches Ihr gerade verglichen hattet,\nminus der zugewiesenen Zahl des vorherigen Zeichens.");
+    await saySlow("Den Index des Zeichens, welches Ihr gerade verglichen habt,\nminus der zugewiesenen Zahl des vorherigen Zeichens.");
     await waitForClick();
 
     await saySlow("Um diese Zahl kann das Muster nun verschoben werden.");
@@ -227,7 +224,7 @@ Test = async () =>
     completed = false;
     while (!completed)
     {
-        await saySlow("Sind die nächsten beiden Zeichen ein Match?");
+        await saySlow("Und jetzt? Sind diese beiden Zeichen ein Match?");
         task("mit \"ja\" oder \"nein\" antworten")
         textSelect([2]);
         searchSelect([2]);
@@ -249,7 +246,7 @@ Test = async () =>
     completed = false;
     while (!completed)
     {
-        await saySlow("Sind die nächsten beiden Zeichen ein Match?");
+        await saySlow("Stellen diese Zeichen ein Match dar?");
         task("mit \"ja\" oder \"nein\" antworten")
         textSelect([3]);
         searchSelect([3]);
@@ -315,7 +312,7 @@ Test = async () =>
         await saySlow("Da ein Mismatch aufgetreten ist, \nmüsst Ihr das Muster verschieben.");
         await waitForClick();
 
-        await saySlow("Erinnert Euch dafür an die Rechnung: \nIndex minus vorherige zugewiesene Zahl");
+        await saySlow("Erinnert Euch dafür an die Rechnung: \nDen Index minus die vorherige zugewiesene Zahl.");
         await waitForClick();
 
         await saySlow("Verschiebt nun das Muster den Regeln entsprechend!");
@@ -342,7 +339,7 @@ Test = async () =>
     {
         textSelect();
         searchSelect();
-        await saySlow("Ihr erinnert Euch, dass wir jetzt schon ein paar Zeichen haben, \nwelche beim Vergleich übereinstimmen.");
+        await saySlow("Ihr erinnert Euch, dass wir jetzt schon ein paar Zeichen\nhaben, welche beim Vergleich übereinstimmen.");
         await waitForClick();
 
         await saySlow("Welches Zeichen müssen wir im Suchtext nun vergleichen?");
@@ -407,7 +404,7 @@ Test = async () =>
         else completed = true;
     }
 
-    await saySlow("Wenn Ihr so weiter macht, \ndann habt Ihr diesen Suchalgorithmus bald gemeistert!");
+    await saySlow("Wenn Ihr so weiter macht, dann habt Ihr\ndiesen Suchalgorithmus bald gemeistert!");
     await waitForClick();
 
 //8
@@ -453,7 +450,10 @@ Test = async () =>
 
     //ende
 
-    await saySlow("Ihr habt es geschafft!\nDas gesuchte Muster wurde gefunden.");
+    await saySlow("Ihr habt es geschafft!");
+    await waitForClick();
+
+    await saySlow("Das gesuchte Muster wurde gefunden.");
     await waitForClick();
 
     abc.removeChildren();
@@ -462,4 +462,3 @@ Test = async () =>
     // return to main
     return new Promise(res => setTimeout(res, 50));
 }
-
