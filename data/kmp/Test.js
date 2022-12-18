@@ -13,7 +13,7 @@ Test = async () =>
 
     task();
 
-    /*await saySlow("Ich habe für Euch das Muster ein wenig erweitert.");
+    await saySlow("Ich habe für Euch das Muster ein wenig erweitert.");
     await waitForClick();
 
     await saySlow("In diese neuen Felder müsst Ihr gleich Zahlen eintragen.");
@@ -65,7 +65,7 @@ Test = async () =>
     await waitForClick();
 
     await saySlow("Wenn dies nicht der Fall ist,\nfangt Ihr auch wieder von 0 zu zählen an.");
-    await waitForClick();*/
+    await waitForClick();
 
 
     //Zahlen eingeben
@@ -123,7 +123,7 @@ Test = async () =>
     await saySlow("Auch bei dem fünften Zeichen sollte Euch etwas auffallen.");
     await waitForClick();
 
-    await saySlow("Errinert Euch noch einmal an die Fragen: \n1. Ist dieses Zeichen schon einmal im Muster vorgekommen?");
+    await saySlow("Erinnert Euch noch einmal an die Fragen: \n1. Ist dieses Zeichen schon einmal im Muster vorgekommen?");
     await waitForClick();
 
     await saySlow("2. Wie viele Zeichen waren vor diesem Zeichen, \nwelche auch schon im Muster vorkamen?");
