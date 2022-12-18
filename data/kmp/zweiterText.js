@@ -75,7 +75,7 @@ zweiterText = async () =>
     await saySlow("Nun lasst uns beginnen.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <A> ein");
+    await saySlow("Gib nun die richtige Zahl für <A> ein.");
     await waitForKeyPressed("0");
     abc2.removeChildren().
     addChildrenByText("0").
@@ -84,7 +84,7 @@ zweiterText = async () =>
     await saySlow("Das zweite Zeichen schafft Ihr ganz leicht.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl <B> ein");
+    await saySlow("Gib nun die richtige Zahl <B> ein.");
     await waitForKeyPressed("0");
     abc2.
     removeChildren().
@@ -94,7 +94,7 @@ zweiterText = async () =>
     await saySlow("Auch bei dem dritten Zeichen, \nmüsst Ihr noch nicht viel überlegen.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <C> ein");
+    await saySlow("Gib nun die richtige Zahl für <C> ein.");
     await waitForKeyPressed("0");
     abc2.
     removeChildren().
@@ -113,7 +113,7 @@ zweiterText = async () =>
     await saySlow("2. Wie viele Zeichen waren vor diesem Zeichen, \nwelche auch schon mal im Muster vorkamen?");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <A> ein");
+    await saySlow("Gib nun die richtige Zahl für <A> ein.");
     await waitForKeyPressed("1");
     abc2.
     removeChildren().
@@ -129,7 +129,7 @@ zweiterText = async () =>
     await saySlow("2. Wie viele Zeichen waren vor diesem Zeichen, \nwelche auch schon im Muster vorkamen?");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <B> ein");
+    await saySlow("Gib nun die richtige Zahl für <B> ein.");
     await waitForKeyPressed("2");
     abc2.
     removeChildren().
@@ -139,7 +139,7 @@ zweiterText = async () =>
     await saySlow("Bei dem letzten Zeichen wird es wieder einfach.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <D> ein");
+    await saySlow("Gib nun die richtige Zahl für <D> ein.");
     await waitForKeyPressed("0");
     abc2.
     removeChildren().

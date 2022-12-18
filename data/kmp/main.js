@@ -8,7 +8,7 @@ main = async () =>
         ]
 
     // const example = kmp_examples[Math.floor(Math.random() * kmp_examples.length)];
-    const example = kmp_examples[0];
+    const example = kmp_examples[1];
 
     text.removeChildren().addChildrenByText(example[0]);
     search.removeChildren().addChildrenByText(example[1]);

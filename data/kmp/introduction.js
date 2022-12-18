@@ -2,7 +2,7 @@
 introduction = async () =>
 {
 
-    /*showPicture("/data/images/master3.png");
+    showPicture("/data/images/master3.png");
 
     await saySlow("Willkommen zurück, mein Lehrling!");
     await waitForClick();
@@ -39,7 +39,7 @@ introduction = async () =>
             }
         }
         else completed = true;
-    }*/
+    }
     hidePicture();
     await saySlow("So lasst mich einen Text für Euch wählen.");
 
