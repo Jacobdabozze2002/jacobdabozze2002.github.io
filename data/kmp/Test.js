@@ -75,7 +75,7 @@ Test = async () =>
     await saySlow("Nun lasst uns beginnen.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <O> ein.");
+    await saySlow("Gib die richtige Zahl für <O> ein.");
     await waitForKeyPressed("0");
     abc.removeChildren().
     addChildrenByText("0").
@@ -84,7 +84,8 @@ Test = async () =>
     await saySlow("Das zweite Zeichen schafft Ihr ganz leicht.");
     await waitForClick();
 
-    await saySlow("Gib nun die richtige Zahl für <N> ein.");
+
+   await saySlow("Gib nun die richtige Zahl für <N> ein.");
     await waitForKeyPressed("0");
     abc.
     removeChildren().
@@ -194,96 +195,17 @@ Test = async () =>
         }
         else completed = true;
     }
-
+//skip wegen wiederholung
     await saySlow("Ich sehe Ihr habt Euch gemerkt,\nwie die Naive Suche funktioniert.");
     await waitForClick();
-//2
-
-    completed = false;
-    while (!completed)
-    {
-        await saySlow("Sind die nächsten beiden Zeichen ein Match?");
-        task("mit \"ja\" oder \"nein\" antworten")
-        textSelect([1]);
-        searchSelect([1]);
-        await waitFor1of2KeysPressed(["j", "n"]);
-        task();
-
-        if (lastKeyPressed !== "j")
-        {
-            await saySlow("Das ist nicht korrekt. Nochmal!");
-            await waitForClick();
-        }
-        else completed = true;
-    }
-
-    await saySlow("Weiter so, das war richtig!");
-    await waitForClick();
-//3
-
-    completed = false;
-    while (!completed)
-    {
-        await saySlow("Und jetzt? Sind diese beiden Zeichen ein Match?");
-        task("mit \"ja\" oder \"nein\" antworten")
-        textSelect([2]);
-        searchSelect([2]);
-        await waitFor1of2KeysPressed(["j", "n"]);
-        task();
-
-        if (lastKeyPressed !== "j")
-        {
-            await saySlow("Denkt einmal etwas schärfer nach!");
-            await waitForClick();
-        }
-        else completed = true;
-    }
-
-    await saySlow("Sehr schön!");
-    await waitForClick();
-//4
-
-    completed = false;
-    while (!completed)
-    {
-        await saySlow("Stellen diese Zeichen ein Match dar?");
-        task("mit \"ja\" oder \"nein\" antworten")
-        textSelect([3]);
-        searchSelect([3]);
-        await waitFor1of2KeysPressed(["j", "n"]);
-        task();
-
-        if (lastKeyPressed !== "j")
-        {
-            await saySlow("Das ist nicht korrekt. Nochmal!");
-            await waitForClick();
-        }
-        else completed = true;
-    }
-
-    await saySlow("Ihr kommt schnell voran. Das freut mich!");
+    await saySlow("Für die nächsten Zeichen seht Ihr ja,\ndas die Zeichen übereinstimmen.");
     await waitForClick();
 
-//5
-    completed = false;
-    while (!completed)
-    {
-        await saySlow("Sind die nächsten beiden Zeichen ein Match?");
-        task("mit \"ja\" oder \"nein\" antworten")
-        textSelect([4]);
-        searchSelect([4]);
-        await waitFor1of2KeysPressed(["j", "n"]);
-        task();
 
-        if (lastKeyPressed !== "j")
-        {
-            await saySlow("Das ist falsch, versucht nachzudenken!");
-            await waitForClick();
-        }
-        else completed = true;
-    }
+    await saySlow("Jetzt sind wir bei den 6. Zeichen.");
+    await waitForClick();
 
-    await saySlow("Weiter so, das war richtig!");
+    await saySlow("Hierbei sollte euch etwas auffallen.");
     await waitForClick();
 
 //6 Mismatch
