@@ -12,6 +12,7 @@ childrenStyleClass("child").
 sizingByChildren(true, ["15vw", "15vw"]).
 addChildren(4).
 padding("5vw").
+alignTo("bottom-center", "8vw").
 forEachChild(child =>
 {
     let i = levels.getIndexOf(child);
@@ -29,12 +30,17 @@ forEachChild(child =>
     child.self().onclick = () => pages[i][1] ? openPage(pages[i][0]) : null;
 });
 
-// Überschrift
-new JF_Text().
-styleClass("standard_font2").
-textSize("5vw").
-attachTo(levels, "top-center", "2vw").
-applyText("Master Ocir's Grand Search");
+// Logo
+new JF_Element(container).
+styleClass("logo-image").
+style(`
+    background: url('/data/images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    `)
+.alignTo("top-center", "0");
+
 
 // Link zu Konzept
 new JF_Text(container).

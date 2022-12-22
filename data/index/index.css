@@ -37,3 +37,9 @@
     box-shadow : 0 0 10vw .6vw rgba(200,200,150,0.3);
   }
 }
+
+.logo-image {
+    width: 50%;
+    height: 46%;
+    object-fit: contain;
+}
