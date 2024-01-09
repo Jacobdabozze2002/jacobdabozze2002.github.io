@@ -39,8 +39,7 @@ function reload_template()
     template.value += `${rewards.value || "no winners"}\n\n`;
 
     template.value += `**Notes:**\n`;
-    template.value += `${notes.value || "no notes"}\n\n`;
-
+    template.value += `${notes.value || "no notes"}`;
 }
 
 reload_template();
