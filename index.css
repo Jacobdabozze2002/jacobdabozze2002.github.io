@@ -1,0 +1,38 @@
+main
+{
+    display: flex;
+}
+
+.fieldset
+{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea
+{
+    resize: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+textarea
+{
+    resize: vertical;
+    outline: none;
+    height: 16px;
+}
+
+input
+{
+    outline: none;
+}
+
+.column
+{
+    display: flex;
+    flex-direction: column;
+}
